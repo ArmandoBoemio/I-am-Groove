@@ -1,6 +1,10 @@
 .Control{
     background-color:aquamarine;
     margin: 2px;
+    height: 40px;
+    min-width: 150px;
+    width: 20vmin;
+    
 }
 
 .Control {

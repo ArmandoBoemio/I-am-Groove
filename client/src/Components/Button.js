@@ -6,7 +6,7 @@ class Button extends Component{
         return(
             <>
             
-            <button className='Control' onClick={()=>this.props.onClick()} style={{height: 25, width: 150}}>{this.props.scritta}</button>
+            <button className='Control' onClick={()=>this.props.onClick()} >{this.props.scritta}</button>
             
             </>
         );

@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #95c3d1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,85 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.mainContainer{
+  width: 95vw;
+  height: 90vh;
+  background-color: #3a606b;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: relative;
+  border-radius: 20px;
+}
+
+.controls{
+  width: 95%;
+  height: 35%;
+  background-color: #82cbdf;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: absolute;
+  top: 3vh;
+  border-radius: 20px;
+}
+
+.tempo{
+  width: 95%;
+  height: 5%;
+  background-color: #165769;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: absolute;
+  top: 1vh;
+  border-radius: 20px;
+}
+
+.sliders{
+  width: 95%;
+  height: 20vh;
+  background-color: #5592a3;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: absolute;
+  top: 11vh;
+  border-radius: 20px;
+
+}
+
+.sounds{
+  width: 90vw;
+  height: 52vh;
+  background-color: #4da8c2;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: absolute;
+  top: 35vh;
+  border-radius: 20px;
+
 }
