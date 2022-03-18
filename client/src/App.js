@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Component} from 'react'
 import BPM from './Components/BPM';
+import Metronome from './Components/Metronome';
 
 class App extends Component {
   
@@ -43,7 +44,7 @@ class App extends Component {
 
             <div className='tempo'>
               <BPM></BPM>
-              
+              <Metronome></Metronome>
             </div>
 
             <div className='sliders'>
