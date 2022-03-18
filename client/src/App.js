@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Button from './Components/Button';
+import MButton from './Components/Metronome_Button';
 import {Component} from 'react'
 
 
@@ -53,6 +54,7 @@ class App extends Component {
         </p>
         <Button onClick={this.handleOnClick} scritta="cambia numero"></Button>
         <Button onClick={this.handleOnClick2} scritta="posta"></Button>
+        <MButton></MButton>
         <p>The first number is {this.state.shownum}.</p>
         <p>The sum is {this.state.two + this.state.shownum}.</p>
         <a
