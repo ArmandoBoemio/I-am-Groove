@@ -60,6 +60,8 @@ class Metronome extends Component {
             let time = new Date();
             taps.push(time.getTime());
         }
+        this.stopTapTempo()
+        this.initializeTaps()
     }
 
     //This will stop tap tempo and calculate BPM
@@ -83,10 +85,23 @@ class Metronome extends Component {
 
             var avgOfTaps = tapSum/calculatedTaps.length;
             bpm = 60000 / avgOfTaps;
+            bpm=bpm.toFixed(2);
             this.setState({ bpm })
             taps.length = 0;
             calculatedTaps.length = 0;
         }
+        
+    }
+
+    initializeTaps= ()=>{
+            var{taps}=this.state;
+            let currentTime=new Date();
+            console.log(Math.abs(taps[-1]-currentTime.getTime()))
+            if(Math.abs(taps[-1]-currentTime.getTime())>2){
+                this.setState({taps: {}, calculatedTaps: [], bpm: 120})
+            }
+            
+
     }
 
     startStop = () => {
