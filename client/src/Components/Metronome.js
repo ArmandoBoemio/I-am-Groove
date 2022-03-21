@@ -14,6 +14,8 @@ class Metronome extends Component {
             beatsPerMeasure: 4,
             taps: [],
             calculatedTaps: [],
+            checkTapTempo: false,
+            stopTapId: 0,
         };
 
         this.click1 = new Audio(click1);
@@ -60,10 +62,27 @@ class Metronome extends Component {
             let time = new Date();
             taps.push(time.getTime());
         }
-        this.stopTapTempo()
-        this.initializeTaps()
+
+        
+        if(this.state.checkTapTempo==false){
+            this.setState({checkTapTempo: true})
+            this.setState({stopTapId: setInterval(this.runStopTempo,500) })
+        }
+       
     }
 
+    runStopTempo= () =>{
+        var { taps,stopTapId } = this.state;
+        let currTime=new Date();
+        if(Math.abs(taps[taps.length-1]-currTime.getTime())>1200){
+            console.log(Math.abs((taps[taps.length-1]-currTime.getTime())/1000));
+            clearInterval(stopTapId);
+            this.setState({checkTapTempo: false})
+            console.log('controllo');
+            this.stopTapTempo()
+            this.startStop()
+        }
+    }
     //This will stop tap tempo and calculate BPM
     stopTapTempo = () => {
         var { taps, i, calculatedTaps, bpm } = this.state;
@@ -85,24 +104,18 @@ class Metronome extends Component {
 
             var avgOfTaps = tapSum/calculatedTaps.length;
             bpm = 60000 / avgOfTaps;
+            if(bpm>250){bpm=250; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 250')}
+            if(bpm<50){bpm=50; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 50')}
             bpm=bpm.toFixed(2);
-            this.setState({ bpm })
+            this.setState({ bpm });
             taps.length = 0;
             calculatedTaps.length = 0;
         }
         
     }
-
-    initializeTaps= ()=>{
-            var{taps}=this.state;
-            let currentTime=new Date();
-            console.log(Math.abs(taps[-1]-currentTime.getTime()))
-            if(Math.abs(taps[-1]-currentTime.getTime())>2){
-                this.setState({taps: {}, calculatedTaps: [], bpm: 120})
-            }
             
 
-    }
+    
 
     startStop = () => {
         if (this.state.playing) {
@@ -136,8 +149,8 @@ class Metronome extends Component {
                     <div>{bpm} BPM</div>
                     <input 
                         type="range" 
-                        min="20" 
-                        max="300" 
+                        min="50" 
+                        max="250" 
                         value={bpm}
                         onChange={this.handleBpmChange} />
                 </div>
@@ -147,9 +160,9 @@ class Metronome extends Component {
 
                 <button onClick={this.handleTapTempo}>Tap Tempo</button>
 
-                <button onClick={this.stopTapTempo}>Stop Tap Tempo</button>
-
+               
             </div>
+            
         );
     }
 }
