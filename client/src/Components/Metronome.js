@@ -38,8 +38,8 @@ class Metronome extends Component {
     }
 
     playClick = () => {
-        const { count, beatsPerMeasure } = this.state;
         this.setState({beatsPerMeasure: this.props.beatsPerMeasure});
+        const { count, beatsPerMeasure } = this.state;
         if (count % beatsPerMeasure === 0) {
             this.click2.play();
         } else {
@@ -80,7 +80,12 @@ class Metronome extends Component {
             this.setState({checkTapTempo: false})
             console.log('controllo');
             this.stopTapTempo()
-            this.startStop()
+            if(this.state.playing){
+                this.startStop();
+                this.startStop()}
+                else{
+                this.startStop()
+            }
         }
     }
     //This will stop tap tempo and calculate BPM
