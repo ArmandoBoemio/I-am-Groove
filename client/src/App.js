@@ -1,6 +1,7 @@
 import './App.css';
 import {Component} from 'react'
 import Metronome from './Components/Metronome';
+import Measure from './Components/Measure';
 
 class App extends Component {
   
@@ -32,6 +33,13 @@ class App extends Component {
   }
       
 
+  onMeasureChange = (event) =>{
+        this.setState({beatsPerMeasure: event.target.value});
+      
+
+  }
+
+
 
   render(){
       return (
@@ -41,11 +49,11 @@ class App extends Component {
         <div className='controls'>
 
             <div className='tempo'>
-              <Metronome></Metronome>
+              <Metronome beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
             </div>
 
             <div className='sliders'>
-              
+              <Measure onChange={this.onMeasureChange}></Measure>
             </div>
 
         </div>
