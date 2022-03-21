@@ -64,7 +64,7 @@ class Metronome extends Component {
         }
 
         
-        if(this.state.checkTapTempo==false){
+        if(this.state.checkTapTempo===false){
             this.setState({checkTapTempo: true})
             this.setState({stopTapId: setInterval(this.runStopTempo,500) })
         }
@@ -145,27 +145,56 @@ class Metronome extends Component {
         }
     };
 
+
+    handleWheel=(event)=>{
+        const delta =event.deltaY;
+        if(this.state.bpm>50 && this.state.bpm<250){
+            if (delta > 0) {
+                this.setState({bpm: parseInt(this.state.bpm) - 1 })
+            } else {
+                if (parseInt(this.state.bpm) > 0) {
+                    this.setState({bpm: parseInt(this.state.bpm) + 1 })
+                }
+            }
+        }
+
+        if(this.state.bpm === 50){
+            if(delta<0){
+                this.setState({bpm: parseInt(this.state.bpm) + 1 });
+            }
+        }
+        if(this.state.bpm === 250){
+            if(delta>0){
+                this.setState({bpm: parseInt(this.state.bpm) - 1 });
+            }
+        }
+
+    }
+
     render() {
         const { playing, bpm } = this.state;
 
         return (
             <div className="metronome">
                 <div className="bpm-slider">
-                    <div>BPM</div>
                     <input 
-                        type="number" 
+                        type="number"
                         min="50" 
                         max="250" 
                         value={bpm}
-                        onChange={this.handleBpmChange} />
+                        onChange={this.handleBpmChange} 
+                        onWheel={this.handleWheel}
+                        className="inputBpm"
+                        />
                 </div>
+                <div className='metronomeButtons'>
                 <button onClick={this.startStop}>
                     {playing ? 'Stop' : 'Start'}
                 </button>
 
                 <button onClick={this.handleTapTempo}>Tap Tempo</button>
 
-               
+               </div>
             </div>
             
         );
