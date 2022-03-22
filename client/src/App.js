@@ -2,6 +2,7 @@ import './App.css';
 import {Component} from 'react'
 import Metronome from './Components/Metronome';
 import Measure from './Components/Measure';
+import SoundControl from './Components/SoundControl';
 
 class App extends Component {
   
@@ -59,7 +60,7 @@ class App extends Component {
         </div>
 
         <div className='sounds'>
-
+        <SoundControl></SoundControl>
 
         </div>
 

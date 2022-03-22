@@ -10,36 +10,54 @@ class SoundControl extends Component{
             isPlaying: false,
             blobURL: '',
         };
+        this.audio = new Audio([])
     }
 
-    startStopPlayback = () => {
-            console.log('playback');
-            this.setState(state => ({
-                isPlaying: !state.isPlaying}
-                ));
+    startPlayback = () => {
+        console.log('playback');
+        this.audio.play();     
     };
 
+    startRecording = () =>{
+        console.log('recording...');
+        
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            const mediaRecorder = new MediaRecorder(stream);
+            
+            mediaRecorder.start();
+      
+            const audioChunks = [];
+            
+            mediaRecorder.addEventListener("dataavailable", event => {
+                audioChunks.push(event.data);
+            });
+        
+            mediaRecorder.addEventListener("stop", () => {
+                const audioBlob = new Blob(audioChunks);
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+                this.setState({
+                    blobURL: audioUrl,
+                });
+                this.audio = audio;
+                audio.play();
+                console.log('listen your audio!')
+            });   
+            setTimeout(() => {
+                mediaRecorder.stop();
+                console.log('recorded!')
+              }, 3000);
+            
+        });
+    };
 
-    startStopRecording = () =>{
-        console.log('recording clicked');
-        this.setState(state => ({
-            isRecording: !state.isRecording}
-            ));
-};
-
-startRecording = () =>{
-    console.log('recording...');
-    this.setState({
-        isRecording: true}
-        );
-};
-
-stopRecording = () =>{
-    console.log('recorded!');
-    this.setState({
-        isRecording: false}
-        );
-};
+    stopRecording = () =>{
+        console.log('recorded!');
+        this.setState({
+            isRecording: false}
+            );
+    };
         
     
 
@@ -50,8 +68,7 @@ stopRecording = () =>{
             <div className="soundcontrol">
 
                 <div className="playing">
-                    <button onClick={this.startStopPlayback}>
-                        {isPlaying ? 'Play' : 'Pause'}
+                    <button onClick={this.startPlayback}>
                     </button>    
                 </div>                    
                 
