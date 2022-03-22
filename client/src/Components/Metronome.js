@@ -22,6 +22,9 @@ class Metronome extends Component {
         this.click2 = new Audio(click2);
     }
 
+    
+  
+
     handleBpmChange = event => {
         const bpm = event.target.value;
         if (this.state.playing) {
@@ -171,32 +174,45 @@ class Metronome extends Component {
             }
         }
 
-    }
+    }  
 
     render() {
         const { playing, bpm } = this.state;
 
         return (
+
             <div className="metronome">
-                <div className="bpm-slider" >
+                
+                <div className="bpm-slider">
+
+                    <div className="titleMetronome">
+                        BPM
+                    </div>
+
                     <input 
-                        type="number"
+                        type="range" 
                         min="50" 
                         max="250" 
                         value={bpm}
                         onChange={this.handleBpmChange} 
                         onWheel={this.handleWheel}
                         className="inputBpm"
-                        />
-                </div>
-                <div className='metronomeButtons'>
+                    />
+
+                    <div className="bub">
+                        {bpm}
+                    </div>
+
+                </div>               
+
                 <button onClick={this.startStop}>
                     {playing ? 'Stop' : 'Start'}
                 </button>
 
-                <button onClick={this.handleTapTempo}>Tap Tempo</button>
-
-               </div>
+                <button 
+                    onClick={this.handleTapTempo}>Tap
+                </button>
+               
             </div>
             
         );

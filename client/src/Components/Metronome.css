@@ -1,18 +1,53 @@
+@font-face {
+  font-family: metronomeFont;
+  src: url(../fonts/BabyDoll.ttf);
+}
+
+@font-face {
+  font-family: titlePanelFont;
+  src: url(../fonts/WinkleRegular.ttf);
+}
+
+.titleMetronome{
+  font-family: titlePanelFont;
+  font-size: calc(28% + 2.5vmin);
+  color:#d6e9ff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
+  padding:0.5vmin;
+}
+
 .metronome {
     text-align: center;
-    align-items: center;
-    width: 85%;
-    max-width: 80%;
-    max-height: 40px;
-    position: relative;
-    top: -25%;
-    margin: 0;
-    padding: 0px;
+    
+    max-height: 75%;
+    width:25%;
+    min-width:20%;
+    padding: 1.8vmin;
+    padding-bottom:2vmin;
+    background-color: #68dcff5e;
+    border-radius: 3vmin;
+    margin:0.5vmin;
+    font-size: 50%;
+  }
+
+  .bub{
+    padding:0.6vmin;
+    font-family: metronomeFont;
+    font-size: 2vmin;
+    color:#c9def5;
+    text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.514);
   }
   
   .bpm-slider input {
-    width: 20%;
-    margin: 3px;
+    width: 90%;
+    position:relative;
+    
+  }
+
+  .buble{
+    position:absolute;
+    align-items: center;
+    font-size: 50%;
   }
   
   .metronomeButtons{
@@ -24,32 +59,19 @@
 
   }
   .metronome button {
-    background: #081e68;
-    padding: 1px;
-    border: 1px solid #16023b;
-    border-radius: 5px;
-    width: 34%;
-    color: #fff;
-    font-size: 65%;
-    margin:20px;
+    background: #9b0074;
+    
+    border: 1 solid #40b9ff;
+    border-radius: 1vmin;
+    font-family: metronomeFont;
+    width: 40%;
+    min-width: 6vmin;
+    height: 5vmin;
+    color: #a6cfff;
+    font-size: 2vmin;
+    text-align: center; 
+    margin:0.5vmin;
+    margin-bottom: 0.1vmin;
+    
   }
 
-  .inputBpm{
-    height: 5%;
-    width:15%;
-    background-color: #3ea9c7;
-    border-color: #1e768f; 
-    border-radius: 4px;
-
-
-  }
-
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
