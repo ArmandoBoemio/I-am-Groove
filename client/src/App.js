@@ -3,6 +3,8 @@ import {Component} from 'react'
 import Metronome from './Components/Metronome';
 import Measure from './Components/Measure';
 import SoundControl from './Components/SoundControl';
+import Length from './Components/Length';
+import Panel from './Components/Panel';
 
 class App extends Component {
   
@@ -35,7 +37,7 @@ class App extends Component {
       
 
   onMeasureChange = (event) =>{
-        this.setState({beatsPerMeasure: event.target.value});
+      this.setState({beatsPerMeasure: event.target.value});
       
 
   }
@@ -47,16 +49,15 @@ class App extends Component {
     <div className="App">
       <header className="App-header">
       <div className='mainContainer'>
-        <div className='controls'>
+        
+        <div className='titolo'>
+           GROOVE GENERATOR
+        </div>
 
-            <div className='tempo'>
-              <Metronome beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
-            </div>
-
-            <div className='sliders'>
-              <Measure onChange={this.onMeasureChange}></Measure>
-            </div>
-
+        <div className='sliders'>
+          <Metronome beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
+          <Measure onChange={this.onMeasureChange}></Measure>
+          <Length ></Length>
         </div>
 
         <div className='sounds'>

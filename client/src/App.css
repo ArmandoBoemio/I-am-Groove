@@ -13,8 +13,13 @@
   }
 }
 
+@font-face {
+  font-family: GrooveGeneratorFont;
+  src: url(./fonts/MadGrooveBlast.ttf);
+}
+
 .App-header {
-  background-color: #95c3d1;
+  background-image: linear-gradient(rgb(74, 106, 250), rgb(29, 31, 158));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,9 +29,7 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+
 
 @keyframes App-logo-spin {
   from {
@@ -40,8 +43,9 @@
 .mainContainer{
   width: 95vw;
   height: 90vh;
-  background-color: #3a606b;
+  background-image: linear-gradient(rgb(172, 2, 172), rgb(97, 4, 89));
   min-height: 10vh;
+  max-width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,63 +54,75 @@
   color: white;
   position: relative;
   border-radius: 20px;
+  -webkit-box-shadow: 0 0 5px 2px rgb(132, 226, 255);
+  -moz-box-shadow: 0 0 5px 2px rgb(89, 161, 255);
+  box-shadow: 0 0 0 2px rgba(255, 175, 238, 0.822),
+              0 0 20px 2px rgba(0, 0, 0, 0.315),
+        inset 0 0 20px rgba(44, 0, 85, 0.363);
+              
 }
 
-.controls{
-  width: 95%;
-  height: 35%;
-  background-color: #82cbdf;
-  min-height: 10vh;
+
+
+.titolo{
+  width: 55%;
+  height: 8%;
+  max-height: 7vh;
+
+  border-radius: 20px;
+
+  background-color: #68dcff13;
+  background-image: linear-gradient(#68dcff38, #339ab99c);
+  
+  -webkit-box-shadow: 0 0 5px 2px rgb(0, 5, 7);
+  -moz-box-shadow: 0 0 5px 2px rgb(0, 0, 0);
+  box-shadow: 0 0 0 0px     rgba(0, 0, 0, 0.705),
+              0 0 20px 1px  rgba(0, 0, 0, 0.315),
+        inset 0 0 5px       rgba(232, 208, 255, 0.363);
+  
+  top: 2.5vh;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  position: absolute;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  position: absolute;
-  top: 3vh;
-  border-radius: 20px;
+  
+  font-size: calc(20% + 1.5vw);
+  text-align: center;
+  font-family: GrooveGeneratorFont;
+  color: #d6e9ff;
+  
 }
 
-.tempo{
-  width: 95%;
-  height: 5%;
-  background-color: #165769;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  position: absolute;
-  top: 1vh;
-  border-radius: 20px;
-  align-items: center;
-  align-content: center;
-}
+
 
 .sliders{
   width: 95%;
-  height: 20vh;
-  background-color: #5592a3;
-  min-height: 10vh;
+  height: 21.5vh;
+  background-color: #fdccdb48;
+  min-height: 12vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(100, 219, 255);
   position: absolute;
-  top: 11vh;
-  border-radius: 20px;
+  top: 13vh;
+  border-radius: 3vmin;
+  
+  box-shadow: 
+        inset 0 0 10px 2px rgba(232, 208, 255, 0.062);
 
 }
 
 .sounds{
-  width: 90vw;
-  height: 52vh;
-  background-color: #4da8c2;
+  width: 95%;
+  height: 53vh;
+  background-color: #68dcff6e;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -116,6 +132,9 @@
   color: white;
   position: absolute;
   top: 35vh;
-  border-radius: 20px;
+  border-radius: 3vmin;
+  box-shadow: 
+  inset 0 0 10px 2px rgba(232, 208, 255, 0.062);
+
 
 }

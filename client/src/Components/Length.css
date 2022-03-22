@@ -1,0 +1,40 @@
+.lengthContainer{
+    background-color:#68dcff5e;
+    border-radius: 3vmin;
+        
+    
+    max-height: 25%;
+    width: 48.5%;
+    
+
+    padding:3.5vmin;
+    padding-top:2.1vmin;
+    padding-bottom:5vmin;
+
+    margin:0.4vmin;
+    margin-bottom: 8vmin;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    
+
+}
+
+@font-face {
+    font-family: titlePanelFont;
+    src: url(../fonts/WinkleRegular.ttf);
+  }
+
+.titleLength{
+    font-family: titlePanelFont;
+    font-size: calc(28% + 2.5vmin);
+    color:#d6e9ff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
+    padding:0.5vmin;
+  }
+
+.Slider{
+
+}
