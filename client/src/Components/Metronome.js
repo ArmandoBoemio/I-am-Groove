@@ -178,10 +178,9 @@ class Metronome extends Component {
 
         return (
             <div className="metronome">
-                
                 <div className="bpm-slider" >
                     <input 
-                        type="range"
+                        type="number"
                         min="50" 
                         max="250" 
                         value={bpm}
