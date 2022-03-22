@@ -28,7 +28,7 @@ class Measure extends Component{
         return(
            
             <> 
-              <div className="dropdown">
+            <div className="dropdown">
             <select className="dropbtn" onChange={this.props.onChange}>
             <option>2</option>
             <option>3</option>
