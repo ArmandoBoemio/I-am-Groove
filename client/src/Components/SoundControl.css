@@ -1,0 +1,65 @@
+.soundcontrol {
+    text-align: center;
+    align-items: left;
+    width:70%;
+    height: 50%;
+    max-width: 80%;
+    max-height: 50%;
+    position: relative;
+    top: -25%;
+    margin: 0;
+    padding: 0px;
+    display: inline-block;
+  }
+
+  .playing {
+    text-align: center;
+    align-items: center;
+    width:25%;
+    max-width: 80%;
+    max-height: 40px;
+    position: relative;
+    top: -25%;
+    margin: 0;
+    padding: 0px;
+    display: inline-block;
+  }  
+  
+  .recording {
+    text-align: center;
+    align-items: center;
+    width:25%;
+    max-width: 80%;
+    max-height: 40px;
+    position: relative;
+    top: -25%;
+    margin: 0;
+    padding: 0px;
+    display: inline-block;
+
+  }  
+
+  .playing button {
+    background: #081e68;
+    padding: 0px;
+    border: 1px solid #16023b;
+    border-radius: 100px;
+    width: 10vmin;
+    height:10vmin;
+    color: rgb(201, 54, 54);
+    font-size: 35%;
+    margin:0px;
+    display: inline-block;
+
+  }
+  .recording button {
+    background: #a5acc5;
+    padding: 0px;
+    border: 1px solid #16023b;
+    border-radius: 100px;
+    width: 10vmin;
+    height:10vmin;
+    color: rgb(201, 54, 54);
+    font-size: 35%;
+    margin:0px;
+  }
