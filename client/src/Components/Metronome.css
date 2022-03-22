@@ -1,9 +1,13 @@
 .metronome {
     text-align: center;
+    align-items: center;
+    width: 85%;
     max-width: 80%;
-    max-height: 50%;
-    margin: 0 auto;
-    padding: 30px;
+    max-height: 40px;
+    position: relative;
+    top: -25%;
+    margin: 0;
+    padding: 0px;
   }
   
   .bpm-slider input {
@@ -11,14 +15,22 @@
     margin: 3px;
   }
   
+  .metronomeButtons{
+    width: 130%;
+    min-width: 200px;
+    align-items: center;
+    position: relative;
+    left: -15%;
+
+  }
   .metronome button {
     background: #081e68;
     padding: 1px;
     border: 1px solid #16023b;
     border-radius: 5px;
-    width: 100px;
+    width: 34%;
     color: #fff;
-    font-size: 18px;
+    font-size: 65%;
     margin:20px;
   }
 
@@ -29,4 +41,15 @@
     border-color: #1e768f; 
     border-radius: 4px;
 
+
   }
+
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

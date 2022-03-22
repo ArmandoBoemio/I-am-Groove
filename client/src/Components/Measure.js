@@ -12,7 +12,7 @@ class Measure extends Component{
 
     
     render(){
-        let {numerator,denominator}=this.state;
+        let {denominator}=this.state;
         return(
             <>
             <div className="measureContainer">

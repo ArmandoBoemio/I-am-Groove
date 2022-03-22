@@ -82,6 +82,8 @@
   position: absolute;
   top: 1vh;
   border-radius: 20px;
+  align-items: center;
+  align-content: center;
 }
 
 .sliders{

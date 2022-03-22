@@ -38,7 +38,9 @@ class Metronome extends Component {
     }
 
     playClick = () => {
+        if(this.props.beatsPerMeasure){
         this.setState({beatsPerMeasure: this.props.beatsPerMeasure});
+        }
         const { count, beatsPerMeasure } = this.state;
         if (count % beatsPerMeasure === 0) {
             this.click2.play();
@@ -176,7 +178,7 @@ class Metronome extends Component {
 
         return (
             <div className="metronome">
-                <div className="bpm-slider">
+                <div className="bpm-slider" >
                     <input 
                         type="number"
                         min="50" 
