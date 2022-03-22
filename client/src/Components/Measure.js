@@ -1,4 +1,5 @@
 import { Component } from "react";
+import {CSSTransition} from 'react-transition-group';
 
 class Measure extends Component{
     constructor(props) {
@@ -7,16 +8,28 @@ class Measure extends Component{
         this.state = {
            numerator: 4,
            denominator: 4,
+           activeMenu: 'none'
         };
     }
 
+    handleDrop = () =>{
+        const dropdown = document.getElementsByClassName('dropdown')
+        let childrenvalues = [2,3,4,5,6,7];
+        childrenvalues.map((value)=>{
+            document.createElement("button", {className: 'dropdownChild'}); 
+            dropdown.appendChild(value);
+        });
+        
+        
+    }
     
     render(){
         let {denominator}=this.state;
         return(
-            <>
-            <div className="measureContainer">
-            <select className="dropdown" onChange={this.props.onChange}>
+           
+            <> 
+            <div className="dropdown">
+            <select className="dropbtn" onChange={this.props.onChange}>
             <option>2</option>
             <option>3</option>
             <option selected>4</option>
@@ -28,8 +41,20 @@ class Measure extends Component{
                 <option selected>{denominator}</option>
                 </select> 
 
-            </div>
+        </div> 
             </>
+            
+           
+            /*<div className="dropdown">
+                <button className="openClose" onClick={this.handleDrop}>apri</button>
+
+
+
+
+
+
+
+            </div>*/
         );
 
     }

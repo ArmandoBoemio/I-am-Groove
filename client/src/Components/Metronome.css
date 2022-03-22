@@ -53,3 +53,6 @@
 input[type=number] {
   -moz-appearance: textfield;
 }
+.title{
+  font-size: medium;
+}
