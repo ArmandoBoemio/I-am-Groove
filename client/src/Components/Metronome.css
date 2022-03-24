@@ -1,40 +1,55 @@
 @font-face {
-  font-family: metronomeFont;
+  font-family: casualFont;
   src: url(../fonts/BabyDoll.ttf);
 }
 
 @font-face {
   font-family: titlePanelFont;
-  src: url(../fonts/WinkleRegular.ttf);
-}
-
-.titleMetronome{
-  font-family: titlePanelFont;
-  font-size: calc(28% + 2.5vmin);
-  color:#d6e9ff;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
-  padding:0.5vmin;
+  src: url(../fonts/Personal.ttf);
 }
 
 .metronome {
+    background-color: #d1d3c818;
+    border-radius: 2vmin;
+
     text-align: center;
-    
-    max-height: 75%;
-    width:25%;
-    min-width:20%;
-    padding: 1.8vmin;
-    padding-bottom:2vmin;
-    background-color: #68dcff5e;
-    border-radius: 3vmin;
-    margin:0.5vmin;
     font-size: 50%;
+    
+    height: 75%;
+    width:20%;
+    min-width:20%;
+    
+    
+    padding: 1.5vmin;
+    padding-bottom:2vmin;
+    
+    margin:1vmin;
+    
+    margin-left:2vmin;
+    
+    box-shadow: 
+    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+    0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
+    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
   }
+
+
+  .titleMetronome{
+    font-family: titlePanelFont;
+    font-size: calc(0.5vmin + 0.6vmax);
+    color:#d6d09d;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
+    letter-spacing: 0.2vmin;
+    padding:0.5vmin;
+  }
+  
 
   .bub{
     padding:0.6vmin;
-    font-family: metronomeFont;
+    font-family: casualFont;
     font-size: 2vmin;
-    color:#c9def5;
+    color:#d6d09d;
     text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.514);
   }
   
@@ -50,28 +65,34 @@
     font-size: 50%;
   }
   
-  .metronomeButtons{
-    width: 130%;
-    min-width: 200px;
-    align-items: center;
-    position: relative;
-    left: -15%;
-
-  }
+ 
   .metronome button {
-    background: #9b0074;
+    background: #530131a6;
     
-    border: 1 solid #40b9ff;
+    border: 1 solid #d6d09d;
     border-radius: 1vmin;
-    font-family: metronomeFont;
-    width: 40%;
-    min-width: 6vmin;
-    height: 5vmin;
-    color: #a6cfff;
-    font-size: 2vmin;
+    
     text-align: center; 
+    font-family: casualFont;
+    font-size: calc(0.9vmin + 0.5vmax);
+    
+
+    width: 30%;
+    min-width: 5vmin;
+    height: 5vmin;
+    
+    color: #d6d09d;
+    
+    
     margin:0.5vmin;
     margin-bottom: 0.1vmin;
+
+    box-shadow: inset 0 5vmin 10vmin 2vmin rgba(143, 191, 219, 0.253);
+    box-shadow: 
+    inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
+    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
+    inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
     
   }
 

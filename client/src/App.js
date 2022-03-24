@@ -5,6 +5,10 @@ import Measure from './Components/Measure';
 import SoundControl from './Components/SoundControl';
 import Length from './Components/Length';
 import Panel from './Components/Panel';
+import SoundChannel from './Components/SoundChannel';
+import GenerateButton from './Components/GenerateButton';
+import backgroundVideo from './backgrounds/videoBG.mp4'
+import Complexity from './Components/Complexity'
 
 class App extends Component {
   
@@ -48,24 +52,40 @@ class App extends Component {
       return (
     <div className="App">
       <header className="App-header">
-      <div className='mainContainer'>
-        
-        <div className='titolo'>
-           GROOVE GENERATOR
+
+        <video autoPlay loop muted id='video'>
+            <source src={backgroundVideo} type='video/mp4'/>
+        </video>
+
+        <div className='mainContainer'>
+   
+          <div className='titolo'>
+            GROOVE GENERATOR
+          </div>
+
+          <div className='sliders'>
+            <Metronome beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
+            <Measure onChange={this.onMeasureChange}></Measure>
+            
+            <div className='rightside'>
+              <Length ></Length>
+              <Complexity></Complexity>
+            </div>
+              
+          </div>
+
+          <div className='sounds'>
+            
+            <SoundChannel></SoundChannel>
+            <SoundChannel></SoundChannel>
+            <SoundChannel></SoundChannel>
+            <SoundChannel></SoundChannel>
+
+            <GenerateButton></GenerateButton>
+
+          </div>
+
         </div>
-
-        <div className='sliders'>
-          <Metronome beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
-          <Measure onChange={this.onMeasureChange}></Measure>
-          <Length ></Length>
-        </div>
-
-        <div className='sounds'>
-        <SoundControl></SoundControl>
-
-        </div>
-
-      </div>
       </header>
     </div>
   );

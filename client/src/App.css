@@ -15,18 +15,23 @@
 
 @font-face {
   font-family: GrooveGeneratorFont;
-  src: url(./fonts/MadGrooveBlast.ttf);
+  src: url(./fonts/Direction.ttf);
+}
+
+#video {
+  position: fixed;
+  opacity:20%;
+  width:200%;
 }
 
 .App-header {
-  background-image: linear-gradient(rgb(74, 106, 250), rgb(29, 31, 158));
+  background-image: linear-gradient(rgb(139, 15, 77), rgb(8, 8, 54));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 
@@ -43,7 +48,10 @@
 .mainContainer{
   width: 95vw;
   height: 90vh;
-  background-image: linear-gradient(rgb(172, 2, 172), rgb(97, 4, 89));
+  
+  background-image: url("https://www.seekpng.com/png/full/11-110784_scratch-texture-png-black-and-white.png"), 
+          linear-gradient(rgb(194, 143, 33), rgb(122, 36, 25));
+  background-size: cover;
   min-height: 10vh;
   max-width: 70%;
   display: flex;
@@ -53,36 +61,45 @@
   font-size: calc(10px + 2vmin);
   color: white;
   position: relative;
-  border-radius: 20px;
+  border-radius: 2vmin;
+  border: 1px solid #2e0505;
   -webkit-box-shadow: 0 0 5px 2px rgb(132, 226, 255);
-  -moz-box-shadow: 0 0 5px 2px rgb(89, 161, 255);
-  box-shadow: 0 0 0 2px rgba(255, 175, 238, 0.822),
+  -moz-box-shadow: 0 0 5px 2px rgb(240, 245, 197);
+  box-shadow: 0 0 0 2px rgba(255, 240, 141, 0.822),
               0 0 20px 2px rgba(0, 0, 0, 0.315),
-        inset 0 0 20px rgba(44, 0, 85, 0.363);
+        inset 0 0 20px rgba(44, 0, 85, 0.363),
+        inset 0 -10px 1vmin 0.5px rgba(47, 7, 59, 0.295);
+
+        
               
 }
 
 
 
 .titolo{
-  width: 55%;
+  width: 45%;
   height: 8%;
   max-height: 7vh;
 
-  border-radius: 20px;
+  border-radius: 3vmin;
 
-  background-color: #68dcff13;
-  background-image: linear-gradient(#68dcff38, #339ab99c);
+  background-image: linear-gradient(#5a178065, #2a083d80);
   
   -webkit-box-shadow: 0 0 5px 2px rgb(0, 5, 7);
   -moz-box-shadow: 0 0 5px 2px rgb(0, 0, 0);
   box-shadow: 0 0 0 0px     rgba(0, 0, 0, 0.705),
-              0 0 20px 1px  rgba(0, 0, 0, 0.315),
-        inset 0 0 5px       rgba(232, 208, 255, 0.363);
+              0 0 20px 1px  rgba(0, 0, 0, 0.445),
+              inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
+              inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+              inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
+              inset 0 0 5px       rgba(224, 218, 158, 0.562);
   
   top: 2.5vh;
-  padding-bottom: 1%;
-  padding-top: 1%;
+  
+  padding:2vh;
+  padding-bottom: 0.8vh;
+  padding-top: 0.8vh;
+
   position: absolute;
 
   display: flex;
@@ -90,51 +107,80 @@
   align-items: center;
   justify-content: center;
   
-  font-size: calc(20% + 1.5vw);
+  font-size: calc(45% + 2vw);
   text-align: center;
   font-family: GrooveGeneratorFont;
-  color: #d6e9ff;
+  color: #eceba7;
+  letter-spacing: 0.2vmin;
+  text-shadow: 0 0.1vmin 0.9vmin rgba(34, 1, 41, 0.938);
+  
   
 }
+
+
 
 
 
 .sliders{
   width: 95%;
   height: 21.5vh;
-  background-color: #fdccdb48;
+  background-color: #8464ad8a;
   min-height: 12vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: left;
   font-size: calc(10px + 2vmin);
-  color: rgb(100, 219, 255);
   position: absolute;
   top: 13vh;
-  border-radius: 3vmin;
-  
-  box-shadow: 
-        inset 0 0 10px 2px rgba(232, 208, 255, 0.062);
+  border-radius: 2vmin;
 
+  box-shadow: 
+    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+    0 0.1vmin 0.1vmin 0.2vmin rgba(42, 7, 53, 0.377),
+    inset 0 10px 10px 2px rgba(253, 231, 199, 0.116),
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
+
+}
+
+.rightside{
+
+  width:60%;
+  height:90%;
+
+  align-items: right;
+  justify-content: right;
+
+  padding:2vmin;
+  padding-left:0.5vmin;
+
+  margin:1.5vmin;
+  margin-right:1vmin;
+  
 }
 
 .sounds{
   width: 95%;
-  height: 53vh;
-  background-color: #68dcff6e;
+  height: 47vh;
+  background-color: #684a8f8a;
+   
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  
   font-size: calc(10px + 2vmin);
-  color: white;
+  
   position: absolute;
-  top: 35vh;
-  border-radius: 3vmin;
+  top: 36vh;
+  padding-top:3vh;
+  border-radius: 2vmin;
   box-shadow: 
-  inset 0 0 10px 2px rgba(232, 208, 255, 0.062);
-
+    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+    0 0.1vmin 0.1vmin 0.2vmin rgba(42, 7, 53, 0.377),
+    inset 0 10px 10px 2px rgba(253, 231, 199, 0.116),
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
 
 }
+
+

@@ -1,0 +1,46 @@
+.container{
+    background-color: rgba(246, 199, 255, 0.178);
+
+    width:92%;
+    height: 10%;
+
+    border-radius: 1.7vmin;
+
+    padding:2vmin;
+    
+    margin:0.3vmin;
+
+    box-shadow: 
+    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+    0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
+    inset 0 0.5vmin 1vmin 0.5vmin rgba(253, 231, 199, 0.116),
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
+
+    
+    
+    align-items: right;
+
+}
+
+
+.texto{
+    color: #d6d09d6b;
+    font-size: 2vmin;
+
+    margin-right:50vmin;
+    
+    position: absolute;
+    margin-top:-0.4vh;
+
+   
+    
+
+}
+
+
+
+.Controls{
+    margin-top: 2.6vh;
+    margin-left:-0.8vmin;
+    
+}

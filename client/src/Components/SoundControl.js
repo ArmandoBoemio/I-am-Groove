@@ -41,7 +41,7 @@ class SoundControl extends Component{
                     blobURL: audioUrl,
                 });
                 this.audio = audio;
-                audio.play();
+                /*audio.play();*/
                 console.log('listen your audio!')
             });   
             setTimeout(() => {
@@ -67,17 +67,24 @@ class SoundControl extends Component{
         return (
             <div className="soundcontrol">
 
-                <div className="playing">
-                    <button onClick={this.startPlayback}>
-                    </button>    
-                </div>                    
+                <button className="playing"
+                    onClick={this.startPlayback}>
+                        Play
+                        
+                </button>                    
                 
 
-                <div className="recording">
-                    <button onClick={isRecording ? this.stopRecording : this.startRecording}>
-                        {isRecording ? 'Stop' : 'Record'}
-                    </button>
-                </div>
+                <button className="recording"
+                    onClick={isRecording ? this.stopRecording : this.startRecording}>
+                        {isRecording ? 'Stop' : 'Rec'}
+                    
+                </button>
+
+                <button className="load">
+                    Load
+                </button>
+                    
+
             </div>
             
         );

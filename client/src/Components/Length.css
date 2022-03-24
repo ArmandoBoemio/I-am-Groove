@@ -1,40 +1,47 @@
 .lengthContainer{
-    background-color:#68dcff5e;
-    border-radius: 3vmin;
+    background-color:#d1d3c818;
+    border-radius: 2vmin;
         
-    
-    max-height: 25%;
-    width: 48.5%;
-    
-
-    padding:3.5vmin;
-    padding-top:2.1vmin;
-    padding-bottom:5vmin;
-
-    margin:0.4vmin;
-    margin-bottom: 8vmin;
-
     display:flex;
     flex-direction: column;
     align-items: center;
 
+    height: 32%;
+    width: 97%;
     
+
+    padding:1vmin;
+    padding-bottom: 2vmin;
+    
+    
+    margin-bottom:1vmin;
+    
+
+    box-shadow: 
+    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+    0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
+    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
+
 
 }
 
 @font-face {
     font-family: titlePanelFont;
-    src: url(../fonts/WinkleRegular.ttf);
+    src: url(../fonts/Personal.ttf);
   }
+
 
 .titleLength{
     font-family: titlePanelFont;
-    font-size: calc(28% + 2.5vmin);
-    color:#d6e9ff;
+    font-size: calc(0.5vmin + 0.6vmax);
+    letter-spacing: 0.2vmin;
+    color:#d6d09d;
+
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
-    padding:0.5vmin;
+    padding-bottom:0.3vmin;
   }
 
 .Slider{
-
+  
 }
