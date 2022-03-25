@@ -1,7 +1,6 @@
 import { Component } from "react";
 import './Complexity.css';
-/*import Slider from "rc-slider";*/
-/*import "rc-slider/assets/index.css";*/
+import Slider from './Slider'
 
 
 
@@ -12,26 +11,46 @@ class Complexity extends Component{
         super(props);
 
         this.state = {
-            len: 2,
+            complex: 50,
 
         };
 
     }
 
-   
+    handleComplexChange = event => {
+        const complex = event.target.value;
+        this.setState({ complex })       
+    }
+
+    handleComplexWheel=(event)=>{
+        const delta =event.deltaY;
+        if(this.state.complex>1 && this.state.complex<100){
+            if (delta > 0) {
+                this.setState({complex: parseInt(this.state.complex) - 1 })
+            } else {
+                if (parseInt(this.state.complex) > 0) {
+                    this.setState({complex: parseInt(this.state.complex) + 1 })
+                }
+            }
+        }
+
+        if(this.state.complex === 1){
+            if(delta<0){
+                this.setState({complex: parseInt(this.state.complex) + 1 });
+            }
+        }
+        if(this.state.complex === 100){
+            if(delta>0){
+                this.setState({complex: parseInt(this.state.complex) - 1 });
+            }
+        }
+
+    }
     
     render(){
 
-        
-
-        const lenMarks = {
-            2: "2",
-            4: "4",
-            6: "6",
-            8: "8",
-        };
-
-       
+        const {complex} = this.state;
+               
         return(
             <>
             <div className="complexityContainer">
@@ -40,24 +59,14 @@ class Complexity extends Component{
                     Complexity
                 </div>
 
-               
-                {/*
-                <Slider
-                    defaultValue={4}
-                    min={2}
-                    max={8}
-                    step={2}
-                    marks = {lenMarks}
-                    
-                    railStyle={{ backgroundColor: '#68dcff5e', height: 5 }}
-                    dotStyle={{backgroundColor:'#68dcff5e'}}
-                    activeDotStyle={{backgroundColor:'#349bbb5e'}}
-                    handleStyle={{backgroundColor: '#40b9ff'}}
-                />*/}
 
-                <div className="bub">
-                    
-                </div>
+                <Slider
+                    complex={this.state.complex} 
+                    type={'complexity_type'}
+                    handleComplexChange={this.handleComplexChange} 
+                    handleComplexWheel={this.handleComplexWheel}>
+                
+                </Slider>
                 
 
                 

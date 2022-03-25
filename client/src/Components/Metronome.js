@@ -191,11 +191,10 @@ class Metronome extends Component {
                     </div>
 
                     <Slider 
-                    bpm={this.state.bpm} 
-                    type={'bpm_type'}
-                    handleBpmChange={this.handleBpmChange} 
-                    handleWheel={this.handleWheel}>
-
+                        bpm={this.state.bpm} 
+                        type={'bpm_type'}
+                        handleBpmChange={this.handleBpmChange} 
+                        handleWheel={this.handleWheel}>
                     </Slider>
 
                     
@@ -211,7 +210,7 @@ class Metronome extends Component {
 
                     <div className="bub">
                         {bpm}
-        </div>*/}
+                    </div>*/}
 
                 </div>               
                 

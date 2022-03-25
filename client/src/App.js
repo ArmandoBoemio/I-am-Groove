@@ -1,14 +1,16 @@
 import './App.css';
 import {Component} from 'react'
+
+import backgroundVideo from './backgrounds/videoBG.mp4'
+
 import Metronome from './Components/Metronome';
 import Measure from './Components/Measure';
-import SoundControl from './Components/SoundControl';
 import Length from './Components/Length';
-import Panel from './Components/Panel';
 import SoundChannel from './Components/SoundChannel';
 import GenerateButton from './Components/GenerateButton';
-import backgroundVideo from './backgrounds/videoBG.mp4'
 import Complexity from './Components/Complexity'
+
+
 
 class App extends Component {
   
@@ -71,6 +73,11 @@ class App extends Component {
               <Length ></Length>
               <Complexity></Complexity>
             </div>
+            
+          {/*
+            <Length></Length>
+            <Complexity></Complexity>
+          */}
               
           </div>
 
