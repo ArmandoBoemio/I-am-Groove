@@ -11,53 +11,88 @@ class SoundControl extends Component{
             blobURL: '',
         };
         this.audio = new Audio([])
+        this.mediaRecorder = []
+
     }
+    
 
     startPlayback = () => {
         console.log('playback');
         this.audio.play();     
     };
 
-    startRecording = () =>{
-        console.log('recording...');
+    recordingFunction = () =>{
         
+        console.log('recording...');
+        console.log(this.state.isRecording)
+
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
-            const mediaRecorder = new MediaRecorder(stream);
-            
-            mediaRecorder.start();
-      
+            this.mediaRecorder = new MediaRecorder(stream);
             const audioChunks = [];
             
-            mediaRecorder.addEventListener("dataavailable", event => {
+            this.mediaRecorder.addEventListener("dataavailable", event => {
                 audioChunks.push(event.data);
             });
         
-            mediaRecorder.addEventListener("stop", () => {
+            this.mediaRecorder.addEventListener("stop", () => {
                 const audioBlob = new Blob(audioChunks);
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
                 this.setState({
-                    blobURL: audioUrl,
+                    blobURL: audioUrl
                 });
                 this.audio = audio;
-                /*audio.play();*/
-                console.log('listen your audio!')
             });   
-            setTimeout(() => {
-                mediaRecorder.stop();
-                console.log('recorded!')
-              }, 3000);
+
             
         });
     };
 
     stopRecording = () =>{
-        console.log('recorded!');
         this.setState({
-            isRecording: false}
-            );
+            isRecording: false
+        });
+        console.log(this.state.isRecording)
+        
+        this.mediaRecorder.stop();
+
     };
+
+    startRecording = () =>{
+        this.setState({
+            isRecording: true
+        });
+        console.log(this.state.isRecording)
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+            this.mediaRecorder = new MediaRecorder(stream);
+            
+            this.mediaRecorder.start();
+            const audioChunks = [];
+            
+            this.mediaRecorder.addEventListener("dataavailable", event => {
+                audioChunks.push(event.data);
+            });
+        
+            this.mediaRecorder.addEventListener("stop", () => {
+                const audioBlob = new Blob(audioChunks);
+                const audioUrl = URL.createObjectURL(audioBlob);
+                const audio = new Audio(audioUrl);
+                this.setState({
+                    blobURL: audioUrl
+                });
+                this.audio = audio;
+            });   
+
+            
+        });
+        console.log(this.state.isRecording)
+
+    };
+
+    
         
     
 
@@ -67,29 +102,23 @@ class SoundControl extends Component{
         return (
             <div className="soundcontrol">
 
-                <button className="playing"
-                    onClick={this.startPlayback}>
-                        Play
-                        
+                <button className="playing"onClick={this.startPlayback}>
+                    Play   
                 </button>                    
                 
 
                 <button className="recording"
-                    onClick={isRecording ? this.stopRecording : this.startRecording}>
-                        {isRecording ? 'Stop' : 'Rec'}
+                    onClick={isRecording? this.stopRecording : this.startRecording}>
+                        {isRecording ? 'Stop' : 'Record'}
                     
                 </button>
-
-                <button className="load">
+            
+                <button className='load'>
                     Load
                 </button>
-                    
-
             </div>
-            
         );
     }
-
 }
 
 
