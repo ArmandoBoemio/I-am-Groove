@@ -40,7 +40,8 @@
     font-family: titlePanelFont;
     font-size: calc(0.5vmin + 0.6vmax);
     color:#d6d09d;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
+                0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
     letter-spacing: 0.2vmin;
     padding:0.5vmin;
     padding-bottom:3vmin;

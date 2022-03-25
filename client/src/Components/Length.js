@@ -1,9 +1,6 @@
 import { Component } from "react";
 import './Length.css';
-/*import Slider from "rc-slider";
-import "rc-slider/assets/index.css";*/
-
-
+import Slider from './Slider'
 
 
 class Length extends Component{
@@ -12,15 +9,46 @@ class Length extends Component{
         super(props);
 
         this.state = {
-            len: 2,
-
+            len: 4,
         };
 
     }
 
+    handleLenChange = event => {
+        const len = event.target.value;
+        this.setState({ len })       
+    }
+
+
+    /*
+    handleWheel=(event)=>{
+        const delta =event.deltaY;
+        if(this.state.len>2 && this.state.len<8){
+            if (delta > 0) {
+                this.setState({len: parseInt(this.state.len) - 2 })
+            } else {
+                if (parseInt(this.state.len) > 0) {
+                    this.setState({len: parseInt(this.state.len) + 2 })
+                }
+            }
+        }
+
+        if(this.state.len === 2){
+            if(delta<0){
+                this.setState({len: parseInt(this.state.len) + 2 });
+            }
+        }
+        if(this.state.len === 8){
+            if(delta>0){
+                this.setState({len: parseInt(this.state.len) - 2 });
+            }
+        }
+
+    }  */
    
     
     render(){
+        const { len} = this.state;
 
         
 
@@ -41,7 +69,7 @@ class Length extends Component{
                 </div>
 
                
-                {/*}
+                {/*
                 <Slider
                     defaultValue={4}
                     min={2}
@@ -53,16 +81,14 @@ class Length extends Component{
                     dotStyle={{backgroundColor:'#68dcff5e'}}
                     activeDotStyle={{backgroundColor:'#349bbb5e'}}
                     handleStyle={{backgroundColor: '#40b9ff'}}
-                />{*/}
+                />*/}
 
-                <div className="bub">
-                    
-                </div>
-                
-
-                
-                
-                 
+                <Slider 
+                    len={this.state.len} 
+                    type={'length_type'}
+                    handleLenChange={this.handleLenChange} 
+                >
+                </Slider>         
 
             </div>
             </>

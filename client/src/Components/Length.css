@@ -1,47 +1,59 @@
 .lengthContainer{
-    background-color:#d1d3c818;
-    border-radius: 2vmin;
-        
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+  background-color:#d1d3c818;
+  border-radius: 2vmin;
+      
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    height: 32%;
-    width: 97%;
-    
+  height: 32%;
+  width: 97%;
+  
 
-    padding:1vmin;
-    padding-bottom: 2vmin;
-    
-    
-    margin-bottom:1vmin;
-    
+  padding:1vmin;
+  padding-bottom: 2vmin;
+  
+  
+  margin-bottom:1vmin;
+  
 
-    box-shadow: 
-    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
-    0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
+  box-shadow: 
+  0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+  0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
+  inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+  inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
 
 
 }
 
 @font-face {
-    font-family: titlePanelFont;
-    src: url(../fonts/Personal.ttf);
-  }
+  font-family: titlePanelFont;
+  src: url(../fonts/Personal.ttf);
+}
 
+@font-face {
+  font-family: casualFont;
+  src: url(../fonts/BabyDoll.ttf);
+}
 
 .titleLength{
-    font-family: titlePanelFont;
-    font-size: calc(0.5vmin + 0.6vmax);
-    letter-spacing: 0.2vmin;
-    color:#d6d09d;
+  font-family: titlePanelFont;
+  font-size: calc(0.5vmin + 0.6vmax);
+  letter-spacing: 0.2vmin;
+  color:#d6d09d;
 
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
-    padding-bottom:0.3vmin;
-  }
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
+              0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
+  margin-bottom:-2vmin;
+}
 
-.Slider{
-  
+.bubLen{
+  padding:0.1vmin;
+  margin-bottom:-1.5vmin;
+  font-family: casualFont;
+  font-size: calc(0.9vmin + 0.3vmax);
+  color:#d6d09d;
+  text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.514),
+              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.541);
 }

@@ -5,6 +5,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+  justify-content: center;
 
     height: 32%;
     width: 97%;
@@ -31,6 +32,11 @@
     src: url(../fonts/Personal.ttf);
   }
 
+  @font-face {
+    font-family: casualFont;
+    src: url(../fonts/BabyDoll.ttf);
+  }
+
 
 .titleComplexity{
     font-family: titlePanelFont;
@@ -38,10 +44,17 @@
     letter-spacing: 0.2vmin;
     color:#d6d09d;
 
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568);
-    padding-bottom:0.3vmin;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
+                0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
+    margin-bottom:-2vmin;
   }
 
-.Slider{
-  
-}
+  .bubComplex{
+    padding:0.1vmin;
+    margin-bottom:-1.5vmin;
+    font-family: casualFont;
+    font-size: calc(0.9vmin + 0.3vmax);
+    color:#d6d09d;
+    text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.514),
+                0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.541);
+  }
