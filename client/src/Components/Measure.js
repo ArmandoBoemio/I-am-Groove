@@ -1,5 +1,6 @@
 import { Component } from "react";
 import './Measure.css';
+import Dropdown from "./Dropdown";
 
 class Measure extends Component{
     constructor(props) {
@@ -13,7 +14,6 @@ class Measure extends Component{
 
     
     render(){
-        let {denominator}=this.state;
         return(
             <>
             <div className="measureContainer">
@@ -21,8 +21,9 @@ class Measure extends Component{
                 <div className="titleMeasure">
                     Measure
                 </div>
-                
 
+                <Dropdown afterStateSet={this.props.onChange}></Dropdown>
+                {/*
                 <select 
                     className="dropdown" 
                     onChange={this.props.onChange}>
@@ -45,7 +46,7 @@ class Measure extends Component{
                         {denominator}
                     </option>
 
-                </select> 
+        </select> */}
 
             </div>
             </>

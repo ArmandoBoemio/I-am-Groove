@@ -40,8 +40,8 @@ class App extends Component {
   }
       
 
-  onMeasureChange = (event) =>{
-      this.setState({beatsPerMeasure: event.target.value});
+  onMeasureChange = (number) =>{
+      this.setState({beatsPerMeasure: number});
       
 
   }

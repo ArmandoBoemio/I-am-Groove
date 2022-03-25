@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Metronome.css';
 import click1 from './click1.wav';
 import click2 from './click2.wav';
+import Slider from './Slider';
 
 class Metronome extends Component {
     constructor(props) {
@@ -189,7 +190,16 @@ class Metronome extends Component {
                         BPM
                     </div>
 
-                    <input 
+                    <Slider 
+                    bpm={this.state.bpm} 
+                    type={'bpm_type'}
+                    handleBpmChange={this.handleBpmChange} 
+                    handleWheel={this.handleWheel}>
+
+                    </Slider>
+
+                    
+                    {/*<input 
                         type="range" 
                         min="50" 
                         max="250" 
@@ -201,10 +211,10 @@ class Metronome extends Component {
 
                     <div className="bub">
                         {bpm}
-                    </div>
+        </div>*/}
 
                 </div>               
-
+                
                 <button onClick={this.startStop}>
                     {playing ? 'Stop' : 'Start'}
                 </button>

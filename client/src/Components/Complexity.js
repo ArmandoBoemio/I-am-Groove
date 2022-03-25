@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './Complexity.css';
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
+/*import Slider from "rc-slider";*/
+/*import "rc-slider/assets/index.css";*/
 
 
 
@@ -41,7 +41,7 @@ class Complexity extends Component{
                 </div>
 
                
-                {/*}
+                {/*
                 <Slider
                     defaultValue={4}
                     min={2}
@@ -53,7 +53,7 @@ class Complexity extends Component{
                     dotStyle={{backgroundColor:'#68dcff5e'}}
                     activeDotStyle={{backgroundColor:'#349bbb5e'}}
                     handleStyle={{backgroundColor: '#40b9ff'}}
-                />{*/}
+                />*/}
 
                 <div className="bub">
                     

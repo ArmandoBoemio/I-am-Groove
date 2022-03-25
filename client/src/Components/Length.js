@@ -1,7 +1,7 @@
 import { Component } from "react";
 import './Length.css';
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
+/*import Slider from "rc-slider";
+import "rc-slider/assets/index.css";*/
 
 
 
