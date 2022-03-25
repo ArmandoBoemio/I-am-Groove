@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import './Dropdown.css'
 class Dropdown extends Component{
 
    constructor(props){
@@ -48,8 +48,8 @@ class Dropdown extends Component{
             <div className="dropdownOptionsContainer">
             
             {options.map((option)=>(
-            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)}>
-                {option}
+            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} style={{display: 'flex', flexDirection: 'vertical', flexWrap: 'wrap'}}>
+                {option + "/4"} 
             </button>
 
          ))}
