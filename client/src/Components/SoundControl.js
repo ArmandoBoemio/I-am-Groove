@@ -1,4 +1,8 @@
 import { Component } from "react";
+import Dropdown from "./Dropdown";
+import SelectSource from "./SelectSource";
+import click from './click1.wav';
+
 import './SoundControl.css';
 
 class SoundControl extends Component{
@@ -8,62 +12,49 @@ class SoundControl extends Component{
         this.state = {
             isRecording: false,
             isPlaying: false,
+            isDefaultAudio: false,
+            isAvailable: false,
             blobURL: '',
-        };
-        this.audio = new Audio([])
-        this.mediaRecorder = []
 
+        };
+        
+        this.mediaRecorder = []
+        this.recordedAudio = new Audio([])
+        this.defaultAudio = new Audio([click])
+        this.audio = this.defaultAudio
     }
     
 
     startPlayback = () => {
-        console.log('playback');
-        this.audio.play();     
+        if (this.state.isDefaultAudio){
+            console.log('Listening to the default audio');
+            this.defaultAudio.play(); 
+        }else if (!this.state.isDefaultAudio){
+            if (this.state.isAvailable){
+                console.log('Listening to user recorded audio');
+                this.recordedAudio.play(); 
+            }
+            else {alert('No Audio recorded yet!')}
+
+        }
     };
 
-    recordingFunction = () =>{
-        
-        console.log('recording...');
-        console.log(this.state.isRecording)
-
-        navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(stream => {
-            this.mediaRecorder = new MediaRecorder(stream);
-            const audioChunks = [];
-            
-            this.mediaRecorder.addEventListener("dataavailable", event => {
-                audioChunks.push(event.data);
-            });
-        
-            this.mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks);
-                const audioUrl = URL.createObjectURL(audioBlob);
-                const audio = new Audio(audioUrl);
-                this.setState({
-                    blobURL: audioUrl
-                });
-                this.audio = audio;
-            });   
-
-            
-        });
-    };
 
     stopRecording = () =>{
         this.setState({
             isRecording: false
         });
-        console.log(this.state.isRecording)
+        console.log('Recorded successfully!')
         
         this.mediaRecorder.stop();
-
     };
+
 
     startRecording = () =>{
         this.setState({
             isRecording: true
         });
-        console.log(this.state.isRecording)
+        console.log('Recording...')
 
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
@@ -81,41 +72,51 @@ class SoundControl extends Component{
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
                 this.setState({
-                    blobURL: audioUrl
+                    blobURL: audioUrl,
+                    isAvailable: true
                 });
-                this.audio = audio;
-            });   
-
-            
+                this.recordedAudio = audio;
+            });    
         });
-        console.log(this.state.isRecording)
-
     };
 
     
-        
+    swapSource = () =>{
+        if (!this.state.isDefaultAudio){
+            console.log('Default audio');
+        }else if (this.state.isDefaultAudio){
+            console.log('User recorded audio');
+        }
+        this.setState(state =>({
+            isDefaultAudio: !state.isDefaultAudio
+        }));
+        //console.log(this.state.isDefaultAudio);
+    }
     
 
     render(){
-        const { isPlaying, isRecording } = this.state;
-
+        const { isDefaultAudio, isRecording } = this.state;
+        
         return (
             <div className="soundcontrol">
 
-                <button className="playing"onClick={this.startPlayback}>
+                <button className="playing" onClick={this.startPlayback}>
                     Play   
                 </button>                    
                 
 
                 <button className="recording"
-                    onClick={isRecording? this.stopRecording : this.startRecording}>
+                    onClick={isRecording ? this.stopRecording : this.startRecording}>
                         {isRecording ? 'Stop' : 'Record'}
                     
                 </button>
             
-                <button className='load'>
-                    Load
+                <button className='load'
+                    onClick={this.swapSource}>
+                        {isDefaultAudio ? 'Default' : 'User'}
                 </button>
+              
+
             </div>
         );
     }
