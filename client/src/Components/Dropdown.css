@@ -1,8 +1,8 @@
-.dropdownToggleContainer{
+/*.dropdownToggleContainer{
     width: 80%;
     height: 40%;
     background-color: none;
-    opacity: 60%;
+    opacity: 90%;
     border-radius: 2vmin;
     border-color: black;
 }
@@ -18,9 +18,10 @@
     font-size: calc(0.9vmin + 0.5vmax);
     
 
-    width: 30%;
+    width: 60%;
+    height: 40%;
     min-width: 5vmin;
-    height: 5vmin;
+    min-height: 5vmin;
     
     color: #d6d09d;
     
@@ -41,8 +42,9 @@
     letter-spacing: 0.2vmin;
     padding:0.5vmin;
     text-align: center;
+    
 }
-/*
+
 .dropdownOptionsContainer{
     width: 80%;
     height: 40%;
@@ -54,9 +56,9 @@
     justify-content: center;
     text-align: center;
 }
-*/
+
 .optionButton{
-        width: 80%;
+        width: 100%;
         height: 40%;
         cursor: pointer;
         background: transparent;
@@ -105,5 +107,5 @@
     letter-spacing: 0.2vmin;
     padding:0.5vmin;
     text-align: center;
-    
-}
+    z-index: 900;
+}*/

@@ -32,6 +32,12 @@ class Dropdown extends Component{
    this.setState({active: !this.state.active})
    }
 
+
+   checktoggleDropdown = () => {
+    if(!this.state.active){this.toggleDropdown()}
+    }
+
+
    setSelectedElement = (option) =>{
        this.setState({selectedOpt: option}, ()=>this.props.afterStateSet(option));
    }
@@ -41,14 +47,14 @@ class Dropdown extends Component{
 
             return( <>
             <div className="dropdownToggleContainer">
-            <button className="activateDropdown" onClick={this.toggleDropdown}>{this.state.selectedOpt + "/4"}</button>
+            <button className="activateDropdown" onClick={this.checktoggleDropdown}>{this.state.selectedOpt + "/4"}</button>
             </div>
 
             {active && (
             <div className="dropdownOptionsContainer">
             
             {options.map((option)=>(
-            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} style={{display: 'flex', flexDirection: 'vertical', flexWrap: 'wrap'}}>
+            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} style={{display: 'flex', flexDirection: 'vertical', flexWrap: 'wrap',position: 'relative', zIndex: 1}}>
                 {option + "/4"} 
             </button>
 

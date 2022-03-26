@@ -20,31 +20,17 @@ class Length extends Component{
     }
 
 
-    /*
+    
     handleWheel=(event)=>{
-        const delta =event.deltaY;
-        if(this.state.len>2 && this.state.len<8){
-            if (delta > 0) {
-                this.setState({len: parseInt(this.state.len) - 2 })
-            } else {
-                if (parseInt(this.state.len) > 0) {
-                    this.setState({len: parseInt(this.state.len) + 2 })
-                }
-            }
+        const delta =event.deltaY*-1;
+        if (delta>0 && this.state.len<8){
+            this.setState({len: this.state.len + 2})
+        }
+        if(delta<0 && this.state.len>2){
+            this.setState({len: this.state.len - 2})
         }
 
-        if(this.state.len === 2){
-            if(delta<0){
-                this.setState({len: parseInt(this.state.len) + 2 });
-            }
-        }
-        if(this.state.len === 8){
-            if(delta>0){
-                this.setState({len: parseInt(this.state.len) - 2 });
-            }
-        }
-
-    }  */
+    } 
    
     
     render(){
@@ -86,7 +72,8 @@ class Length extends Component{
                 <Slider 
                     len={this.state.len} 
                     type={'length_type'}
-                    handleLenChange={this.handleLenChange} 
+                    handleLenChange={this.handleLenChange}
+                    handleWheel={this.handleWheel} 
                 >
                 </Slider>         
 

@@ -84,7 +84,6 @@ class Metronome extends Component {
             console.log(Math.abs((taps[taps.length-1]-currTime.getTime())/1000));
             clearInterval(stopTapId);
             this.setState({checkTapTempo: false})
-            console.log('controllo');
             this.stopTapTempo()
             if(this.state.playing){
                 this.startStop();
