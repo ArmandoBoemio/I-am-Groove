@@ -3,12 +3,12 @@
     border-radius: 2vmin;
         
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
   justify-content: center;
 
     height: 32%;
-    width: 97%;
+    width: calc(127.4% - 13.2vmin);
     
 
     padding:1vmin;
@@ -39,22 +39,30 @@
 
 
 .titleComplexity{
-    font-family: titlePanelFont;
-    font-size: calc(0.5vmin + 0.6vmax);
-    letter-spacing: 0.2vmin;
-    color:#d6d09d;
+  font-family: titlePanelFont;
+  font-size: calc(0.5vmin + 0.6vmax);
+  letter-spacing: 0.2vmin;
+  color:#d6d09d;
 
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
-                0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
-    margin-bottom:-2vmin;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
+              0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
+  
+  padding:0.5vmin;
+  
+  padding-left: 1vmax;
+  
+  padding-right:3vmax;
+  margin-bottom:calc(5.2vmin - 1.5vmax);
   }
 
   .bubComplex{
     padding:0.1vmin;
-    margin-bottom:-1.5vmin;
-    font-family: casualFont;
-    font-size: calc(0.9vmin + 0.3vmax);
-    color:#d6d09d;
-    text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.514),
-                0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.541);
+  margin-bottom:-1.9vmin;
+  margin-top:2.2vmin;
+  margin-left:calc(25vmax - 17vmin);
+  font-family: casualFont;
+  font-size: calc(1.3vmin + 0.4vmax);
+  color:#d6d09d;
+  text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.918),
+              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.842);
   }

@@ -1,0 +1,33 @@
+.dropdownToggleContainer{
+    background-color: rgba(206, 131, 34, 0.822);
+    border-radius: 2vmin;
+
+    width:7vmin;
+    height:5vmin;
+}
+
+.activateDropdown{
+    background-color: rgba(112, 22, 97, 0.61);
+    border-radius: 2vmin;
+
+    width:6.5vmin;
+    height:4.5vmin;
+
+    position:absolute;
+
+}
+
+.dropdownOptionsContainer{
+    background-color: rgba(112, 22, 97, 0.61);
+    width:39vmin;
+    border-radius:3vmin;
+    padding:-2vmin;
+
+}
+
+.optionButton{
+    background-color: rgba(112, 22, 97, 0.61);
+    border-radius: 2vmin;
+    width:4vmin;
+    margin:1vmin;
+}
