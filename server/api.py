@@ -27,4 +27,10 @@ def get_complexity():
     complexity=request.json['complexity']
     print('Complexity: ', complexity)
     return '200'
-    
+
+@app.route("/audio", methods=['GET', 'POST'])
+def get_audio():
+    id=request.json['id']
+    audio=request.json['audio']
+    print('Received Audio from: ', id)
+    return '200'

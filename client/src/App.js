@@ -17,7 +17,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      beatsPerMeasure: 4
+      beatsPerMeasure: 4,
+      channelNumber: 4
     }
   }
 
@@ -66,6 +67,7 @@ class App extends Component {
 
 
   render(){
+    const numberOfChannels = Array.from(Array(this.state.channelNumber).keys());
       return (
     <div className="App">
       <header className="App-header">
@@ -97,11 +99,12 @@ class App extends Component {
           </div>
 
           <div className='sounds'>
+            {numberOfChannels.map((key)=>
+              <SoundChannel key={key} id={key}></SoundChannel>
+            )}
             
-            <SoundChannel ></SoundChannel>
-            <SoundChannel></SoundChannel>
-            <SoundChannel></SoundChannel>
-            <SoundChannel></SoundChannel>
+            
+            
 
             <GenerateButton></GenerateButton>
 

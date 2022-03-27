@@ -17,7 +17,7 @@ class SoundChannel extends Component{
                 </div>
 
                 <div className="Controls">
-                    <SoundControl>
+                    <SoundControl id={this.props.id}>
                     </SoundControl>
                 </div>
                     

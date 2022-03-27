@@ -164,9 +164,19 @@ class Metronome extends Component {
         }
     };
 
+    checkIfLastWheel=(timeLastWheel, interval)=>{
+        let time = new Date();
+        console.log(time.getTime()-timeLastWheel)
+        if(time.getTime()-timeLastWheel>1000){
+            
+            this.startStop()
+            clearInterval(interval)
+        }
+    }
 
     handleWheel=(event)=>{
         const delta =event.deltaY;
+        
         if(this.state.bpm>50 && this.state.bpm<250){
             if (delta > 0) {
                 this.setState({bpm: parseInt(this.state.bpm) - 1 },()=> this.postBPM(this.state.bpm))
@@ -190,12 +200,18 @@ class Metronome extends Component {
                 this.setState({bpm: parseInt(this.state.bpm) - 1 },()=> this.postBPM(this.state.bpm));
                 
             }
+            
         }
-
+        if(this.state.playing===true){
+        this.startStop()
+        let time = new Date();
+        
+        let interval = setInterval(()=> {this.checkIfLastWheel(time.getTime(), interval)},200);
+        }
     }  
 
     render() {
-        const { playing, bpm } = this.state;
+        const { playing } = this.state;
 
         return (
 

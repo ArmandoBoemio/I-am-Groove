@@ -10,6 +10,7 @@ class SoundControl extends Component{
         super(props);
 
         this.state = {
+            id: this.props.id,
             isRecording: false,
             isPlaying: false,
             isDefaultAudio: false,
@@ -47,6 +48,7 @@ class SoundControl extends Component{
         console.log('Recorded successfully!')
         
         this.mediaRecorder.stop();
+        this.postAudio(this.state.id, this.recordedAudio)
     };
 
     
@@ -87,6 +89,19 @@ class SoundControl extends Component{
         });
     };
 
+    postAudio = async (id,audio) => {
+        const objct={id, audio };
+        const response = await fetch("/audio", {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(objct)
+        });
+        if(response.ok){
+          console.log("response worked!");
+        }
+      }
     
     swapSource = () =>{
         if (!this.state.isDefaultAudio){
