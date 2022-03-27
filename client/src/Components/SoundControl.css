@@ -100,3 +100,12 @@
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
     
   }
+
+  .precountNumber{
+    height: 1000px;
+    width: 1000px;
+    text-align: center;
+    opacity: 100%;
+    font-size: 90vmin;
+    font-family: casualFont;
+  }

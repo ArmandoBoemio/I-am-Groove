@@ -23,30 +23,7 @@ class Measure extends Component{
                 </div>
 
                 <Dropdown afterStateSet={this.props.onChange}></Dropdown>
-                {/*
-                <select 
-                    className="dropdown" 
-                    onChange={this.props.onChange}>
-
-                    <option>2</option>
-                    <option>3</option>
-                    <option selected>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-
-                </select>
-                
-                <select 
-                    type="number"  
-                    value={denominator} 
-                    disabled>
-
-                    <option selected>
-                        {denominator}
-                    </option>
-
-        </select> */}
+            
 
             </div>
             </>

@@ -16,6 +16,24 @@ class Complexity extends Component{
         };
 
     }
+    componentDidUpdate=()=>{
+        this.postComplexity(this.state.complex)
+    }
+
+
+    postComplexity=async (complexity) => {
+        const objct={complexity};
+        const response = await fetch("/complexity", {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(objct)
+        });
+        if(response.ok){
+          console.log("response worked!");
+        }
+      }
 
     handleComplexChange = event => {
         const complex = event.target.value;

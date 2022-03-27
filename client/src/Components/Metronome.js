@@ -23,8 +23,20 @@ class Metronome extends Component {
         this.click2 = new Audio(click2);
     }
 
-    
-  
+
+    postBPM = async (bpm) => {
+        const objct={bpm};
+        const response = await fetch("/bpm", {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(objct)
+        });
+        if(response.ok){
+          console.log("response worked!");
+        }
+      }
 
     handleBpmChange = event => {
         const bpm = event.target.value;
@@ -35,10 +47,11 @@ class Metronome extends Component {
             this.setState({
                 count: 0,
                 bpm
-            });
+            },()=>this.postBPM(bpm));
         } else {
-            this.setState({ bpm })
+            this.setState({ bpm },()=> this.postBPM(this.state.bpm))
         }
+
     }
 
     playClick = () => {
@@ -117,7 +130,7 @@ class Metronome extends Component {
             if(bpm>250){bpm=250; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 250')}
             if(bpm<50){bpm=50; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 50')}
             bpm=bpm.toFixed(2);
-            this.setState({ bpm });
+            this.setState({ bpm },()=> this.postBPM(this.state.bpm));
             taps.length = 0;
             calculatedTaps.length = 0;
         }
@@ -147,6 +160,7 @@ class Metronome extends Component {
                 },
                 this.playClick
             );
+            
         }
     };
 
@@ -155,22 +169,26 @@ class Metronome extends Component {
         const delta =event.deltaY;
         if(this.state.bpm>50 && this.state.bpm<250){
             if (delta > 0) {
-                this.setState({bpm: parseInt(this.state.bpm) - 1 })
+                this.setState({bpm: parseInt(this.state.bpm) - 1 },()=> this.postBPM(this.state.bpm))
+                
             } else {
                 if (parseInt(this.state.bpm) > 0) {
-                    this.setState({bpm: parseInt(this.state.bpm) + 1 })
+                    this.setState({bpm: parseInt(this.state.bpm) + 1 },()=> this.postBPM(this.state.bpm))
+                    
                 }
             }
         }
 
         if(this.state.bpm === 50){
             if(delta<0){
-                this.setState({bpm: parseInt(this.state.bpm) + 1 });
+                this.setState({bpm: parseInt(this.state.bpm) + 1 },()=> this.postBPM(this.state.bpm));
+                
             }
         }
         if(this.state.bpm === 250){
             if(delta>0){
-                this.setState({bpm: parseInt(this.state.bpm) - 1 });
+                this.setState({bpm: parseInt(this.state.bpm) - 1 },()=> this.postBPM(this.state.bpm));
+                
             }
         }
 

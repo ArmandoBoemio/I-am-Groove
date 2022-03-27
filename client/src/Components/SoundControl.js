@@ -49,13 +49,20 @@ class SoundControl extends Component{
         this.mediaRecorder.stop();
     };
 
+    
+        
+            
+                
 
-    startRecording = () =>{
+       
+
+    startRecording = async () =>{
         this.setState({
             isRecording: true
         });
         console.log('Recording...')
 
+        
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
             this.mediaRecorder = new MediaRecorder(stream);

@@ -54,7 +54,7 @@ class Dropdown extends Component{
             <div className="dropdownOptionsContainer">
             
             {options.map((option)=>(
-            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} style={{display: 'flex', flexDirection: 'vertical', flexWrap: 'wrap',position: 'relative', zIndex: 1}}>
+            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} >
                 {option + "/4"} 
             </button>
 

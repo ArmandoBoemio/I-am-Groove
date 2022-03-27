@@ -51,6 +51,7 @@
     background-color: #6012a0;
     color: rgb(134, 23, 23);
     padding: 16px;
+    font-family: casualFont;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -62,6 +63,7 @@
     background-color: #974747;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-family: casualFont;
     z-index: 1;
 }
 

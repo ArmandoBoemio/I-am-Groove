@@ -43,7 +43,7 @@ class SelectSource extends Component{
             <div className="load">
             
             {options.map((option)=>(
-            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} style={{display: 'flex', flexDirection: 'vertical', flexWrap: 'wrap'}}>
+            <button type="button" className="optionButtonSource" key={option} onClick={()=>this.setSelectedElement(option)} style={{display: 'flex', flexDirection: 'vertical', flexWrap: 'wrap'}}>
                 {option} 
             </button>
 
