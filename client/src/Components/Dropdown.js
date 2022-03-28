@@ -1,6 +1,5 @@
 import { Component } from "react";
-import './Dropdown.css';
-
+import './Dropdown.css'
 class Dropdown extends Component{
 
    constructor(props){
@@ -33,6 +32,12 @@ class Dropdown extends Component{
    this.setState({active: !this.state.active})
    }
 
+
+   checktoggleDropdown = () => {
+    if(!this.state.active){this.toggleDropdown()}
+    }
+
+
    setSelectedElement = (option) =>{
        this.setState({selectedOpt: option}, ()=>this.props.afterStateSet(option));
    }
@@ -40,34 +45,28 @@ class Dropdown extends Component{
    render(){
         let {active, options}=this.state;
 
-            return( 
-
-                <>
-
+            return( <>
                 <div className="dropdownToggleContainer">
                     <button className="activateDropdown" 
-                        onClick={this.toggleDropdown}>
+                    onClick={this.checktoggleDropdown}>
                         {this.state.selectedOpt + "/4"}
                     </button>
                 </div>
 
                 {active && (
                     <div className="dropdownOptionsContainer">
-                
-                        {options.map((option)=>(
-                        
-                        <button className="optionButton"
-                            type="button"  
-                            key={option} 
-                            onClick={()=>this.setSelectedElement(option)}>
-                            {option}
-                        </button>
-                        )
-                        )
-                        }
+                    
+                    {options.map((option)=>(
+                    <button  className="optionButton" 
+                        type="button"
+                        key={option} 
+                        onClick={()=>this.setSelectedElement(option)} >
+                        {option + "/4"} 
+                    </button>
+                    ))}
 
                     </div>
-            )}
+                )}
             </>);
         }
 

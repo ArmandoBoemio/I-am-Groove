@@ -58,6 +58,7 @@ render(){
                     /*marks={lenMarks}*/
                     value={this.props.len}
                     onChange={this.props.handleLenChange} 
+                    onWheel={this.props.handleWheel}
                        
                 />
             

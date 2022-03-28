@@ -10,41 +10,53 @@ class Length extends Component{
 
         this.state = {
             len: 4,
+            wheelOk: true
         };
 
     }
+
+    componentDidUpdate=()=>{
+        this.postLen(this.state.len)
+    }
+
+
+    postLen=async (len) => {
+        const objct={len};
+        const response = await fetch("/length", {
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(objct)
+        });
+        if(response.ok){
+          console.log("response worked!");
+        }
+      }
+
+
+
 
     handleLenChange = event => {
         const len = event.target.value;
         this.setState({ len })       
     }
 
-
-    /*
+    
     handleWheel=(event)=>{
-        const delta =event.deltaY;
-        if(this.state.len>2 && this.state.len<8){
-            if (delta > 0) {
-                this.setState({len: parseInt(this.state.len) - 2 })
-            } else {
-                if (parseInt(this.state.len) > 0) {
-                    this.setState({len: parseInt(this.state.len) + 2 })
-                }
-            }
+        const delta =event.deltaY*-1;
+        
+        if (delta>0 && this.state.len<8){
+            this.setState({len: this.state.len + 2})
         }
-
-        if(this.state.len === 2){
-            if(delta<0){
-                this.setState({len: parseInt(this.state.len) + 2 });
-            }
+        if(delta<0 && this.state.len>2){
+            this.setState({len: this.state.len - 2})
         }
-        if(this.state.len === 8){
-            if(delta>0){
-                this.setState({len: parseInt(this.state.len) - 2 });
-            }
+        if(this.state.len>8){
+            this.setState({len: 8})
         }
-
-    }  */
+        console.log('Length: ' + this.state.len)
+    } 
    
     
     render(){
@@ -86,7 +98,8 @@ class Length extends Component{
                 <Slider 
                     len={this.state.len} 
                     type={'length_type'}
-                    handleLenChange={this.handleLenChange} 
+                    handleLenChange={this.handleLenChange}
+                    handleWheel={this.handleWheel} 
                 >
                 </Slider>         
 

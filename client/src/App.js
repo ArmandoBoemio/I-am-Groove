@@ -16,7 +16,10 @@ class App extends Component {
   
   constructor(props){
     super(props);
-    this.state={}
+    this.state={
+      beatsPerMeasure: 4,
+      channelNumber: 4
+    }
   }
 
 
@@ -27,9 +30,9 @@ class App extends Component {
     return console.log(data.body);
   }
 
-  postData = async (shownum,two) => {
-    const objct={shownum, two };
-    const response = await fetch("/post2num", {
+  postData = async (bpm,beatsPerMeasure) => {
+    const objct={bpm, beatsPerMeasure };
+    const response = await fetch("/beat_measure", {
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -41,16 +44,30 @@ class App extends Component {
     }
   }
       
-
+  postMeasure = async (beatsPerMeasure) => {
+    const objct={beatsPerMeasure };
+    const response = await fetch("/measure", {
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(objct)
+    });
+    if(response.ok){
+      console.log("response worked!");
+    }
+  }
+  componentDidUpdate=()=>{
+    this.postMeasure(this.state.beatsPerMeasure)
+  }
   onMeasureChange = (number) =>{
       this.setState({beatsPerMeasure: number});
-      
 
   }
 
 
-
   render(){
+    const numberOfChannels = Array.from(Array(this.state.channelNumber).keys());
       return (
     <div className="App">
       <header className="App-header">
@@ -62,11 +79,11 @@ class App extends Component {
         <div className='mainContainer'>
    
           <div className='titolo'>
-            GROOVE GENERATOR
+            GROOVE GENERATOR {this.state.bpm}
           </div>
 
           <div className='sliders'>
-            <Metronome beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
+            <Metronome  beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
             <Measure onChange={this.onMeasureChange}></Measure>
             
             <div className='rightside'>
@@ -82,11 +99,12 @@ class App extends Component {
           </div>
 
           <div className='sounds'>
+            {numberOfChannels.map((key)=>
+              <SoundChannel key={key} id={key}></SoundChannel>
+            )}
             
-            <SoundChannel></SoundChannel>
-            <SoundChannel></SoundChannel>
-            <SoundChannel></SoundChannel>
-            <SoundChannel></SoundChannel>
+            
+            
 
             <GenerateButton></GenerateButton>
 
