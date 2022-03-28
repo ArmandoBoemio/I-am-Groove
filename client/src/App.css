@@ -133,21 +133,33 @@
 
 .rightside{
 
-  width:50%;
-  height:90%;
+  background-color: transparent;
+  border-radius: 2vmin;
 
+  width:66%;
+  height:75%;
+  
   display: flex;
   flex-direction: column;
 
   align-items: right;
   justify-content: right;
 
+  padding: 1.5vmin;
+  padding-left:0.5vmin;
+  
+
+  margin-left:0.9vmin;
+  
+    
+  
+/*
   padding:1vmin;
   padding-left:0vmin;
-  padding-right:10%;
+  padding-right:10%;*/
 
-  margin:1.5vmin;
-  margin-right:0.5vmin;
+  
+  margin-right:2vmin;
   
 }
 

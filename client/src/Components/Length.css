@@ -3,19 +3,20 @@
   border-radius: 2vmin;
       
   display:flex;
-  flex-direction: row;
-  align-items:center;
-  justify-content:baseline;
+  flex-direction: column;
 
-  height: 32%;
-  width: calc(127.4% - 13.2vmin);
-  
+  align-items:right;
+  justify-content:center;
+
+  height: 37%;
+  width: 100%;
 
   padding:1vmin;
   padding-bottom: 2vmin;
   
+  margin-top:-1.5vmin;
+  margin-left:-0.5vmin;
   
-  margin-bottom:1vmin;
   
 
   box-shadow: 
@@ -46,19 +47,24 @@
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
               0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
   
-  padding:0.5vmin;
-  margin-left:calc(1.5vmax - 0.5vmin);
-  margin-bottom:calc(5.2vmin - 1.5vmax);
+  
+  padding-right:calc(39vmax - 20vmin);
+
+  margin-top:3.5vmin;
+  margin-bottom: -1vmax;
   
 }
 
 .bubLen{
   padding:0.1vmin;
-  margin-bottom:-1.9vmin;
-  margin-top:2.2vmin;
-  margin-left:calc(25vmax - 17vmin);
+  
+  margin-bottom: -1.9vmin;
+
+  
+  margin-left:70%;
+
   font-family: casualFont;
-  font-size: calc(1.1vmin + 0.3vmax);
+  font-size: calc(1.1vmin + 0.4vmax);
   color:#d6d09d;
   text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.918),
               0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.842);
