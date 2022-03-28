@@ -48,7 +48,7 @@ class SoundControl extends Component{
         console.log('Recorded successfully!')
         
         this.mediaRecorder.stop();
-        this.postAudio(this.state.id, this.recordedAudio)
+        this.postAudio(this.state.id, this.recordedAudio) /*recorded audio is not ok here, it is an HTML element*/
     };
 
     
@@ -100,6 +100,7 @@ class SoundControl extends Component{
         });
         if(response.ok){
           console.log("response worked!");
+          console.log(response['audio'])
         }
       }
     

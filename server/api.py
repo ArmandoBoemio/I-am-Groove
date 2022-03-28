@@ -1,6 +1,8 @@
+
 from flask import Flask,jsonify,request
-import time
-import numpy as np
+
+from utilities.AudioProcessing import AudioProcessing
+
 
 app=Flask(__name__)
 
@@ -31,6 +33,11 @@ def get_complexity():
 @app.route("/audio", methods=['GET', 'POST'])
 def get_audio():
     id=request.json['id']
-    audio=request.json['audio']
+    #audio=request.json['audio']
+    print('___________________________________________')
+    print(request.json)
+    print('___________________________________________')
+    #sp=AudioProcessing()
+    #trimmed_audio=sp.trim(audio)
     print('Received Audio from: ', id)
     return '200'
