@@ -1,4 +1,5 @@
 
+from email.mime import audio
 from flask import Flask,jsonify,request
 
 from utilities.AudioProcessing import AudioProcessing
@@ -36,6 +37,24 @@ def get_audio():
     #audio=request.json['audio']
     print('___________________________________________')
     print(request.json)
+    print('___________________________________________')
+    #sp=AudioProcessing()
+    #trimmed_audio=sp.trim(audio)
+    print('Received Audio from: ', id)
+    return '200'
+
+@app.route("/audioBlob", methods=['GET', 'POST'])
+def get_blobURL():
+
+    audio = request.data
+    id = request.headers['id']
+    
+    audio_loc = "audio%s.wav" % id
+    f = open(audio_loc,'wb')
+    f.write(audio)
+    f.close
+    
+    print('___________________________________________')
     print('___________________________________________')
     #sp=AudioProcessing()
     #trimmed_audio=sp.trim(audio)
