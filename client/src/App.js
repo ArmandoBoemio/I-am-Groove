@@ -67,54 +67,51 @@ class App extends Component {
 
 
   render(){
+
     const numberOfChannels = Array.from(Array(this.state.channelNumber).keys());
+
       return (
-    <div className="App">
-      <header className="App-header">
 
-        <video autoPlay loop muted id='video'>
-            <source src={backgroundVideo} type='video/mp4'/>
-        </video>
+        <div className="App">
+          <header className="App-header">
 
-        <div className='mainContainer'>
-   
-          <div className='titolo'>
-            GROOVE GENERATOR {this.state.bpm}
-          </div>
+            <video autoPlay loop muted id='video'>
+                <source src={backgroundVideo} type='video/mp4'/>
+            </video>
 
-          <div className='sliders'>
-            <Metronome  beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
-            <Measure onChange={this.onMeasureChange}></Measure>
-            
-            <div className='rightside'>
-              <Length ></Length>
-              <Complexity></Complexity>
+            <div className='mainContainer'>
+      
+              <div className='titolo'>
+                GROOVE GENERATOR {this.state.bpm}
+              </div>
+
+              <div className='sliders'>
+                
+                <Metronome  beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
+                <Measure onChange={this.onMeasureChange}></Measure>
+                
+                <div className='rightside'>
+                  <Length ></Length>
+                  <Complexity></Complexity>
+                </div>
+                  
+              </div>
+
+              <div className='sounds'>
+
+                {numberOfChannels.map((key)=>
+                  <SoundChannel key={key} id={key}></SoundChannel>
+                )}
+
+                <GenerateButton></GenerateButton>
+                
+              </div>
+
             </div>
-            
-          {/*
-            <Length></Length>
-            <Complexity></Complexity>
-          */}
-              
-          </div>
-
-          <div className='sounds'>
-            {numberOfChannels.map((key)=>
-              <SoundChannel key={key} id={key}></SoundChannel>
-            )}
-            
-            
-            
-
-            <GenerateButton></GenerateButton>
-
-          </div>
-
+          </header>
         </div>
-      </header>
-    </div>
-  );
-      }
+      );
+  }
 }
 
 export default App;

@@ -4,23 +4,35 @@ import SoundControl from './SoundControl'
 
 class SoundChannel extends Component{
     
-    
+    constructor(props){
+        super(props);
+
+        this.state={}
+    }
 
     render(){
         
 
         return (
+
             <div className="container">
+                
+                <div className="panel">
 
-                <div className="texto">
-                    ___________________________
-                </div>
+                    <div className="texto">
+                        Sound #{this.props.id+1}
+                    </div>
 
-                <div className="Controls">
-                    <SoundControl id={this.props.id}>
-                    </SoundControl>
-                </div>
+                    <div className="barra">
+                        ___________________________
+                    </div>
+
+                    <div className="Controls">
+                        <SoundControl id={this.props.id}>
+                        </SoundControl>
+                    </div>
                     
+                </div>
 
             </div>
             

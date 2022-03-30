@@ -14,33 +14,59 @@
     0 0 10px 1vmin rgba(69, 65, 129, 0.055),
     0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
     inset 0 0.5vmin 1vmin 0.5vmin rgba(253, 231, 199, 0.116),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
-
+    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);  
     
     
-    align-items: right;
 
 }
 
+.panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+
+    width: 22vmin;
+    height: 4vmin;
+
+    padding-top:1vmin;
+    padding-bottom:1vmin;
+
+    margin-top: -1vmin;
+    margin-right: -1vmin;
+
+}
 
 .texto{
-    color: #d6d09d6b;
-    font-size: 2vmin;
+    color: #d6d09db9;
 
-    margin-right:50vmin;
+    font-size: 1.7vmin;
+
+    font-family:titlePanelFont;
+
+    text-justify: center;
+
+    margin-top: 0.5vmin;
+    margin-bottom: -0.2vmin;
+    margin-right:0vmin;
     
-    position: absolute;
-    margin-top:-0.4vh;
-
-   
-    
-
+    text-shadow: 0 0 2vmin rgba(27, 2, 39, 0.377);
+                    
 }
 
+.barra{
+    color: #d6d09d67;
+    font-size: 2vmin;
+
+    margin-top:-1.5vmin;
+    margin-bottom:2vmin;
+}
 
 
 .Controls{
-    margin-top: 2.6vh;
+    margin-top: -1.8vmin;
     margin-left:-0.8vmin;
-    
+    margin-bottom: -0.5vmin;
 }
