@@ -23,6 +23,8 @@
     background-image:linear-gradient(rgba(184, 20, 96, 0.726), rgb(102, 7, 38));
     border-radius: 3vmin;
 
+    letter-spacing: 0.3vmin;
+
     font-family: magicFont;
     font-size: calc(0.5vmax + 0.8vmin);
     color: #d6d09d;

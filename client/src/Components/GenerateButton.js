@@ -13,7 +13,7 @@ class GenerateButton extends Component{
             <div className="background">
 
                 <button className="Generate">
-                    Do the magic
+                    generate
                 </button>
                     
             </div>
