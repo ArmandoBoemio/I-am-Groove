@@ -15,11 +15,9 @@ class SoundControl extends Component{
             isPlaying: false,
             isDefaultAudio: false,
             isAvailable: false,
-            blobURL: '',
-
         };
-        
         this.mediaRecorder = []
+        //this.audioBlob = new Blob([]);
         this.recordedAudio = new Audio([])
         this.defaultAudio = new Audio([click])
         this.audio = this.defaultAudio
@@ -48,7 +46,8 @@ class SoundControl extends Component{
         console.log('Recorded successfully!')
         
         this.mediaRecorder.stop();
-        this.postAudio(this.state.id, this.recordedAudio) /*recorded audio is not ok here, it is an HTML element*/
+        
+        //this.postAudio(this.state.id, this.recordedAudio) /*recorded audio is not ok here, it is an HTML element*/
     };
 
     
@@ -77,11 +76,11 @@ class SoundControl extends Component{
             });
         
             this.mediaRecorder.addEventListener("stop", () => {
-                const audioBlob = new Blob(audioChunks);
+                const audioBlob = new Blob(audioChunks, {'type': 'audio/wav;'});
+                this.postAudioBlob(this.state.id, audioBlob)
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
                 this.setState({
-                    blobURL: audioUrl,
                     isAvailable: true
                 });
                 this.recordedAudio = audio;
@@ -101,6 +100,21 @@ class SoundControl extends Component{
         if(response.ok){
           console.log("response worked!");
           console.log(response['audio'])
+        }
+      }
+
+      postAudioBlob = async (id,audioBlob) => {
+          
+        const response = await fetch("/audioBlob", {
+            method: "POST",
+            headers:{
+                "id": id
+              },
+            body: audioBlob
+        });
+        if(response.ok){
+          console.log("response worked!");
+          console.log(response['audioBlob'])
         }
       }
     

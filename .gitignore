@@ -1,2 +1,4 @@
 init
 server/__pycache__/api.cpython-39.pyc
+*.pyc
+*.pyc
