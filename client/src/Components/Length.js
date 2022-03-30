@@ -80,21 +80,6 @@ class Length extends Component{
                     Length
                 </div>
 
-               
-                {/*
-                <Slider
-                    defaultValue={4}
-                    min={2}
-                    max={8}
-                    step={2}
-                    marks = {lenMarks}
-                    
-                    railStyle={{ backgroundColor: '#68dcff5e', height: 5 }}
-                    dotStyle={{backgroundColor:'#68dcff5e'}}
-                    activeDotStyle={{backgroundColor:'#349bbb5e'}}
-                    handleStyle={{backgroundColor: '#40b9ff'}}
-                />*/}
-
                 <Slider 
                     len={this.state.len} 
                     type={'length_type'}

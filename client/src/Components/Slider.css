@@ -62,17 +62,27 @@ input[type="range"] {
   
 
   .inputLength{
-    height:calc(0.4vmin + 0.2vmax);
-    width:calc(36vmax - 15vmin);
-    margin-top: 3vmin;
-    position: center;
+    height:calc(0.6vmin + 0.3vmax);
+    width:calc(33vmax - 15.5vmin);
+    
+    
+    margin-left:calc(27% - 2vmax);
+    
+    margin-bottom:2.8vmin;
+    
 
   } 
   
 
   .inputComplexity{
-    height:calc(0.4vmin + 0.2vmax);
-    width:calc(36vmax - 15vmin);
-    margin-top: 3vmin;
-    position: center;
+  
+    height:calc(0.6vmin + 0.3vmax);
+    width:calc(33vmax - 15.5vmin);
+    
+    
+    margin-left:calc(27% - 2vmax);
+    
+    margin-bottom:2.8vmin;
+    
+
   }

@@ -45,6 +45,10 @@ render(){
 
                 (
                 <>
+                
+                <div className="bubLen">
+                    {this.props.len} measures
+                </div>
 
                 <input className="inputLength"
                     type="range" 
@@ -58,9 +62,7 @@ render(){
                        
                 />
             
-                <div className="bubLen">
-                    {this.props.len} measures
-                </div>
+                
                     
                 </>
                 )
@@ -73,7 +75,11 @@ render(){
                
                 (
                 <>
-                
+
+                <div className="bubComplex">
+                    {this.props.complex}
+                </div>
+
                 <input className="inputComplexity"
                     type="range" 
                     min="1" 
@@ -84,9 +90,7 @@ render(){
                     
                 />
         
-                <div className="bubComplex">
-                    {this.props.complex}
-                </div>
+                
                 
                 </> 
                 )

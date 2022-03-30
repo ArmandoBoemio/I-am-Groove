@@ -46,24 +46,27 @@ class Dropdown extends Component{
         let {active, options}=this.state;
 
             return( <>
-            <div className="dropdownToggleContainer">
-            <button className="activateDropdown" onClick={this.checktoggleDropdown}>{this.state.selectedOpt + "/4"}</button>
-            </div>
+                <div className="dropdownToggleContainer">
+                    <button className="activateDropdown" 
+                    onClick={this.checktoggleDropdown}>
+                        {this.state.selectedOpt + "/4"}
+                    </button>
+                </div>
 
-            {active && (
-            <div className="dropdownOptionsContainer">
-            
-            {options.map((option)=>(
-            <button type="button" className="optionButton" key={option} onClick={()=>this.setSelectedElement(option)} >
-                {option + "/4"} 
-            </button>
+                {active && (
+                    <div className="dropdownOptionsContainer">
+                    
+                    {options.map((option)=>(
+                    <button  className="optionButton" 
+                        type="button"
+                        key={option} 
+                        onClick={()=>this.setSelectedElement(option)} >
+                        {option + "/4"} 
+                    </button>
+                    ))}
 
-         ))}
-
-
-
-            </div>
-            )}
+                    </div>
+                )}
             </>);
         }
 

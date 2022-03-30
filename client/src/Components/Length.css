@@ -4,18 +4,19 @@
       
   display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-  height: 32%;
-  width: 97%;
-  
+  align-items:right;
+  justify-content:center;
+
+  height: 37%;
+  width: 100%;
 
   padding:1vmin;
   padding-bottom: 2vmin;
   
+  margin-top:-1.5vmin;
+  margin-left:-0.5vmin;
   
-  margin-bottom:1vmin;
   
 
   box-shadow: 
@@ -45,15 +46,26 @@
 
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
               0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
-  margin-bottom:-2vmin;
+  
+  
+  padding-right:calc(39vmax - 20vmin);
+
+  margin-top:3.5vmin;
+  margin-bottom: -1vmax;
+  
 }
 
 .bubLen{
   padding:0.1vmin;
-  margin-bottom:-1.5vmin;
+  
+  margin-bottom: -1.9vmin;
+
+  
+  margin-left:70%;
+
   font-family: casualFont;
-  font-size: calc(0.9vmin + 0.3vmax);
+  font-size: calc(1.1vmin + 0.4vmax);
   color:#d6d09d;
-  text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.514),
-              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.541);
+  text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.918),
+              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.842);
 }
