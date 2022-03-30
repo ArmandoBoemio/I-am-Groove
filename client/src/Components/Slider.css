@@ -68,11 +68,49 @@ input[type="range"] {
     
     margin-left:calc(27% - 2vmax);
     
-    margin-bottom:2.8vmin;
+    margin-bottom:3.8vmin;
+    
     
 
   } 
-  
+
+  .ticks {
+
+    height:calc(0.6vmin + 0.3vmax);
+    width:calc(32.7vmax - 16.2vmin);
+
+    position:absolute;
+    margin-left:calc(15.7% - 2.3vmin);
+    
+    margin-top: -3.5vmin;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: calc(1.2vmin + 0.4vmax);
+    font-family: casualFont;
+    color:#d6d09db2;
+    
+  }
+
+  .tick{
+    
+    
+    
+    display: flex;
+    justify-content: center;
+    width: 0.3vmin;
+    
+    
+    background: #4a2b5f5d;
+    
+    
+  }
+
+
+  .discreteSlider{
+
+  }
 
   .inputComplexity{
   

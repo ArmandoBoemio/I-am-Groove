@@ -71,6 +71,6 @@
   font-family: casualFont;
   font-size: calc(1.3vmin + 0.4vmax);
   color:#d6d09d;
-  text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.918),
-              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.842);
+  text-shadow: -0.1vmin 0 0.5vmin rgba(24, 1, 37, 0.541),
+              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.952);
   }

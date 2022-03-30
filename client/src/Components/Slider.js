@@ -50,20 +50,25 @@ render(){
                     {this.props.len} measures
                 </div>
 
-                <input className="inputLength"
-                    type="range" 
-                    min="2" 
-                    max="8"
-                    step="2"
-                    /*marks={lenMarks}*/
-                    value={this.props.len}
-                    onChange={this.props.handleLenChange} 
-                    onWheel={this.props.handleWheel}
-                       
-                />
-            
                 
-                    
+                    <input className="inputLength"
+                        type="range" 
+                        min="2" 
+                        max="8"
+                        step="2"
+                        /*marks={lenMarks}*/
+                        value={this.props.len}
+                        onChange={this.props.handleLenChange} 
+                        onWheel={this.props.handleWheel}     
+                    />
+
+                    <div className="ticks">
+                        <span className="tick">2</span>
+                        <span className="tick">4</span>
+                        <span className="tick">6</span>
+                        <span className="tick">8</span>
+                    </div>
+               
                 </>
                 )
             }

@@ -31,10 +31,10 @@
 
     box-shadow: inset 0 5vmin 10vmin 2vmin rgba(143, 191, 219, 0.253);
     box-shadow: 
-    inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
-    inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
+                inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
+                inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
+                inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
+                inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
     font-family: titlePanelFont;
     font-size: calc(0.5vmin + 0.6vmax);
     color:#d6d09d;
@@ -60,6 +60,8 @@
     flex-wrap: 'wrap';
     position: 'relative';
     z-index: 1;
+    /*background-color: #854e67e7;
+    padding:1vmin;*/
     
     
 }
