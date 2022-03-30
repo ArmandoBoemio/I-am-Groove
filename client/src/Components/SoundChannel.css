@@ -42,7 +42,8 @@
 .texto{
     color: #d6d09db9;
 
-    font-size: 1.7vmin;
+    font-size: calc(0.7vmin + 0.3vmax);
+    letter-spacing: 0.1vmin;
 
     font-family:titlePanelFont;
 
