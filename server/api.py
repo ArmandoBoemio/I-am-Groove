@@ -1,7 +1,7 @@
 
-from email.mime import audio
+import soundfile as sf
 from flask import Flask,jsonify,request
-
+import librosa
 from utilities.AudioProcessing import AudioProcessing
 
 
@@ -48,15 +48,21 @@ def get_blobURL():
 
     audio = request.data
     id = request.headers['id']
-    
+
     audio_loc = "audio%s.wav" % id
     f = open(audio_loc,'wb')
     f.write(audio)
-    f.close
+    f.close()
+
+    f =open('CPAC.wav', 'rb')
+    #print(f.read())
     
     print('___________________________________________')
     print('___________________________________________')
-    #sp=AudioProcessing()
-    #trimmed_audio=sp.trim(audio)
+    audio,sr=librosa.load(audio_loc)
+    print(audio, sr)
+    sp=AudioProcessing()
+    trimmed_audio=sp.trim(audio)
+    print(trimmed_audio)
     print('Received Audio from: ', id)
     return '200'

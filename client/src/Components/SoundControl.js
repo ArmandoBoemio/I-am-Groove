@@ -2,7 +2,8 @@ import { Component } from "react";
 import Dropdown from "./Dropdown";
 import SelectSource from "./SelectSource";
 import click from './click1.wav';
-
+import { MediaRecorder, register } from 'extendable-media-recorder';
+import { connect } from 'extendable-media-recorder-wav-encoder';
 import './SoundControl.css';
 
 class SoundControl extends Component{
@@ -63,10 +64,9 @@ class SoundControl extends Component{
         });
         console.log('Recording...')
 
-        
         navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
-            this.mediaRecorder = new MediaRecorder(stream);
+            this.mediaRecorder = new MediaRecorder(stream, {'mimeType': 'audio/wav'});
             
             this.mediaRecorder.start();
             const audioChunks = [];

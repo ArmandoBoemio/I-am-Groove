@@ -10,7 +10,8 @@ import SoundChannel from './Components/SoundChannel';
 import GenerateButton from './Components/GenerateButton';
 import Complexity from './Components/Complexity'
 
-
+import { register } from 'extendable-media-recorder';
+import { connect } from 'extendable-media-recorder-wav-encoder';
 
 class App extends Component {
   
@@ -22,6 +23,9 @@ class App extends Component {
     }
   }
 
+    componentDidMount=async ()=>{
+      await register(await connect());
+    }
 
   fetchData = async (thing) => {
     const response = await fetch(thing);
