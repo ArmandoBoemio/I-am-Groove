@@ -1,7 +1,11 @@
 
-import soundfile as sf
 from flask import Flask,jsonify,request
+
 import librosa
+import tempfile
+import os
+from urllib.request import urlopen
+import soundfile as sf
 from utilities.AudioProcessing import AudioProcessing
 
 
@@ -31,38 +35,25 @@ def get_complexity():
     print('Complexity: ', complexity)
     return '200'
 
-@app.route("/audio", methods=['GET', 'POST'])
-def get_audio():
-    id=request.json['id']
-    #audio=request.json['audio']
-    print('___________________________________________')
-    print(request.json)
-    print('___________________________________________')
-    #sp=AudioProcessing()
-    #trimmed_audio=sp.trim(audio)
-    print('Received Audio from: ', id)
-    return '200'
-
 @app.route("/audioBlob", methods=['GET', 'POST'])
 def get_blobURL():
 
-    audio = request.data
+    audioBlob = request.data
     id = request.headers['id']
 
-    audio_loc = "audio%s.wav" % id
-    f = open(audio_loc,'wb')
-    f.write(audio)
+    f = tempfile.NamedTemporaryFile(delete=False)
+    f.write(audioBlob)
+    audio, sr = librosa.load(f.name)
     f.close()
+    os.unlink(f.name)
 
-    f =open('CPAC.wav', 'rb')
-    #print(f.read())
+    trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
     
-    print('___________________________________________')
-    print('___________________________________________')
-    audio,sr=librosa.load(audio_loc)
-    print(audio, sr)
-    sp=AudioProcessing()
-    trimmed_audio=sp.trim(audio)
-    print(trimmed_audio)
+
+    # if one wants to store the audios, uncomment those 2 lines
+    #audio_loc = "audio%s.wav" % id
+    #sf.write(audio_loc, trimmed_audio, sr)
+
     print('Received Audio from: ', id)
+    print('Audio trimmed!')
     return '200'

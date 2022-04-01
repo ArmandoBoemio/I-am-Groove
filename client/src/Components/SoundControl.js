@@ -88,23 +88,9 @@ class SoundControl extends Component{
         });
     };
 
-    postAudio = async (id,audio) => {
-        const objct={id, audio };
-        const response = await fetch("/audio", {
-          method: "POST",
-          headers:{
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(objct)
-        });
-        if(response.ok){
-          console.log("response worked!");
-          console.log(response['audio'])
-        }
-      }
 
       postAudioBlob = async (id,audioBlob) => {
-          
+
         const response = await fetch("/audioBlob", {
             method: "POST",
             headers:{

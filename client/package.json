@@ -7,6 +7,8 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "extendable-media-recorder": "^6.6.2",
+    "extendable-media-recorder-wav-encoder": "^7.0.66",
     "rc-slider": "^10.0.0-alpha.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
