@@ -78,6 +78,7 @@ class SoundControl extends Component{
             this.mediaRecorder.addEventListener("stop", () => {
                 const audioBlob = new Blob(audioChunks, {'type': 'audio/wav;'});
                 this.postAudioBlob(this.state.id, audioBlob)
+                //this.postTest()
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
                 this.setState({
@@ -89,19 +90,24 @@ class SoundControl extends Component{
     };
 
 
+
       postAudioBlob = async (id,audioBlob) => {
 
-        const response = await fetch("/audioBlob", {
+        await fetch("/audioBlob", {
             method: "POST",
             headers:{
-                "id": id
+                "id": id,
+                "Content-Type": "application/json"
               },
             body: audioBlob
+        }).then(response => {
+                 if(response.ok){
+            console.log("response worked!");
+            response.json().then(data => console.log(data))
+          }           
+
         });
-        if(response.ok){
-          console.log("response worked!");
-          console.log(response['audioBlob'])
-        }
+       
       }
     
     swapSource = () =>{
