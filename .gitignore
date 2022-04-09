@@ -4,3 +4,4 @@ server/__pycache__/api.cpython-39.pyc
 *.pyc
 /node_modules
 /.node_modules
+server/tmp/audio.wav

@@ -18,7 +18,6 @@ class SoundControl extends Component{
             isAvailable: false,
         };
         this.mediaRecorder = []
-        //this.audioBlob = new Blob([]);
         this.recordedAudio = new Audio([])
         this.defaultAudio = new Audio([click])
         this.audio = this.defaultAudio
@@ -51,12 +50,6 @@ class SoundControl extends Component{
         //this.postAudio(this.state.id, this.recordedAudio) /*recorded audio is not ok here, it is an HTML element*/
     };
 
-    
-        
-            
-                
-
-       
 
     startRecording = async () =>{
         this.setState({
@@ -117,29 +110,14 @@ class SoundControl extends Component{
                 "Content-Type": "application/json"
               },
             body: audioBlob
-        }).then(response => {
-                 if(response.ok){
-            console.log("response worked!");
-            var blob = new Blob([response], {type: 'audio/wav'})
-            console.log(blob)
-            var url = window.URL.createObjectURL(blob)
-            const audio=new Audio(url)
-            //var audiofile = new File([response],'Audio.wav')
-        //How to build a blob from an audio file?
-            //const audioBlob = new Blob(audiofile, {'type': 'audio/wav;'});
-            //const audioUrl = URL.createObjectURL(audioBlob);
-            //const audio = new Audio(audioUrl);
-            console.log(audio)
-            //this.downloadFile(audiofile)
-            //inutile set state
-            this.setState({
-                isAvailable: true
-            });
-            this.recordedAudio = audio;
-          }           
-
-        });
-       
+        }).then(response => response.blob())
+        .then(myBlob => {
+            var objectURL = URL.createObjectURL(myBlob);
+            const audio = new Audio(objectURL);
+            console.log(audio);
+            this.recordedAudio = audio; 
+            //audio.play();
+        })
       }
     
     swapSource = () =>{

@@ -1,13 +1,11 @@
 
-from urllib import response
-from flask import Flask,jsonify,request, send_file
+from flask import Flask ,request, send_file
 
 import librosa
 import tempfile
 import os
 from urllib.request import urlopen
 import soundfile as sf
-from utilities.AudioProcessing import AudioProcessing
 
 
 app=Flask(__name__)
@@ -47,19 +45,23 @@ def get_blobURL():
     audio, sr = librosa.load(f.name)
     f.close()
     os.unlink(f.name)
-
-    trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
     
-
-    #to store the audios, uncomment those lines
-    audio_loc = "audio%s.wav" % id
+    
+    audio_loc = "tmp/audio.wav" #% id
+    trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
     sf.write(audio_loc, trimmed_audio, sr)
-    #audio_loc = "audio%sNoCut.wav" % id
-    #sf.write(audio_loc, audio, sr)
+    
+    """
+    #TODO: delete audio after sending
+    @app.after_request
+    def clear_temp_files(response):
+        audio_loc = "tmp/audio.wav" #% id
+        os.remove(audio_loc)
+        return response
+    """
     
 
     print('Received Audio from: ', id)
     print('Audio trimmed!')
-    data={'url': 'urlToTrimmedFileSoThatFrontEndCanRetrieveIt'}
-
     return send_file(audio_loc, mimetype='audio/wav')
+    
