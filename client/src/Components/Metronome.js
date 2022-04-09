@@ -11,7 +11,6 @@ class Metronome extends Component {
         this.state = {
             playing: false,
             count: 0,
-            bpm: 120,
             beatsPerMeasure: 4,
             taps: [],
             calculatedTaps: [],
@@ -24,20 +23,6 @@ class Metronome extends Component {
     }
 
 
-    postBPM = async (bpm) => {
-        const objct={bpm};
-        const response = await fetch("/bpm", {
-          method: "POST",
-          headers:{
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(objct)
-        });
-        if(response.ok){
-          console.log("response worked!");
-        }
-      }
-
     handleBpmChange = event => {
         const bpm = event.target.value;
         if (this.state.playing) {
@@ -46,28 +31,25 @@ class Metronome extends Component {
 
             this.setState({
                 count: 0,
-                bpm
-            },()=>this.postBPM(bpm));
+            },()=>this.props.onChange(bpm));
         } else {
-            this.setState({ bpm },()=> this.postBPM(this.state.bpm))
+            this.props.onChange(bpm)
         }
 
     }
 
     playClick = () => {
-        if(this.props.beatsPerMeasure){
-        this.setState({beatsPerMeasure: this.props.beatsPerMeasure});
-        }
-        const { count, beatsPerMeasure } = this.state;
+        const { beatsPerMeasure } = this.props;
+        const { count}=this.state;
         if (count % beatsPerMeasure === 0) {
             this.click2.play();
         } else {
             this.click1.play();
         }
 
-        this.setState(state => ({
-            count: (state.count + 1) % state.beatsPerMeasure
-        }));
+        this.setState({
+            count: (this.state.count + 1) % this.props.beatsPerMeasure
+        });
     }
 
     //This handles the tap tempo
@@ -130,7 +112,8 @@ class Metronome extends Component {
             if(bpm>250){bpm=250; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 250')}
             if(bpm<50){bpm=50; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 50')}
             bpm=bpm.toFixed(2);
-            this.setState({ bpm },()=> this.postBPM(this.state.bpm));
+            this.props.onChange(bpm)
+            //this.setState({ bpm },()=> this.postBPM(this.state.bpm));
             taps.length = 0;
             calculatedTaps.length = 0;
         }
@@ -151,7 +134,7 @@ class Metronome extends Component {
             //Start timer with current BPM
             this.timer = setInterval(
                 this.playClick,
-                (60 / this.state.bpm) * 1000
+                (60 / this.props.bpm) * 1000
             );
             this.setState(
                 {
@@ -177,27 +160,25 @@ class Metronome extends Component {
     handleWheel=(event)=>{
         const delta =event.deltaY;
         
-        if(this.state.bpm>50 && this.state.bpm<250){
+        if(this.props.bpm>50 && this.props.bpm<250){
             if (delta > 0) {
-                this.setState({bpm: parseInt(this.state.bpm) - 1 },()=> this.postBPM(this.state.bpm))
-                
+                this.props.onChange(this.props.bpm-1)
             } else {
-                if (parseInt(this.state.bpm) > 0) {
-                    this.setState({bpm: parseInt(this.state.bpm) + 1 },()=> this.postBPM(this.state.bpm))
+                if (parseInt(this.props.bpm) > 0) {
+                    this.props.onChange(this.props.bpm+1)
                     
                 }
             }
         }
 
-        if(this.state.bpm === 50){
+        if(this.props.bpm === 50){
             if(delta<0){
-                this.setState({bpm: parseInt(this.state.bpm) + 1 },()=> this.postBPM(this.state.bpm));
-                
+                this.props.onChange(this.props.bpm +1)
             }
         }
-        if(this.state.bpm === 250){
+        if(this.props.bpm === 250){
             if(delta>0){
-                this.setState({bpm: parseInt(this.state.bpm) - 1 },()=> this.postBPM(this.state.bpm));
+                this.props.onChange(this.props.bpm - 1)
                 
             }
             
@@ -224,26 +205,12 @@ class Metronome extends Component {
                     </div>
 
                     <Slider 
-                        bpm={this.state.bpm} 
+                        bpm={this.props.bpm} 
                         type={'bpm_type'}
                         handleBpmChange={this.handleBpmChange} 
                         handleWheel={this.handleWheel}>
                     </Slider>
 
-                    
-                    {/*<input 
-                        type="range" 
-                        min="50" 
-                        max="250" 
-                        value={bpm}
-                        onChange={this.handleBpmChange} 
-                        onWheel={this.handleWheel}
-                        className="inputBpm"
-                    />
-
-                    <div className="bub">
-                        {bpm}
-                    </div>*/}
 
                 </div>               
                 

@@ -1,18 +1,20 @@
 import { Component } from "react";
 import './SoundChannel.css';
 import SoundControl from './SoundControl'
-
+import Cell from "./SingleCell";
 class SoundChannel extends Component{
     
     constructor(props){
         super(props);
 
-        this.state={}
+        this.state={
+            nCells: 16,
+        }
     }
 
     render(){
-        
-
+        let nCells= this.props.measure*this.props.length
+        nCells =Array.from(Array(nCells).keys());
         return (
 
             <div className="container">
@@ -31,8 +33,18 @@ class SoundChannel extends Component{
                         <SoundControl id={this.props.id}>
                         </SoundControl>
                     </div>
+
                     
+
                 </div>
+                
+                <div className="gridContainer">
+                {nCells.map((key)=>
+                  <Cell key={key}></Cell>
+                )}
+ 
+                </div>
+                
 
             </div>
             

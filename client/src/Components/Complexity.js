@@ -11,56 +11,35 @@ class Complexity extends Component{
     constructor(props) {
         super(props);
 
-        this.state = {
-            complex: 50,
-
-        };
+        this.state = {};
 
     }
-    componentDidUpdate=()=>{
-        this.postComplexity(this.state.complex)
-    }
-
-
-    postComplexity=async (complexity) => {
-        const objct={complexity};
-        const response = await fetch("/complexity", {
-          method: "POST",
-          headers:{
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(objct)
-        });
-        if(response.ok){
-          console.log("response worked!");
-        }
-      }
 
     handleComplexChange = event => {
         const complex = event.target.value;
-        this.setState({ complex })       
+        this.props.onChange(complex)       
     }
 
     handleComplexWheel=(event)=>{
         const delta =event.deltaY;
-        if(this.state.complex>1 && this.state.complex<100){
+        if(this.props.complexity>1 && this.props.complexity<100){
             if (delta > 0) {
-                this.setState({complex: parseInt(this.state.complex) - 1 })
+                this.props.onChange(this.props.complexity -1)
             } else {
-                if (parseInt(this.state.complex) > 0) {
-                    this.setState({complex: parseInt(this.state.complex) + 1 })
+                if (parseInt(this.props.complexity) > 0) {
+                    this.props.onChange(this.props.complexity +1)
                 }
             }
         }
 
-        if(this.state.complex === 1){
+        if(this.props.complexity === 1){
             if(delta<0){
-                this.setState({complex: parseInt(this.state.complex) + 1 });
+                this.props.onChange(this.props.complexity +1)
             }
         }
-        if(this.state.complex === 100){
+        if(this.props.complexity === 100){
             if(delta>0){
-                this.setState({complex: parseInt(this.state.complex) - 1 });
+                this.props.onChange(this.props.complexity -1)
             }
         }
 
@@ -68,7 +47,7 @@ class Complexity extends Component{
     
     render(){
 
-        const {complex} = this.state;
+        const {complexity} = this.props;
                
         return(
             <>
@@ -80,7 +59,7 @@ class Complexity extends Component{
 
 
                 <Slider
-                    complex={this.state.complex} 
+                    complex={complexity} 
                     type={'complexity_type'}
                     handleComplexChange={this.handleComplexChange} 
                     handleComplexWheel={this.handleComplexWheel}>

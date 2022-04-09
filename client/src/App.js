@@ -19,7 +19,10 @@ class App extends Component {
     super(props);
     this.state={
       beatsPerMeasure: 4,
-      channelNumber: 4
+      channelNumber: 4,
+      BPM: 120,
+      length: 4,
+      complexity: 50
     }
   }
 
@@ -27,16 +30,9 @@ class App extends Component {
       await register(await connect());
     }
 
-  fetchData = async (thing) => {
-    const response = await fetch(thing);
-    const data = await response.json();
-    this.setState({shownum: data.body})
-    return console.log(data.body);
-  }
-
-  postData = async (bpm,beatsPerMeasure) => {
-    const objct={bpm, beatsPerMeasure };
-    const response = await fetch("/beat_measure", {
+  
+  postState = async (objct) => {
+    const response = await fetch("/state", {
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -44,31 +40,35 @@ class App extends Component {
       body: JSON.stringify(objct)
     });
     if(response.ok){
-      console.log("response worked!");
+      console.log("State sent!");
     }
   }
-      
-  postMeasure = async (beatsPerMeasure) => {
-    const objct={beatsPerMeasure };
-    const response = await fetch("/measure", {
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(objct)
-    });
-    if(response.ok){
-      console.log("response worked!");
-    }
-  }
+  
   componentDidUpdate=()=>{
-    this.postMeasure(this.state.beatsPerMeasure)
+    let {beatsPerMeasure,complexity,BPM,length}=this.state;
+    let objct={beatsPerMeasure,complexity,BPM,length};
+    this.postState(objct)
   }
-  onMeasureChange = (number) =>{
-      this.setState({beatsPerMeasure: number});
+  
+  
+  onMeasureChange = (value) =>{
+      this.setState({beatsPerMeasure: value});
+
+  }
+  
+  onLengthChange = (value) =>{
+    this.setState({length: value});
 
   }
 
+  onComplexityChange = (value) =>{
+    this.setState({complexity: value});
+
+  }
+
+  onBPMChange=(value)=>{
+    this.setState({BPM: value});
+  }
 
   render(){
 
@@ -91,12 +91,12 @@ class App extends Component {
 
               <div className='sliders'>
                 
-                <Metronome  beatsPerMeasure={this.state.beatsPerMeasure}></Metronome>
+                <Metronome  beatsPerMeasure={this.state.beatsPerMeasure} onChange={this.onBPMChange} bpm={this.state.BPM}></Metronome>
                 <Measure onChange={this.onMeasureChange}></Measure>
                 
                 <div className='rightside'>
-                  <Length ></Length>
-                  <Complexity></Complexity>
+                  <Length onChange={this.onLengthChange} len={this.state.length} ></Length>
+                  <Complexity onChange={this.onComplexityChange} complexity={this.state.complexity}></Complexity>
                 </div>
                   
               </div>
@@ -104,7 +104,7 @@ class App extends Component {
               <div className='sounds'>
 
                 {numberOfChannels.map((key)=>
-                  <SoundChannel key={key} id={key}></SoundChannel>
+                  <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
                 )}
 
                 <GenerateButton></GenerateButton>

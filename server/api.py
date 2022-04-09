@@ -12,29 +12,25 @@ from utilities.AudioProcessing import AudioProcessing
 
 app=Flask(__name__)
 
-@app.route("/measure",methods=['GET', 'POST'])
-def get_measure():
-    num2=request.json['beatsPerMeasure']
-    print("Beats per Measure: ", num2)
-    return '200'
+bpm = 120
+measure = 4
+length = 4
+complexity = 50
 
-@app.route("/bpm", methods=['GET', 'POST'])
-def get_bpm():
-    bpm=request.json['bpm']
-    print('BPM: ', bpm)
-    return '200'
-    
-@app.route("/length", methods=['GET', 'POST'])
-def get_length():
-    length=request.json['len']
-    print('Length: ', length)
-    return '200'
 
-@app.route("/complexity", methods=['GET', 'POST'])
-def get_complexity():
+@app.route('/state', methods=['GET', 'POST'])
+def State():
+    global bpm
+    bpm=request.json['BPM']
+    global measure
+    measure=request.json['beatsPerMeasure']
+    global length
+    length=request.json['length']
+    global complexity
     complexity=request.json['complexity']
-    print('Complexity: ', complexity)
-    return '200'
+    #Need to save and continuously update these files and making them available always everywhere
+    return "200"
+
 
 @app.route("/audioBlob", methods=['GET', 'POST'])
 def get_blobURL():
@@ -50,7 +46,6 @@ def get_blobURL():
 
     trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
     
-
     #to store the audios, uncomment those lines
     #audio_loc = "audio%s.wav" % id
     #sf.write(audio_loc, trimmed_audio, sr)
@@ -65,3 +60,4 @@ def get_blobURL():
     data={'url': 'urlToTrimedFileSoThatFrontEndCanRetrieveIt'}
 
     return data #send_file(Blob.name)
+
