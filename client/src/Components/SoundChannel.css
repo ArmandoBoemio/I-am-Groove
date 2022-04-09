@@ -80,7 +80,7 @@
     vertical-align:middle;
     display: flex;
     flex-direction:row;
-    margin-left: 10%;
+    margin-left: 5%;
     
     
 }
@@ -98,5 +98,6 @@
 .gridContainer button:hover{
     transform: scale(1.1);
     background-color: rgb(175, 175, 175);
+    
     
 }
