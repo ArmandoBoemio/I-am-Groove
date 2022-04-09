@@ -52,16 +52,14 @@ def get_blobURL():
     
 
     #to store the audios, uncomment those lines
-    #audio_loc = "audio%s.wav" % id
-    #sf.write(audio_loc, trimmed_audio, sr)
+    audio_loc = "audio%s.wav" % id
+    sf.write(audio_loc, trimmed_audio, sr)
     #audio_loc = "audio%sNoCut.wav" % id
     #sf.write(audio_loc, audio, sr)
-    Blob=tempfile.NamedTemporaryFile(delete=False)
-    Blob.write(trimmed_audio)
-    Blob.close()
+    
 
     print('Received Audio from: ', id)
     print('Audio trimmed!')
-    data={'url': 'urlToTrimedFileSoThatFrontEndCanRetrieveIt'}
+    data={'url': 'urlToTrimmedFileSoThatFrontEndCanRetrieveIt'}
 
-    return data #send_file(Blob.name)
+    return send_file(audio_loc, mimetype='audio/wav')
