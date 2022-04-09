@@ -78,9 +78,9 @@ class SoundControl extends Component{
             this.mediaRecorder.addEventListener("stop", () => {
                 const audioBlob = new Blob(audioChunks, {'type': 'audio/wav;'});
                 this.postAudioBlob(this.state.id, audioBlob)
-                //this.postTest()
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
+                //inutile set state?
                 this.setState({
                     isAvailable: true
                 });
@@ -89,7 +89,24 @@ class SoundControl extends Component{
         });
     };
 
-
+    downloadFile(file) {
+        // Create a link and set the URL using `createObjectURL`
+        const link = document.createElement("a");
+        link.style.display = "none";
+        link.href = URL.createObjectURL(file);
+        link.download = file.name;
+      
+        // It needs to be added to the DOM so it can be clicked
+        document.body.appendChild(link);
+        link.click();
+      
+        // To make this work on Firefox we need to wait
+        // a little while before removing it.
+        setTimeout(() => {
+          URL.revokeObjectURL(link.href);
+          link.parentNode.removeChild(link);
+        }, 0);
+      }
 
       postAudioBlob = async (id,audioBlob) => {
 
@@ -103,7 +120,21 @@ class SoundControl extends Component{
         }).then(response => {
                  if(response.ok){
             console.log("response worked!");
-            response.json().then(data => console.log(data))
+            var blob = new Blob([response], {type: 'audio/wav'})
+            var url = window.URL.createObjectURL(blob)
+            const audio=new Audio(blob)
+            //var audiofile = new File([response],'Audio.wav')
+        //How to build a blob from an audio file?
+            //const audioBlob = new Blob(audiofile, {'type': 'audio/wav;'});
+            //const audioUrl = URL.createObjectURL(audioBlob);
+            //const audio = new Audio(audioUrl);
+            console.log(audio)
+            //this.downloadFile(audiofile)
+            //inutile set state
+            this.setState({
+                isAvailable: true
+            });
+            this.recordedAudio = audio;
           }           
 
         });
