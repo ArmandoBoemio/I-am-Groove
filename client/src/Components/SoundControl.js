@@ -80,7 +80,7 @@ class SoundControl extends Component{
                 this.postAudioBlob(this.state.id, audioBlob)
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
-                //inutile set state?
+                console.log(audio)
                 this.setState({
                     isAvailable: true
                 });
@@ -121,8 +121,9 @@ class SoundControl extends Component{
                  if(response.ok){
             console.log("response worked!");
             var blob = new Blob([response], {type: 'audio/wav'})
+            console.log(blob)
             var url = window.URL.createObjectURL(blob)
-            const audio=new Audio(blob)
+            const audio=new Audio(url)
             //var audiofile = new File([response],'Audio.wav')
         //How to build a blob from an audio file?
             //const audioBlob = new Blob(audiofile, {'type': 'audio/wav;'});

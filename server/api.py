@@ -60,6 +60,6 @@ def get_blobURL():
 
     print('Received Audio from: ', id)
     print('Audio trimmed!')
-    data={'url': 'urlToTrimedFileSoThatFrontEndCanRetrieveIt'}
+    data={'url': 'urlToTrimmedFileSoThatFrontEndCanRetrieveIt'}
 
-    return send_file(audio_loc)
+    return send_file(audio_loc, mimetype='audio/wav')
