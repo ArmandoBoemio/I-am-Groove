@@ -12,6 +12,7 @@ import Complexity from './Components/Complexity'
 
 
 
+
 class App extends Component {
   
   constructor(props){
@@ -28,20 +29,6 @@ class App extends Component {
     const data = await response.json();
     this.setState({shownum: data.body})
     return console.log(data.body);
-  }
-
-  postData = async (bpm,beatsPerMeasure) => {
-    const objct={bpm, beatsPerMeasure };
-    const response = await fetch("/beat_measure", {
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(objct)
-    });
-    if(response.ok){
-      console.log("response worked!");
-    }
   }
       
   postMeasure = async (beatsPerMeasure) => {
