@@ -43,11 +43,8 @@ class SoundControl extends Component{
         this.setState({
             isRecording: false
         });
-        console.log('Recorded successfully!')
-        
+        console.log('Recorded successfully!')    
         this.mediaRecorder.stop();
-        
-        //this.postAudio(this.state.id, this.recordedAudio) /*recorded audio is not ok here, it is an HTML element*/
     };
 
 
@@ -103,7 +100,7 @@ class SoundControl extends Component{
 
       postAudioBlob = async (id,audioBlob) => {
 
-        await fetch("/audioBlob", {
+        await fetch("/audioProcess", {
             method: "POST",
             headers:{
                 "id": id,
@@ -116,7 +113,6 @@ class SoundControl extends Component{
             const audio = new Audio(objectURL);
             console.log(audio);
             this.recordedAudio = audio; 
-            //audio.play();
         })
       }
     
@@ -129,7 +125,6 @@ class SoundControl extends Component{
         this.setState(state =>({
             isDefaultAudio: !state.isDefaultAudio
         }));
-        //console.log(this.state.isDefaultAudio);
     }
     
 
