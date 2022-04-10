@@ -18,7 +18,6 @@ class SoundControl extends Component{
             isAvailable: false,
         };
         this.mediaRecorder = []
-        //this.audioBlob = new Blob([]);
         this.recordedAudio = new Audio([])
         this.defaultAudio = new Audio([click])
         this.audio = this.defaultAudio
@@ -51,12 +50,6 @@ class SoundControl extends Component{
         //this.postAudio(this.state.id, this.recordedAudio) /*recorded audio is not ok here, it is an HTML element*/
     };
 
-    
-        
-            
-                
-
-       
 
     startRecording = async () =>{
         this.setState({
@@ -78,9 +71,9 @@ class SoundControl extends Component{
             this.mediaRecorder.addEventListener("stop", () => {
                 const audioBlob = new Blob(audioChunks, {'type': 'audio/wav;'});
                 this.postAudioBlob(this.state.id, audioBlob)
-                //this.postTest()
                 const audioUrl = URL.createObjectURL(audioBlob);
                 const audio = new Audio(audioUrl);
+                console.log(audio)
                 this.setState({
                     isAvailable: true
                 });
@@ -89,7 +82,24 @@ class SoundControl extends Component{
         });
     };
 
-
+    downloadFile(file) {
+        // Create a link and set the URL using `createObjectURL`
+        const link = document.createElement("a");
+        link.style.display = "none";
+        link.href = URL.createObjectURL(file);
+        link.download = file.name;
+      
+        // It needs to be added to the DOM so it can be clicked
+        document.body.appendChild(link);
+        link.click();
+      
+        // To make this work on Firefox we need to wait
+        // a little while before removing it.
+        setTimeout(() => {
+          URL.revokeObjectURL(link.href);
+          link.parentNode.removeChild(link);
+        }, 0);
+      }
 
       postAudioBlob = async (id,audioBlob) => {
 
@@ -100,14 +110,14 @@ class SoundControl extends Component{
                 "Content-Type": "application/json"
               },
             body: audioBlob
-        }).then(response => {
-                 if(response.ok){
-            console.log("response worked!");
-            response.json().then(data => console.log(data))
-          }           
-
-        });
-       
+        }).then(response => response.blob())
+        .then(myBlob => {
+            var objectURL = URL.createObjectURL(myBlob);
+            const audio = new Audio(objectURL);
+            console.log(audio);
+            this.recordedAudio = audio; 
+            //audio.play();
+        })
       }
     
     swapSource = () =>{
