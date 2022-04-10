@@ -7,7 +7,6 @@ class Cell extends Component{
         this.state={
         activity: false
         }
-
     }
 
 

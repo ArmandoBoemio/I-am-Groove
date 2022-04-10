@@ -78,4 +78,22 @@ def generate_pattern():
 
     print('Generated pattern: \n', measure_pattern)
     
-    return '200'
+    return{
+        'Pattern_kick': str(measure_pattern[0]),
+        'Pattern_snare': str(measure_pattern[1]),
+        'Pattern_hh': str(measure_pattern[2]),
+        'Pattern_tom': str(measure_pattern[3]),
+    }
+    #return str(measure_pattern)
+
+
+
+
+
+@app.route('/data')
+def prova():
+    measure_pattern2 = generate_measurePattern(measure, complexity)
+
+    return{
+        'Name': str(measure_pattern2)
+    }
