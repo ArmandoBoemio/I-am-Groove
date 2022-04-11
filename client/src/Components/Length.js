@@ -39,14 +39,6 @@ class Length extends Component{
     render(){
         const { len} = this.props;
 
-        
-
-        const lenMarks = {
-            2: "2",
-            4: "4",
-            6: "6",
-            8: "8",
-        };
 
        
         return(

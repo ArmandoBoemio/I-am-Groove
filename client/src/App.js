@@ -9,6 +9,9 @@ import Length from './Components/Length';
 import SoundChannel from './Components/SoundChannel';
 import GenerateButton from './Components/GenerateButton';
 import Complexity from './Components/Complexity'
+import PlayButton from './Components/PlayButton';
+import Pattern from './Components/Pattern';
+
 
 import { register } from 'extendable-media-recorder';
 import { connect } from 'extendable-media-recorder-wav-encoder';
@@ -103,11 +106,16 @@ class App extends Component {
 
               <div className='sounds'>
 
-                {numberOfChannels.map((key)=>
-                  <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
-                )}
+                  <Pattern></Pattern>
 
-                <GenerateButton></GenerateButton>
+
+                  {numberOfChannels.map((key)=>
+                    <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
+                  )}
+
+                  <GenerateButton></GenerateButton>
+                  <PlayButton></PlayButton>
+
                 
               </div>
 

@@ -6,6 +6,7 @@ import tempfile
 import os
 from urllib.request import urlopen
 import soundfile as sf
+from pattern_function import generate_measurePattern
 
 
 app=Flask(__name__)
@@ -73,3 +74,32 @@ def audioProcess():
     print('Audio trimmed!')
     return send_file(audio_loc, mimetype='audio/wav')
     
+
+
+@app.route("/pattern", methods=['GET', 'POST'])
+def generate_pattern():
+
+    measure_pattern = generate_measurePattern(measure, complexity)
+
+
+    print('Generated pattern: \n', measure_pattern)
+    
+    return{
+        'Pattern_kick': str(measure_pattern[0]),
+        'Pattern_snare': str(measure_pattern[1]),
+        'Pattern_hh': str(measure_pattern[2]),
+        'Pattern_tom': str(measure_pattern[3]),
+    }
+    #return str(measure_pattern)
+
+
+
+
+
+@app.route('/data')
+def prova():
+    measure_pattern2 = generate_measurePattern(measure, complexity)
+
+    return{
+        'Name': str(measure_pattern2)
+    }
