@@ -14,6 +14,7 @@ class SoundChannel extends Component{
 
     render(){
         let nCells= this.props.measure*this.props.length
+        // let nCells = this.props.rowdim
         nCells =Array.from(Array(nCells).keys());
         return (
 
@@ -26,7 +27,7 @@ class SoundChannel extends Component{
                     </div>
 
                     <div className="barra">
-                        ___________________________
+                        -
                     </div>
 
                     <div className="Controls">

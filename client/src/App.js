@@ -1,5 +1,5 @@
 import './App.css';
-import {Component} from 'react'
+import {Component} from 'react';
 
 import backgroundVideo from './backgrounds/videoBG.mp4'
 
@@ -26,7 +26,8 @@ class App extends Component {
       BPM: 120,
       length: 4,
       complexity: 50,
-      pattern: {}
+      pattern: {},
+      rowdimension:16
     }
   }
 
@@ -127,11 +128,13 @@ class App extends Component {
 
               <div className='sounds'>
 
-                  <Pattern onClick={this.generatePattern} pattern={this.state.pattern}></Pattern>
+                  <Pattern pattern={this.state.pattern}></Pattern>
+                  
 
 
                   {numberOfChannels.map((key)=>
-                    <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
+                   <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
+                  // <SoundChannel key={key} id={key} rowdim={this.state.rowdimension}></SoundChannel>
                   )}
 
                   <GenerateButton generatePattern={this.generatePattern}></GenerateButton>

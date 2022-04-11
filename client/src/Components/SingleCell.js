@@ -21,7 +21,10 @@ render(){
     return(
         <>
         
-        <button className={this.state.activity ? 'active':'not-active'} onClick={this.handleOnClick}></button>
+        <button className={this.state.activity ? 'active':'not-active'} 
+                onClick={this.handleOnClick}>
+
+        </button>
         
         
         </>

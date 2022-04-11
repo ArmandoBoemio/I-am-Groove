@@ -96,10 +96,3 @@ def generate_pattern():
 
 
 
-@app.route('/data')
-def prova():
-    measure_pattern2 = generate_measurePattern(measure, complexity)
-
-    return{
-        'Name': str(measure_pattern2)
-    }

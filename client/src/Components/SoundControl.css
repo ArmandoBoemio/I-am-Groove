@@ -7,7 +7,8 @@
     
     
     height: 3vmin;
-    width:23.3vmin;     
+    /*width:23.3vmin;   */ 
+    width:calc(5vmin + 9vmax); 
     padding: 0.4vmin;
 
     align-items: center;
@@ -28,6 +29,7 @@
     text-align: center;
     font-family: casualFont;
     width:8vmin;
+    width:calc(2vmin + 3vmax);
     height: 3vmin;
    
     background: #bd157775;
@@ -53,6 +55,7 @@
     text-align: center;
     
     width:8vmin;
+    width:calc(2vmin + 3vmax);
     height: 3vmin;
    
     background: #701a5493;
@@ -79,6 +82,7 @@
     text-align: center;
     
     width:8vmin;
+    width:calc(2vmin + 3vmax);
     height: 3vmin;
    
     background: #520f5881;

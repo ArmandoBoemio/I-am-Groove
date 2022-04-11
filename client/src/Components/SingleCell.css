@@ -1,8 +1,22 @@
 
 .active{
-    background-color: black;
+    background-color: rgba(85, 7, 76, 0.404);
+    
+    
 }
 
 .not-active{
-    background-color: cornsilk;
+    background-color: rgba(243, 215, 102, 0.008);
+
+
+}
+
+.active:hover{
+    transform: scale(0.9);
+    background-color: rgba(94, 2, 88, 0.571);
+}
+
+.not-active:hover{
+    transform: scale(1);
+    background-color: rgba(162, 60, 109, 0.567);
 }
