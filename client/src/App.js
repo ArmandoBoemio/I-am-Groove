@@ -25,7 +25,8 @@ class App extends Component {
       channelNumber: 4,
       BPM: 120,
       length: 4,
-      complexity: 50
+      complexity: 50,
+      pattern: {}
     }
   }
 
@@ -73,6 +74,26 @@ class App extends Component {
     this.setState({BPM: value});
   }
 
+  generatePattern = async (generate) => {
+    const response = await fetch("/pattern", {
+      method: "POST",
+      
+      body: generate //JSON.stringify(objct)
+    });
+    if(response.ok){
+      console.log("response worked!")
+        response.json().then((pattern)=>{
+          this.setState({'pattern': {
+            'Pattern_hh': pattern.Pattern_hh,
+            'Pattern_kick': pattern.Pattern_kick,
+            'Pattern_snare': pattern.Pattern_snare,
+            'Pattern_tom': pattern.Pattern_tom
+
+          }}, ()=>console.log(this.state.pattern))
+        })
+    }
+  }
+
   render(){
 
     const numberOfChannels = Array.from(Array(this.state.channelNumber).keys());
@@ -106,14 +127,14 @@ class App extends Component {
 
               <div className='sounds'>
 
-                  <Pattern></Pattern>
+                  <Pattern onClick={this.generatePattern} pattern={this.state.pattern}></Pattern>
 
 
                   {numberOfChannels.map((key)=>
                     <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
                   )}
 
-                  <GenerateButton></GenerateButton>
+                  <GenerateButton generatePattern={this.generatePattern}></GenerateButton>
                   <PlayButton></PlayButton>
 
                 

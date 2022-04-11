@@ -4,17 +4,6 @@ import './GenerateButton.css';
 
 class GenerateButton extends Component{
     
-    
-    generatePattern = async (generate) => {
-        const response = await fetch("/pattern", {
-          method: "POST",
-          
-          body: generate //JSON.stringify(objct)
-        });
-        if(response.ok){
-          console.log("response worked!");
-        }
-      }
 
 
     render(){
@@ -24,7 +13,7 @@ class GenerateButton extends Component{
             <div className="background">
 
                 <button className="Generate"
-                        onClick={this.generatePattern}>
+                        onClick={this.props.generatePattern}>
                     generate
                 </button>
                     
