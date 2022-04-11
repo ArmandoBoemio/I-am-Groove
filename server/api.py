@@ -48,6 +48,12 @@ def audioProcess():
     f.close()
     os.unlink(f.name)
     
+
+    path = 'tmp'
+    exists = os.path.exists(path)
+    print(exists)
+    if not exists:
+        os.makedirs(path)
     
     audio_loc = "tmp/audio.wav" #% id
     trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
