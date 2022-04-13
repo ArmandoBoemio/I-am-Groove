@@ -1,8 +1,6 @@
 import { Component } from "react";
 
 class Pattern extends Component {
-    
-
 // function Pattern() {
 
 
