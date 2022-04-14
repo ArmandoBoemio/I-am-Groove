@@ -90,7 +90,7 @@ def generate_pattern():
         'Pattern_hh': str(measure_pattern[2]),
         'Pattern_tom': str(measure_pattern[3]),
     }
-    #return str(measure_pattern)
+    
 
 
 

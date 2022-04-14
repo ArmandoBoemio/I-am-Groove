@@ -9,12 +9,19 @@ class SoundChannel extends Component{
 
         this.state={
             nCells: 16,
+            pattern: [],
         }
     }
 
+    // debugpost = () => {
+    //     console.log( ( Array.from( this.props.pattern).splice(2,4)  )  )
+    // };
+
     render(){
-        let nCells= this.props.measure*this.props.length
-        // let nCells = this.props.rowdim
+        //let nCells= this.props.measure*this.props.length
+        let nCells = this.props.rowdim
+        this.state.pattern = Array.from(this.props.pattern).slice(this.props.rowdim*this.props.id,this.props.rowdim*(this.props.id+1))
+        
         nCells =Array.from(Array(nCells).keys());
         return (
 
@@ -23,7 +30,8 @@ class SoundChannel extends Component{
                 <div className="panel">
 
                     <div className="texto">
-                        Sound #{this.props.id+1}
+                        Sound #{this.props.id+1} 
+                        {/* {this.state.pattern}   //for debug  */}   
                     </div>
 
                     <div className="barra">
@@ -31,8 +39,9 @@ class SoundChannel extends Component{
                     </div>
 
                     <div className="Controls">
-                        <SoundControl id={this.props.id}>
+                        <SoundControl id={this.props.id} >
                         </SoundControl>
+                        {/* <button onClick={this.debugpost}></button> */}
                     </div>
 
                     
@@ -40,10 +49,14 @@ class SoundChannel extends Component{
                 </div>
                 
                 <div className="gridContainer">
-                {nCells.map((key)=>
-                  <Cell key={key}></Cell>
-                )}
- 
+                   
+                    {nCells.map((key)=>
+                    <Cell key={key} activity={this.state.pattern[key]} >
+                       yo {this.state.pattern[key]}
+                    </Cell>
+                    )}
+                    
+                        
                 </div>
                 
 

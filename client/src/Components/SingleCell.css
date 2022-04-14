@@ -12,7 +12,7 @@
 }
 
 .active:hover{
-    transform: scale(0.9);
+    transform: scale(1);
     background-color: rgba(94, 2, 88, 0.571);
 }
 

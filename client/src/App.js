@@ -12,7 +12,7 @@ import Complexity from './Components/Complexity'
 import PlayButton from './Components/PlayButton';
 import Pattern from './Components/Pattern';
 
-
+import { reshape } from 'mathjs'; 
 import { register } from 'extendable-media-recorder';
 import { connect } from 'extendable-media-recorder-wav-encoder';
 
@@ -53,6 +53,7 @@ class App extends Component {
     let {beatsPerMeasure,complexity,BPM,length}=this.state;
     let objct={beatsPerMeasure,complexity,BPM,length};
     this.postState(objct)
+    // this.setState({rowdimension: this.state.pattern.length})
   }
   
   
@@ -85,20 +86,61 @@ class App extends Component {
       console.log("response worked!")
         response.json().then((pattern)=>{
           this.setState({'pattern': {
-            'Pattern_hh': pattern.Pattern_hh,
             'Pattern_kick': pattern.Pattern_kick,
             'Pattern_snare': pattern.Pattern_snare,
+            'Pattern_hh': pattern.Pattern_hh,
             'Pattern_tom': pattern.Pattern_tom
+          
+         
+       } }, ()=>console.log(this.state.pattern))      //oggetto: array di strighe ( pattern hh: [000101101110]
+                                                     //                            pattern kick: [101001100100] ...)
+              // console.log(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, ''))        //stringa pattern di un solo strumento senza "[]"
+              // console.log(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/))         //stringa splittata in caratteri
+              // console.log(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number))     //array di int 0 e 1
+              // console.log(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).length)    //lunghezza dell'array
+              
 
-          }}, ()=>console.log(this.state.pattern))
+              // console.log( +(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join("").concat(  
+              //  +(this.state.pattern.Pattern_snare.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join(""), 
+              //  +(this.state.pattern.Pattern_hh.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join(""),  
+              //  +(this.state.pattern.Pattern_tom.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join("")   ) )
+
+              
+
+
+              this.setState({rowdimension: this.state.pattern.Pattern_kick.split(/[ ,]+/).map(Number).length})
+              console.log("row:",this.state.rowdimension)
+              
+              this.setState({
+                pattern: ( this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number) .concat(
+                          this.state.pattern.Pattern_snare.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number),
+                          this.state.pattern.Pattern_hh.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number),
+                          this.state.pattern.Pattern_tom.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)
+                )  )
+              }) 
+              
+              console.log((this.state.pattern))
+              console.log(typeof(this.state.pattern))
+
+              
+              //  console.log( ( ( this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number) ) ) )
+              // console.log(typeof( +this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).join("") ) )
+              
+              // console.log("Here's the pattern: \n Kick:", this.state.pattern.slice(0,this.state.rowdimension),
+              //             "\n Snare:", this.state.pattern.slice(this.state.rowdimension, this.state.rowdimension*2),
+              //             "\n Hi-Hat:", this.state.pattern.slice(this.state.rowdimension*2, this.state.rowdimension*3),
+              //             "\n Tom:", this.state.pattern.slice(this.state.rowdimension*3, this.state.rowdimension*4),
+              // )
+              
         })
+        
     }
   }
 
   render(){
 
     const numberOfChannels = Array.from(Array(this.state.channelNumber).keys());
-
+    
       return (
 
         <div className="App">
@@ -128,13 +170,13 @@ class App extends Component {
 
               <div className='sounds'>
 
-                  <Pattern pattern={this.state.pattern}></Pattern>
+                  {/* <Pattern pattern={this.state.pattern}></Pattern> */}
                   
 
 
                   {numberOfChannels.map((key)=>
-                   <SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
-                  // <SoundChannel key={key} id={key} rowdim={this.state.rowdimension}></SoundChannel>
+                   //<SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
+                  <SoundChannel key={key} id={key} rowdim={this.state.rowdimension} pattern={this.state.pattern}></SoundChannel>
                   )}
 
                   <GenerateButton generatePattern={this.generatePattern}></GenerateButton>

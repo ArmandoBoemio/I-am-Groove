@@ -16,14 +16,14 @@ handleOnClick=()=>{
 
 
 render(){
-
+    this.state.activity = this.props.activity
 
     return(
         <>
         
         <button className={this.state.activity ? 'active':'not-active'} 
-                onClick={this.handleOnClick}>
-
+                onClick={this.handleOnClick}
+            >
         </button>
         
         

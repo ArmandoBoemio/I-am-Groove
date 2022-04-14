@@ -110,22 +110,22 @@
 }
 
 .gridContainer button{
-    border: 1 solid #d6d09d; 
+    /* border: 1 solid #d6d09d;  */
     border-radius: 1vmin; 
 
     
-    width:0.01vmax;
+    width:1px;
     
     height: 1.5vh;
 
     margin:0.1vmin;
 
-    box-shadow: inset 0 5vmin 10vmin 2vmin rgba(143, 191, 219, 0.253);
+    /* box-shadow: inset 0 5vmin 10vmin 2vmin rgba(143, 191, 219, 0.253);
     box-shadow: 
     inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
     inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
-    
+     */
     
 } 
 
