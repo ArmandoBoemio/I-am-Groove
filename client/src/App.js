@@ -171,16 +171,15 @@ class App extends Component {
               <div className='sounds'>
 
                   {/* <Pattern pattern={this.state.pattern}></Pattern> */}
-                  
-
 
                   {numberOfChannels.map((key)=>
-                   //<SoundChannel key={key} id={key} measure={this.state.beatsPerMeasure} length={this.state.length}></SoundChannel>
                   <SoundChannel key={key} id={key} rowdim={this.state.rowdimension} pattern={this.state.pattern}></SoundChannel>
                   )}
 
-                  <GenerateButton generatePattern={this.generatePattern}></GenerateButton>
-                  <PlayButton></PlayButton>
+                  <div className="Buttons">
+                    <GenerateButton generatePattern={this.generatePattern}></GenerateButton>
+                    <PlayButton></PlayButton>
+                  </div>
 
                 
               </div>

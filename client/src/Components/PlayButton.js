@@ -41,7 +41,7 @@ class PlayButton extends Component{
 
                 <button className="Play"
                         onClick={this.startStop}>
-                        {this.state.patternPlaying ? 'Stop' : 'Start'}
+                        {this.state.patternPlaying ? 'Stop' : 'Play'}
                        
 
                 </button>
