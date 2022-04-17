@@ -2,6 +2,7 @@
 /*bar*/
 input[type="range"] {
     -webkit-appearance: none;
+    
     /*height: 1vmin;*/
     /*width: calc(4vmin + 6.5vmax);*/
     border-radius: 0.7vmin;
@@ -25,7 +26,7 @@ input[type="range"] {
                 inset 0 -0.2vmin 0.8vmin 0.2vmin rgba(255, 232, 188, 0.034),
                 
                 inset 0 0 0.1vmin 0.1vmin rgba(25, 4, 34, 0.137);
-    transition: background 0.3s ease-in-out;
+    /* transition: background 0.3s ease-in-out; */
   }
   
   /*background of bar*/
@@ -35,6 +36,7 @@ input[type="range"] {
     border: none;
     background: rgba(255, 194, 250, 0.13);
     border-radius: 0.7vmin;
+    
   }
   
   /*quando il mouse è sul thumb*/
@@ -77,12 +79,14 @@ input[type="range"] {
   .ticks {
 
     height:calc(0.6vmin + 0.3vmax);
-    width:calc(32.7vmax - 16.2vmin);
+    width:calc(32.7vmax - 16.4vmin);
 
     position:absolute;
-    margin-left:calc(15.7% - 2.3vmin);
+    /* margin-left:calc(14.7% - 1.2vmin); */
+    right: 4.7%;
     
     margin-top: -3.5vmin;
+    
 
     display: flex;
     justify-content: space-between;

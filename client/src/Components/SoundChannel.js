@@ -1,6 +1,6 @@
 import { Component } from "react";
 import './SoundChannel.css';
-import SoundControl from './SoundControl'
+import SoundControl from './SoundControl';
 import Cell from "./SingleCell";
 class SoundChannel extends Component{
     
@@ -10,6 +10,7 @@ class SoundChannel extends Component{
         this.state={
             nCells: 16,
             pattern: [],
+            
         }
     }
 
@@ -23,6 +24,8 @@ class SoundChannel extends Component{
         this.state.pattern = Array.from(this.props.pattern).slice(this.props.rowdim*this.props.id,this.props.rowdim*(this.props.id+1))
         
         nCells =Array.from(Array(nCells).keys());
+        
+
         return (
 
             <div className="container">
@@ -42,17 +45,16 @@ class SoundChannel extends Component{
                         <SoundControl id={this.props.id} >
                         </SoundControl>
                         {/* <button onClick={this.debugpost}></button> */}
-                    </div>
-
-                    
+                    </div> 
 
                 </div>
                 
                 <div className="gridContainer">
                    
                     {nCells.map((key)=>
-                    <Cell key={key} activity={this.state.pattern[key]} >
-                       yo {this.state.pattern[key]}
+                    <Cell key={key} activity={this.state.pattern[key]} num={(60  - this.props.rowdim)*0.5}>
+                       {this.state.pattern[key]}
+                       
                     </Cell>
                     )}
                     

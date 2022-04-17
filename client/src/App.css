@@ -153,6 +153,7 @@
   
   margin-right:2vmin;
   
+  overflow: hidden;
 }
 
 .sounds{
@@ -166,6 +167,8 @@
   align-items: center;
   
   font-size: calc(10px + 2vmin);
+
+  overflow: hidden;
   
   position: absolute;
   top: 36vh;

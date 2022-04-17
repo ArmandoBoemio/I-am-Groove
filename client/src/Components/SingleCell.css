@@ -1,6 +1,6 @@
 
 .active{
-    background-color: rgba(85, 7, 76, 0.404);
+    background-color: rgba(85, 7, 76, 0.793);
     
     
 }
@@ -13,10 +13,11 @@
 
 .active:hover{
     transform: scale(1);
-    background-color: rgba(94, 2, 88, 0.571);
+    background-color: rgba(66, 0, 63, 0.792);
 }
 
 .not-active:hover{
     transform: scale(1);
     background-color: rgba(162, 60, 109, 0.567);
 }
+

@@ -27,7 +27,7 @@ class App extends Component {
       length: 4,
       complexity: 50,
       pattern: {},
-      rowdimension:16
+      rowdimension:16,
     }
   }
 
@@ -99,15 +99,6 @@ class App extends Component {
               // console.log(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number))     //array di int 0 e 1
               // console.log(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).length)    //lunghezza dell'array
               
-
-              // console.log( +(this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join("").concat(  
-              //  +(this.state.pattern.Pattern_snare.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join(""), 
-              //  +(this.state.pattern.Pattern_hh.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join(""),  
-              //  +(this.state.pattern.Pattern_tom.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)).join("")   ) )
-
-              
-
-
               this.setState({rowdimension: this.state.pattern.Pattern_kick.split(/[ ,]+/).map(Number).length})
               console.log("row:",this.state.rowdimension)
               
@@ -122,20 +113,14 @@ class App extends Component {
               console.log((this.state.pattern))
               console.log(typeof(this.state.pattern))
 
-              
-              //  console.log( ( ( this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number) ) ) )
-              // console.log(typeof( +this.state.pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).join("") ) )
-              
-              // console.log("Here's the pattern: \n Kick:", this.state.pattern.slice(0,this.state.rowdimension),
-              //             "\n Snare:", this.state.pattern.slice(this.state.rowdimension, this.state.rowdimension*2),
-              //             "\n Hi-Hat:", this.state.pattern.slice(this.state.rowdimension*2, this.state.rowdimension*3),
-              //             "\n Tom:", this.state.pattern.slice(this.state.rowdimension*3, this.state.rowdimension*4),
-              // )
-              
         })
         
     }
   }
+
+
+
+  
 
   render(){
 

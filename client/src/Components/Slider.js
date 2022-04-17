@@ -68,7 +68,7 @@ render(){
                         <span className="tick">6</span>
                         <span className="tick">8</span>
                     </div>
-               
+                
                 </>
                 )
             }

@@ -5,7 +5,8 @@ class Cell extends Component{
     constructor(props){
         super(props);
         this.state={
-        activity: false
+        activity: false,      
+       
         }
     }
 
@@ -18,12 +19,15 @@ handleOnClick=()=>{
 render(){
     this.state.activity = this.props.activity
 
+
     return(
         <>
         
         <button className={this.state.activity ? 'active':'not-active'} 
-                onClick={this.handleOnClick}
-            >
+                onClick={this.handleOnClick}  
+                   
+        >
+        {/* {this.props.num} */}
         </button>
         
         
