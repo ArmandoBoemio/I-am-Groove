@@ -20,12 +20,17 @@ render(){
 
     return(
         <>
-        
+        {this.props.isNewMeasure ? 
         <button className={this.state.activity ? 'active':'not-active'} 
-                onClick={this.handleOnClick}>
-
+                onClick={this.handleOnClick}
+                style={{marginLeft: '1.2vw'}}>
+                
         </button>
+        :
+        <button className={this.state.activity ? 'active':'not-active'} 
+        onClick={this.handleOnClick}>
         
+        </button>}
         
         </>
 

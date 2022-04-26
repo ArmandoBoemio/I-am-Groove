@@ -41,7 +41,10 @@ class SoundChannel extends Component{
                 
                 <div className="gridContainer">
                 {nCells.map((key)=>
-                  <Cell key={key}></Cell>
+                key % this.props.measure === 0 ?  
+                 <Cell key={key} isNewMeasure={true}></Cell>
+                :
+                  <Cell key={key}isNewMeasure={false}></Cell>
                 )}
  
                 </div>
