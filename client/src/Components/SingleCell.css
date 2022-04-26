@@ -18,5 +18,5 @@
 
 .not-active:hover{
     transform: scale(1);
-    background-color: rgba(162, 60, 109, 0.567);
+    background-color: rgba(185, 89, 136, 0.567);
 }

@@ -111,7 +111,7 @@
 
 .gridContainer button{
     border: 1 solid #d6d09d; 
-    border-radius: 1vmin; 
+    border-radius: 50%; 
 
     
     width:0.01vmax;
@@ -125,7 +125,24 @@
     inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
     inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
-    
+    animation: fade-in 1s;
     
 } 
 
+@keyframes fade-in{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
+    }
+}
+
+@keyframes fade-out{
+    0% {
+        opacity: 100;
+    }
+    100% {
+        opacity: 0;
+    }
+}

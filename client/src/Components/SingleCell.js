@@ -23,7 +23,7 @@ render(){
         {this.props.isNewMeasure ? 
         <button className={this.state.activity ? 'active':'not-active'} 
                 onClick={this.handleOnClick}
-                style={{marginLeft: '1.2vw'}}>
+                style={{marginLeft: '10px'}}>
                 
         </button>
         :
