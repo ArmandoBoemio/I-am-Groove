@@ -13,25 +13,7 @@ class GenerateButton extends Component{
     }
   }
 
-    generatePattern = async (generate) => {
-      const response = await fetch("/pattern", {
-        method: "POST",
-        
-        body: generate //JSON.stringify(objct)
-      });
-      if(response.ok){
-        console.log("response worked!")
-          response.json().then((pattern)=>{
-            this.setState({'pattern': {
-              'Pattern_hh': pattern.Pattern_hh,
-              'Pattern_kick': pattern.Pattern_kick,
-              'Pattern_snare': pattern.Pattern_snare,
-              'Pattern_tom': pattern.Pattern_tom
-
-            }}, ()=>console.log(this.state.pattern))
-          })
-      }
-    }
+    
 
     render(){
         
