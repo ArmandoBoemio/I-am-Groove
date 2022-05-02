@@ -196,4 +196,28 @@
   
 }
 
+.app_footer{
+  position:absolute;
+  margin-top:81vmin;
+  width:93%;
+  max-height: 1vmin;
+  background-color: transparent;
+  font-size: 1.5vmin;
+  display:flex;
+  flex-direction: row;
+  color: #d1ca8e92;
+}
 
+.link{
+  color: rgba(239, 202, 129, 0.788);
+}
+
+.lowleft{
+  position:absolute;
+  left:0;
+}
+
+.lowright{
+  position:absolute;
+  right:0;
+}

@@ -14,10 +14,6 @@ class SoundChannel extends Component{
         }
     }
 
-    // debugpost = () => {
-    //     console.log( ( Array.from( this.props.pattern).splice(2,4)  )  )
-    // };
-
     render(){
         //let nCells= this.props.measure*this.props.length
         let nCells = this.props.rowdim
