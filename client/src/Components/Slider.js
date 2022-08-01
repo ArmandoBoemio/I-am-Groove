@@ -59,15 +59,18 @@ render(){
                         /*marks={lenMarks}*/
                         value={this.props.len}
                         onChange={this.props.handleLenChange} 
-                        onWheel={this.props.handleWheel}     
+                        onWheel={this.props.handleWheel}  
+                        
+                        
                     />
 
-                    <div className="ticks">
-                        <span className="tick">2</span>
-                        <span className="tick">4</span>
-                        <span className="tick">6</span>
-                        <span className="tick">8</span>
-                    </div>
+                <div className="ticks">
+                    <span className="tick">2</span>
+                    <span className="tick">4</span>
+                    <span className="tick">6</span>
+                    <span className="tick">8</span>
+                </div>      
+
                 
                 </>
                 )

@@ -2,6 +2,8 @@ import { Component } from "react";
 import './SoundChannel.css';
 import SoundControl from './SoundControl';
 import Cell from "./SingleCell";
+
+
 class SoundChannel extends Component{
     
     constructor(props){
@@ -10,17 +12,36 @@ class SoundChannel extends Component{
         this.state={
             nCells: 16,
             pattern: [],
-            
+            isPlaying: false  
         }
     }
 
+        
+    componentDidMount() {
+        this.setState({
+            pattern: Array.from(this.props.pattern).slice(this.props.rowdim*this.props.id,this.props.rowdim*(this.props.id+1)),
+            isPlaying: this.props.isPlaying
+        }) 
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.pattern !== this.props.pattern) {
+            this.setState({
+                pattern: Array.from(this.props.pattern).slice(this.props.rowdim*this.props.id,this.props.rowdim*(this.props.id+1)),
+            })    
+        }
+        if (prevState.isPlaying !== this.props.isPlaying) {
+            this.setState({
+                isPlaying: this.props.isPlaying            
+            }) 
+            // console.log('yo '+ this.state.isPlaying)   
+        }
+    }
+
+
     render(){
-        //let nCells= this.props.measure*this.props.length
         let nCells = this.props.rowdim
-        this.state.pattern = Array.from(this.props.pattern).slice(this.props.rowdim*this.props.id,this.props.rowdim*(this.props.id+1))
-        
         nCells =Array.from(Array(nCells).keys());
-        
 
         return (
 
@@ -34,7 +55,7 @@ class SoundChannel extends Component{
                     </div>
 
                     <div className="barra">
-                        -
+                        - 
                     </div>
 
                     <div className="Controls">
@@ -48,9 +69,7 @@ class SoundChannel extends Component{
                 <div className="gridContainer">
                    
                     {nCells.map((key)=>
-                    <Cell key={key} activity={this.state.pattern[key]} num={(60  - this.props.rowdim)*0.5}>
-                       {this.state.pattern[key]}
-                       
+                    <Cell key={key} activity={this.state.pattern[key]} num={(60  - this.props.rowdim)*0.5} isPlaying={this.state.isPlaying}>
                     </Cell>
                     )}
                     

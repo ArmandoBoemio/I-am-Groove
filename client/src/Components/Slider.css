@@ -41,8 +41,8 @@ input[type="range"] {
   
   /*quando il mouse è sul thumb*/
   input[type="range"]::-webkit-slider-thumb:hover {
-    
-    box-shadow: #4c045236 0px 0px 0.2vmin 0.5vmin;
+    background: #6e3255f8;
+    box-shadow: #4c045236 0px 0px 0.5vmin 0.3vmin;
   }
   
   /*quando clicchi sul thumb*/
@@ -65,26 +65,26 @@ input[type="range"] {
 
   .inputLength{
     height:calc(0.6vmin + 0.3vmax);
-    width:calc(33vmax - 15.5vmin);
-    
+    /* width:calc(33vmax - 15.5vmin); */
+    width: 70%;
     
     margin-left:calc(27% - 2vmax);
     
     margin-bottom:3.8vmin;
-    
-    
 
   } 
 
   .ticks {
 
     height:calc(0.6vmin + 0.3vmax);
-    width:calc(32.7vmax - 16.4vmin);
-
+    width:calc(31.3vmax - 17.4vmin);
+    /* right: 7.5%;  */
     position:absolute;
-    /* margin-left:calc(14.7% - 1.2vmin); */
-    right: 4.7%;
-    
+    margin-left:calc(14.7% - 1.2vmin);
+    /* width:100%; */
+    /* min-width: 20%; */
+    /* margin-left:calc(20% - 4.3vmax); */
+    /* margin-left:-63%; */
     margin-top: -3.5vmin;
     
 
@@ -111,18 +111,13 @@ input[type="range"] {
     
   }
 
-
-  .discreteSlider{
-
-  }
-
   .inputComplexity{
   
     height:calc(0.6vmin + 0.3vmax);
-    width:calc(33vmax - 15.5vmin);
+    /* width:calc(33vmax - 15.5vmin); */
+    width: 70%;
     
-    
-    margin-left:calc(27% - 2vmax);
+    margin-left:calc(27% - 1.4vw);
     
     margin-bottom:2.8vmin;
     

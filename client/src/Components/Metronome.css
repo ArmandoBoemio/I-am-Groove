@@ -62,7 +62,7 @@
   .metronome button {
     background: #530131a6;
     
-    border: 1 solid #d6d09d;
+    border: 0.2vmin ridge #1b0031;
     border-radius: 1vmin;
     
     text-align: center; 
@@ -91,3 +91,10 @@
     
   }
 
+.metronome button:active {
+    position: relative;
+    top: 0.1vw;
+    left:0.1vh;
+    background: #47012ace;
+    color: #9d9a79;
+}

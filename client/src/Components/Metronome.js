@@ -214,7 +214,8 @@ class Metronome extends Component {
 
                 </div>               
                 
-                <button onClick={this.startStop}>
+                <button 
+                    onClick={this.startStop}>
                     {playing ? 'Stop' : 'Start'}
                 </button>
 

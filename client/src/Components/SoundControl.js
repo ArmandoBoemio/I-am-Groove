@@ -1,9 +1,6 @@
 import { Component } from "react";
-import Dropdown from "./Dropdown";
-import SelectSource from "./SelectSource";
 import click from './click1.wav';
-import { MediaRecorder, register } from 'extendable-media-recorder';
-import { connect } from 'extendable-media-recorder-wav-encoder';
+import { MediaRecorder} from 'extendable-media-recorder';
 import './SoundControl.css';
 
 class SoundControl extends Component{
@@ -13,7 +10,7 @@ class SoundControl extends Component{
         this.state = {
             id: this.props.id,
             isRecording: false,
-            isPlaying: false,
+            
             isDefaultAudio: false,
             isAvailable: false,
         };
@@ -34,7 +31,6 @@ class SoundControl extends Component{
                 this.recordedAudio.play(); 
             }
             else {alert('No Audio recorded yet!')}
-
         }
     };
 
@@ -79,24 +75,24 @@ class SoundControl extends Component{
         });
     };
 
-    downloadFile(file) {
-        // Create a link and set the URL using `createObjectURL`
-        const link = document.createElement("a");
-        link.style.display = "none";
-        link.href = URL.createObjectURL(file);
-        link.download = file.name;
+    // downloadFile(file) {
+    //     // Create a link and set the URL using `createObjectURL`
+    //     const link = document.createElement("a");
+    //     link.style.display = "none";
+    //     link.href = URL.createObjectURL(file);
+    //     link.download = file.name;
       
-        // It needs to be added to the DOM so it can be clicked
-        document.body.appendChild(link);
-        link.click();
+    //     // It needs to be added to the DOM so it can be clicked
+    //     document.body.appendChild(link);
+    //     link.click();
       
-        // To make this work on Firefox we need to wait
-        // a little while before removing it.
-        setTimeout(() => {
-          URL.revokeObjectURL(link.href);
-          link.parentNode.removeChild(link);
-        }, 0);
-      }
+    //     // To make this work on Firefox we need to wait
+    //     // a little while before removing it.
+    //     setTimeout(() => {
+    //       URL.revokeObjectURL(link.href);
+    //       link.parentNode.removeChild(link);
+    //     }, 0);
+    //   }
 
       postAudioBlob = async (id,audioBlob) => {
 

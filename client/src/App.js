@@ -16,6 +16,7 @@ import { connect } from 'extendable-media-recorder-wav-encoder';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+
 function App() {
 
 
@@ -28,17 +29,21 @@ function App() {
   })
 
   const [patternState, setPatterns] = useState({
-    pattern: {},
+    pattern: new Array(64).fill(0),
     rowdimension: 16
   })
+
+  const [isPlaying, setPlay] = useState(false);
 
   useEffect(()=>{
     postState(controls)
   },[controls])
 
   useEffect(()=>{
-    console.log(patternState.pattern);
+    console.log('Current pattern: \n' + patternState.pattern);
   }, [patternState.pattern])
+
+  useEffect(() => console.log('Pattern is playing: ' + isPlaying), [isPlaying]);
 
   useEffect(async ()=>{
     await register(await connect());  
@@ -68,7 +73,6 @@ function App() {
       body: generate //JSON.stringify(objct)
     });
     if(response.ok){
-      console.log("response worked!")
         response.json().then((pattern)=>{
           
           setPatterns({
@@ -80,6 +84,12 @@ function App() {
           }) 
       })
     }
+  }
+
+
+
+  const playStop = () => {
+    setPlay(current => !current)
   }
 
 
@@ -128,7 +138,7 @@ function App() {
     setControls(cont);
   }
 
-  
+ 
 
   const numberOfChannels = Array.from(Array(controls.numberOfChannels).keys());
     
@@ -149,7 +159,7 @@ function App() {
 
             <div className='sliders'>
               
-              <Metronome  beatsPerMeasure={controls.beatsPerMeasure} onChange={onBPMChange} bpm={controls.BPM}></Metronome>
+              <Metronome beatsPerMeasure={controls.beatsPerMeasure} onChange={onBPMChange} bpm={controls.BPM}></Metronome>
               <Measure onChange={onMeasureChange}></Measure>
               
               <div className='rightside'>
@@ -162,19 +172,19 @@ function App() {
             <div className='sounds'>
 
               {numberOfChannels.map((key)=>
-              <SoundChannel key={key} id={key} rowdim={patternState.rowdimension} pattern={patternState.pattern}></SoundChannel>
+              <SoundChannel key={key} id={key} rowdim={patternState.rowdimension} pattern={patternState.pattern} isPlaying={isPlaying}></SoundChannel>
               )}
 
               <div className="Buttons">
                 <GenerateButton generatePattern={generatePattern}></GenerateButton>
-                <PlayButton></PlayButton>
+                <PlayButton playStop={playStop}></PlayButton>
               </div>
 
               
             </div>
 
             <footer className="app_footer">
-                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM">on Github</a></p>
+                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM">Github</a></p>
                 <p className="lowright">Armando Boemio, Filippo Gualtieri, Gabriele Maucione ©</p>
             </footer>
 

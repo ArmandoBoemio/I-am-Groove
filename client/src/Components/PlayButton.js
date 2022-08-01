@@ -23,8 +23,7 @@ class PlayButton extends Component{
         } else {
             //Start timer with current BPM
             this.setState(
-                {
-                    
+                {                   
                     patternPlaying: true
                 },
                 
@@ -32,6 +31,7 @@ class PlayButton extends Component{
             
         }
     };
+    
 
     render(){
         
@@ -40,7 +40,8 @@ class PlayButton extends Component{
             <div className="background">
 
                 <button className="Play"
-                        onClick={this.startStop}>
+                        onClick={() => {this.startStop(); this.props.playStop();}}>
+                        {/* onClick={this.props.playStop}>  */}
                         {this.state.patternPlaying ? 'Stop' : 'Play'}
                        
 

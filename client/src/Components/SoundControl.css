@@ -34,7 +34,7 @@
    
     background: #bd157775;
     
-    border: 1% solid #e4e4e4;
+    border: 0.2vmin ridge #1b0031;
     border-radius: 1vmin;
     
     color: #d6d09d;
@@ -48,6 +48,14 @@
     inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
 
+  }
+
+  .playing:active {
+      position: relative;
+      top: 0.05vw;
+      left:0.01vh;
+      background: #47012ace;
+      color: #9d9a79;
   }
 
   .recording {
@@ -60,7 +68,7 @@
    
     background: #701a5493;
  
-    border: 1% solid #e4e4e4;
+    border: 0.2vmin ridge #1b0031;
     border-radius: 1vmin;
     
     color: #d6d09d;
@@ -76,6 +84,14 @@
     inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
   }
+
+  .recording:active {
+    position: relative;
+    top: 0.05vw;
+    left:0.01vh;
+    background: #47012ace;
+    color: #9d9a79;
+}
 
   .load {
 
@@ -87,7 +103,7 @@
    
     background: #520f5881;
  
-    border: 1% solid #e4e4e4;
+    border: 0.2vmin ridge #1b0031;
     border-radius: 1vmin;
     
     color: #d6d09d;
@@ -104,6 +120,15 @@
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
     
   }
+
+  .load:active {
+    position: relative;
+    top: 0.05vw;
+    left:0.01vh;
+    background: #47012ace;
+    color: #9d9a79;
+}
+
 
   .precountNumber{
     height: 1000px;

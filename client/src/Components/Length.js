@@ -55,8 +55,9 @@ class Length extends Component{
                     handleLenChange={this.handleLenChange}
                     handleWheel={this.handleWheel} 
                 >
-                </Slider>         
+                </Slider>   
 
+                
             </div>
             </>
         );

@@ -22,7 +22,7 @@
 .Play{
     background-image:linear-gradient(rgba(184, 20, 96, 0.726), rgb(102, 7, 38));
     border-radius: 3vmin;
-
+    border: 0.1vmin ridge #2e0146;
     letter-spacing: 0.3vmin;
 
     font-family: magicFont;
@@ -44,4 +44,12 @@
     inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.11),
     inset 0 0 0.8vmin       rgba(224, 218, 158, 0.315);
 
+}
+
+.Play:active {
+    position: relative;
+    top: 0.08vw;
+    left:0.01vh;
+    background-image:linear-gradient(rgba(141, 5, 53, 0.785), rgb(77, 6, 30));
+    color: #9d9a79;
 }

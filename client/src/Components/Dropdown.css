@@ -10,7 +10,7 @@
 .activateDropdown{
     background: #530131a6;
     
-    border: 1 solid #d6d09d;
+    border: 0.2vmin ridge #1b0031;
     border-radius: 1vmin;
     
     text-align: center; 
@@ -43,6 +43,14 @@
     padding:0.5vmin;
     text-align: center;
     
+}
+
+.activateDropdown:active {
+    position: relative;
+    top: 0.01vw;
+    left:0.01vh;
+    background: #47012abd;
+    color: #9d9a79;
 }
 
 .dropdownOptionsContainer{
@@ -99,4 +107,12 @@
     inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
     inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
     inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
+}
+
+.optionButton:active {
+    position: relative;
+    top: 0.01vw;
+    left:0.01vh;
+    background: #47012abd;
+    color: #9d9a79;
 }

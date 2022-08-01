@@ -22,7 +22,7 @@ class GenerateButton extends Component{
             <div className="background">
 
                 <button className="Generate"
-                        onClick={this.props.generatePattern}>       {/* this.generatePattern */}
+                        onClick={this.props.generatePattern}>  
                     generate
                 </button>
                     
