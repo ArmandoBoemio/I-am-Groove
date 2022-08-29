@@ -7,6 +7,8 @@ class Cell extends Component{
         this.state={
         isCellOn: false,
         isPlaying: false,
+        isCellOnCurrentStep:false,   
+        
         }
     }
 
@@ -37,12 +39,15 @@ componentDidUpdate(prevProps, prevState, snapshot) {
     }
   }
 
+
+
 // useEffect(() => {
-//     if (isNoteOn) {
+//     if (isCellOn && isCellOnCurrentStep) {
 //         play()
 //     }
 
-// }, [isNoteOn, play])
+// }, [isCellOn, isCellOnCurrentStep, play])
+
 
 
 render(){

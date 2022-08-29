@@ -12,7 +12,8 @@ class SoundChannel extends Component{
         this.state={
             nCells: 16,
             pattern: [],
-            isPlaying: false  
+            isPlaying: false,
+            count: 0
         }
     }
 
@@ -36,8 +37,17 @@ class SoundChannel extends Component{
             }) 
             // console.log('yo '+ this.state.isPlaying)   
         }
-    }
+        if (prevState.count !== this.props.count){
+            this.setState({
+                count: this.props.count
+            })
+            // console.log('count: ' + this.state.count)
+            // this.setState({nCells: this.state.count})
+        }
+        }
+    
 
+    // playingPattern()
 
     render(){
         let nCells = this.props.rowdim
@@ -69,7 +79,7 @@ class SoundChannel extends Component{
                 <div className="gridContainer">
                    
                     {nCells.map((key)=>
-                    <Cell key={key} activity={this.state.pattern[key]} num={(60  - this.props.rowdim)*0.5} isPlaying={this.state.isPlaying}>
+                    <Cell key={key} activity={this.state.pattern[key]} num={(60 - this.props.rowdim)*0.5} isPlaying={this.state.isPlaying}>
                     </Cell>
                     )}
                     

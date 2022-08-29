@@ -56,7 +56,7 @@ def audioProcess():
     if not exists:
         os.makedirs(path)
     
-    audio_loc = "tmp/audio.wav" #% id
+    audio_loc = "tmp/audio_%s.wav" % id
     trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
     sf.write(audio_loc, trimmed_audio, sr)
     

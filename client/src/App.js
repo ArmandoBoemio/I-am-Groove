@@ -10,7 +10,6 @@ import GenerateButton from './Components/GenerateButton';
 import Complexity from './Components/Complexity'
 import PlayButton from './Components/PlayButton';
 
-
 import { register } from 'extendable-media-recorder';
 import { connect } from 'extendable-media-recorder-wav-encoder';
 import { useState } from 'react';
@@ -20,6 +19,7 @@ import { useEffect } from 'react';
 function App() {
 
 
+  //State controls
   const [controls, setControls]=useState({
     beatsPerMeasure: 4,
     numberOfChannels:4,   //occhio qua che il nome cambia
@@ -28,12 +28,15 @@ function App() {
     complexity: 50
   })
 
+
   const [patternState, setPatterns] = useState({
     pattern: new Array(64).fill(0),
     rowdimension: 16
   })
 
-  const [isPlaying, setPlay] = useState(false);
+  const [isPlaying, setPlay] = useState(false)
+  const [count, setCount] = useState(0)
+  const [timer, setTimer] = useState(-1)
 
   useEffect(()=>{
     postState(controls)
@@ -42,14 +45,13 @@ function App() {
   useEffect(()=>{
     console.log('Current pattern: \n' + patternState.pattern);
   }, [patternState.pattern])
-
-  useEffect(() => console.log('Pattern is playing: ' + isPlaying), [isPlaying]);
+  useEffect(() => console.log('Pattern is playing: ' + isPlaying), [isPlaying])
+  useEffect(() => console.log('count: ' + count), [count]) 
+  
 
   useEffect(async ()=>{
     await register(await connect());  
   },[])
-
-  
   
   const postState = async (objct) => {
     const response = await fetch("/state", {
@@ -90,6 +92,29 @@ function App() {
 
   const playStop = () => {
     setPlay(current => !current)
+    if(!isPlaying){startCounting(controls.BPM)}
+    if(isPlaying){stopCounting()}
+  }
+
+  const startCounting = (current_bpm) => {
+    // var current_bpm = controls.BPM
+    setTimer(setInterval(() => {
+      setCount(prev => prev+1)
+      readCell()
+    }, (60/current_bpm) * 1000))
+  }
+  const stopCounting = () => {
+    clearInterval(timer)
+    setTimer(-1)
+    setCount(0)
+  }
+  useEffect(() => () => {
+    clearTimeout(timer);
+  }, [])
+
+
+  const readCell = () => {
+    
   }
 
 
@@ -172,12 +197,13 @@ function App() {
             <div className='sounds'>
 
               {numberOfChannels.map((key)=>
-              <SoundChannel key={key} id={key} rowdim={patternState.rowdimension} pattern={patternState.pattern} isPlaying={isPlaying}></SoundChannel>
+              <SoundChannel key={key} id={key} rowdim={patternState.rowdimension} pattern={patternState.pattern} isPlaying={isPlaying} count={count}></SoundChannel>
               )}
 
               <div className="Buttons">
                 <GenerateButton generatePattern={generatePattern}></GenerateButton>
                 <PlayButton playStop={playStop}></PlayButton>
+                {/* <Clock></Clock> */}
               </div>
 
               
