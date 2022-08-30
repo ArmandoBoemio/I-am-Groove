@@ -19,7 +19,8 @@ import { useEffect } from 'react';
 function App() {
 
 
-  //State controls
+  //STATE VARIABLES
+
   const [controls, setControls]=useState({
     beatsPerMeasure: 4,
     numberOfChannels:4,   //occhio qua che il nome cambia
@@ -28,8 +29,7 @@ function App() {
     complexity: 50
   })
 
-
-  const [patternState, setPatterns] = useState({
+  const [patternState, setPattern] = useState({
     pattern: new Array(64).fill(0),
     rowdimension: 16
   })
@@ -38,6 +38,10 @@ function App() {
   const [count, setCount] = useState(0)
   const [timer, setTimer] = useState(-1)
 
+
+
+  //STATE HOOKS
+
   useEffect(()=>{
     postState(controls)
   },[controls])
@@ -45,14 +49,31 @@ function App() {
   useEffect(()=>{
     console.log('Current pattern: \n' + patternState.pattern);
   }, [patternState.pattern])
-  useEffect(() => console.log('Pattern is playing: ' + isPlaying), [isPlaying])
-  useEffect(() => console.log('count: ' + count), [count]) 
-  
 
+  useEffect(() => console.log('Pattern is playing: ' + isPlaying), [isPlaying])
+
+  useEffect(() => {
+    console.log('count: ' + count)
+    if(count==patternState.rowdimension){
+      setTimeout(() => {
+        setCount(1);
+        }, (60/controls.BPM) * 1000)
+        
+    }
+  }, [count]) 
+  
   useEffect(async ()=>{
     await register(await connect());  
   },[])
-  
+
+  useEffect(() => () => {
+    clearTimeout(timer);
+  }, [])
+
+
+
+  //FUNCTIONS
+
   const postState = async (objct) => {
     const response = await fetch("/state", {
       method: "POST",
@@ -66,8 +87,6 @@ function App() {
     }
   }
   
-
-
   const generatePattern = async (generate) => {
     const response = await fetch("/pattern", {
       method: "POST",
@@ -77,7 +96,7 @@ function App() {
     if(response.ok){
         response.json().then((pattern)=>{
           
-          setPatterns({
+          setPattern({
             rowdimension: (pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).length),
             pattern: (pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).concat(
                       pattern.Pattern_snare.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number),
@@ -88,36 +107,27 @@ function App() {
     }
   }
 
-
-
   const playStop = () => {
     setPlay(current => !current)
     if(!isPlaying){startCounting(controls.BPM)}
     if(isPlaying){stopCounting()}
   }
-
+                                                      //todo: counter together with metronome click and instant change with bpm
   const startCounting = (current_bpm) => {
     // var current_bpm = controls.BPM
     setTimer(setInterval(() => {
-      setCount(prev => prev+1)
-      readCell()
+      setCount(prev => prev+1);
     }, (60/current_bpm) * 1000))
+    
+    
   }
+
   const stopCounting = () => {
     clearInterval(timer)
     setTimer(-1)
     setCount(0)
   }
-  useEffect(() => () => {
-    clearTimeout(timer);
-  }, [])
-
-
-  const readCell = () => {
-    
-  }
-
-
+  
 
   const onMeasureChange = (value) =>{
     const cont={
@@ -164,6 +174,7 @@ function App() {
   }
 
  
+  // VIEW
 
   const numberOfChannels = Array.from(Array(controls.numberOfChannels).keys());
     

@@ -21,7 +21,8 @@ class SoundChannel extends Component{
     componentDidMount() {
         this.setState({
             pattern: Array.from(this.props.pattern).slice(this.props.rowdim*this.props.id,this.props.rowdim*(this.props.id+1)),
-            isPlaying: this.props.isPlaying
+            isPlaying: this.props.isPlaying,
+            count: this.props.count
         }) 
     }
 
@@ -34,20 +35,16 @@ class SoundChannel extends Component{
         if (prevState.isPlaying !== this.props.isPlaying) {
             this.setState({
                 isPlaying: this.props.isPlaying            
-            }) 
-            // console.log('yo '+ this.state.isPlaying)   
+            })  
         }
         if (prevState.count !== this.props.count){
             this.setState({
                 count: this.props.count
             })
-            // console.log('count: ' + this.state.count)
-            // this.setState({nCells: this.state.count})
         }
         }
     
 
-    // playingPattern()
 
     render(){
         let nCells = this.props.rowdim
@@ -61,7 +58,6 @@ class SoundChannel extends Component{
 
                     <div className="texto">
                         Sound #{this.props.id+1} 
-                        {/* {this.state.pattern}   //for debug  */}   
                     </div>
 
                     <div className="barra">
@@ -71,7 +67,6 @@ class SoundChannel extends Component{
                     <div className="Controls">
                         <SoundControl id={this.props.id} >
                         </SoundControl>
-                        {/* <button onClick={this.debugpost}></button> */}
                     </div> 
 
                 </div>
@@ -79,7 +74,8 @@ class SoundChannel extends Component{
                 <div className="gridContainer">
                    
                     {nCells.map((key)=>
-                    <Cell key={key} activity={this.state.pattern[key]} num={(60 - this.props.rowdim)*0.5} isPlaying={this.state.isPlaying}>
+                    <Cell key={key} idCell={key} idChannel={this.props.id+1} nCells={this.props.rowdim} activity={this.state.pattern[key]} num={(60 - this.props.rowdim)*0.5} isPlaying={this.state.isPlaying} count={this.state.count}>
+                        {this.props.id}
                     </Cell>
                     )}
                     

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Metronome.css';
-import click1 from './click1.wav';
-import click2 from './click2.wav';
+import click1 from './sounds/click1.wav';
+import click2 from './sounds/click2.wav';
 import Slider from './Slider';
 
 class Metronome extends Component {

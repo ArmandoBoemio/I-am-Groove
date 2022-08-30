@@ -1,5 +1,5 @@
 import { Component } from "react";
-import click from './click1.wav';
+import click from './sounds/click1.wav';
 import { MediaRecorder} from 'extendable-media-recorder';
 import './SoundControl.css';
 
@@ -134,11 +134,9 @@ class SoundControl extends Component{
                     Play   
                 </button>                    
                 
-
                 <button className="recording"
                     onClick={isRecording ? this.stopRecording : this.startRecording}>
-                        {isRecording ? 'Stop' : 'Record'}
-                    
+                        {isRecording ? 'Stop' : 'Record'}    
                 </button>
             
                 <button className='load'
