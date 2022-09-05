@@ -21,6 +21,19 @@ class SoundControl extends Component{
     }
     
 
+    componentDidMount(){
+        this.setState({
+            isDefaultAudio: this.props.isDefaultAudio
+        })
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.isDefaultAudio!== this.props.isDefaultAudio){
+            this.setState({
+                isDefaultAudio: this.props.isDefaultAudio
+            })
+        }
+    }
+
     startPlayback = () => {
         if (this.state.isDefaultAudio){
             console.log('Listening to the default audio');
@@ -99,7 +112,7 @@ class SoundControl extends Component{
         await fetch("/audioProcess", {
             method: "POST",
             headers:{
-                "id": id,
+                "id": id+1,
                 "Content-Type": "application/json"
               },
             body: audioBlob
@@ -112,16 +125,7 @@ class SoundControl extends Component{
         })
       }
     
-    swapSource = () =>{
-        if (!this.state.isDefaultAudio){
-            console.log('Default audio');
-        }else if (this.state.isDefaultAudio){
-            console.log('User recorded audio');
-        }
-        this.setState(state =>({
-            isDefaultAudio: !state.isDefaultAudio
-        }));
-    }
+    
     
 
     render(){
@@ -140,7 +144,7 @@ class SoundControl extends Component{
                 </button>
             
                 <button className='load'
-                    onClick={this.swapSource}>
+                    onClick={this.props.swapSource}>
                         {isDefaultAudio ? 'Default' : 'User'}
                 </button>
               

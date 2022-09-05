@@ -6,6 +6,7 @@ import tempfile
 import os
 from urllib.request import urlopen
 import soundfile as sf
+import shutil
 from pattern_function import generate_measurePattern
 
 
@@ -42,7 +43,6 @@ def audioProcess():
 
     audioBlob = request.data
     id = request.headers['id']
-
     f = tempfile.NamedTemporaryFile(delete=False)
     f.write(audioBlob)
     audio, sr = librosa.load(f.name)
@@ -50,16 +50,16 @@ def audioProcess():
     os.unlink(f.name)
     
 
-    path = 'tmp'
+    path = '../client/src/Components/sounds/userSounds'
     exists = os.path.exists(path)
     print(exists)
     if not exists:
         os.makedirs(path)
     
-    audio_loc = "tmp/audio_%s.wav" % id
+    audio_loc = "../client/src/Components/sounds/userSounds/userAudio_%s.wav" % id
     trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
     sf.write(audio_loc, trimmed_audio, sr)
-    
+
     """
     #TODO: delete audio after sending
     @app.after_request

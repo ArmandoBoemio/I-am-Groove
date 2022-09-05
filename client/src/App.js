@@ -36,7 +36,7 @@ function App() {
 
   const [isPlaying, setPlay] = useState(false)
   const [count, setCount] = useState(0)
-  const [timer, setTimer] = useState(-1)
+  // const [timer, setTimer] = useState(-1)
 
 
 
@@ -50,25 +50,38 @@ function App() {
     console.log('Current pattern: \n' + patternState.pattern);
   }, [patternState.pattern])
 
-  useEffect(() => console.log('Pattern is playing: ' + isPlaying), [isPlaying])
+  useEffect(() => {
+    console.log('Pattern is playing: ' + isPlaying)
+  }, [isPlaying] )
 
   useEffect(() => {
     console.log('count: ' + count)
-    if(count==patternState.rowdimension){
-      setTimeout(() => {
-        setCount(1);
-        }, (60/controls.BPM) * 1000)
-        
+
+    if(isPlaying){
+      if(count!==patternState.rowdimension){
+        if(count!==0){
+          setTimeout(() => {
+            setCount(prev=>prev+1);
+            }
+          , (60/(controls.BPM)) * 1000)}   
+      }
+      if(count===patternState.rowdimension){
+        setTimeout(() => {
+          setCount(1);
+          }, (60/(controls.BPM)) * 1000)        
+      }    
     }
-  }, [count]) 
+    if(!isPlaying){setCount(0)}
+  
+  }, [count, controls.BPM, isPlaying, patternState.rowdimension]) 
   
   useEffect(async ()=>{
     await register(await connect());  
   },[])
 
-  useEffect(() => () => {
-    clearTimeout(timer);
-  }, [])
+  // useEffect(() => () => {
+  //   clearTimeout(timer);
+  // }, [])
 
 
 
@@ -113,18 +126,23 @@ function App() {
     if(isPlaying){stopCounting()}
   }
                                                       //todo: counter together with metronome click and instant change with bpm
+  // const startCounting = (current_bpm) => {
+  //   // var current_bpm = controls.BPM
+  //   setTimer(setInterval(() => {
+  //     setCount(prev => prev+1);
+  //   }, (60/current_bpm) * 1000))
+  // }
+
   const startCounting = (current_bpm) => {
     // var current_bpm = controls.BPM
-    setTimer(setInterval(() => {
-      setCount(prev => prev+1);
-    }, (60/current_bpm) * 1000))
-    
-    
+    setTimeout(() => {
+      setCount(1);
+    }, (60/current_bpm) * 1000)
   }
 
   const stopCounting = () => {
-    clearInterval(timer)
-    setTimer(-1)
+    // clearInterval(timer)
+    // setTimer(-1)
     setCount(0)
   }
   

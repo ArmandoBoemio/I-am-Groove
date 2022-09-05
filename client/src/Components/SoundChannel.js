@@ -12,6 +12,7 @@ class SoundChannel extends Component{
         this.state={
             nCells: 16,
             pattern: [],
+            isDefaultAudio: false,
             isPlaying: false,
             count: 0
         }
@@ -37,14 +38,25 @@ class SoundChannel extends Component{
                 isPlaying: this.props.isPlaying            
             })  
         }
-        if (prevState.count !== this.props.count){
+        if (prevProps.count !== this.props.count){
             this.setState({
                 count: this.props.count
             })
         }
         }
-    
 
+    //function for soundcontrol, child component 
+    swapSource = () =>{
+        if (!this.state.isDefaultAudio){
+            console.log('Default audio');
+        }else if (this.state.isDefaultAudio){
+            console.log('User recorded audio');
+        }
+        this.setState(state =>({
+            isDefaultAudio: !state.isDefaultAudio
+        }));
+    }
+    
 
     render(){
         let nCells = this.props.rowdim
@@ -65,7 +77,7 @@ class SoundChannel extends Component{
                     </div>
 
                     <div className="Controls">
-                        <SoundControl id={this.props.id} >
+                        <SoundControl id={this.props.id} isDefaultAudio={this.state.isDefaultAudio} swapSource={this.swapSource}>
                         </SoundControl>
                     </div> 
 
@@ -74,7 +86,10 @@ class SoundChannel extends Component{
                 <div className="gridContainer">
                    
                     {nCells.map((key)=>
-                    <Cell key={key} idCell={key} idChannel={this.props.id+1} nCells={this.props.rowdim} activity={this.state.pattern[key]} num={(60 - this.props.rowdim)*0.5} isPlaying={this.state.isPlaying} count={this.state.count}>
+                    <Cell   key={key} idCell={key} idChannel={this.props.id+1} 
+                            nCells={this.props.rowdim} activity={this.state.pattern[key]} 
+                            isPlaying={this.state.isPlaying} count={this.state.count}
+                            isDefaultAudio={this.state.isDefaultAudio}>
                         {this.props.id}
                     </Cell>
                     )}
