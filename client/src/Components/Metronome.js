@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Metronome.css';
-import click1 from './sounds/click1.wav';
-import click2 from './sounds/click2.wav';
+import click1 from './sounds/click1.mp3';
+import click2 from './sounds/click2.mp3';
 import Slider from './Slider';
 
 class Metronome extends Component {
@@ -31,7 +31,7 @@ class Metronome extends Component {
 
             this.setState({
                 count: 0,
-            },()=>this.props.onChange(bpm));
+            }, () => this.props.onChange(bpm));
         } else {
             this.props.onChange(bpm)
         }
@@ -40,7 +40,7 @@ class Metronome extends Component {
 
     playClick = () => {
         const { beatsPerMeasure } = this.props;
-        const { count}=this.state;
+        const { count } = this.state;
         if (count % beatsPerMeasure === 0) {
             this.click2.play();
         } else {
@@ -55,7 +55,7 @@ class Metronome extends Component {
     //This handles the tap tempo
     handleTapTempo = () => {
         var { taps } = this.state;
-        
+
         if (taps.length === 0) {
             let time = new Date();
             taps[0] = time.getTime();
@@ -64,26 +64,27 @@ class Metronome extends Component {
             taps.push(time.getTime());
         }
 
-        
-        if(this.state.checkTapTempo===false){
-            this.setState({checkTapTempo: true})
-            this.setState({stopTapId: setInterval(this.runStopTempo,500) })
+
+        if (this.state.checkTapTempo === false) {
+            this.setState({ checkTapTempo: true })
+            this.setState({ stopTapId: setInterval(this.runStopTempo, 500) })
         }
-       
+
     }
 
-    runStopTempo= () =>{
-        var { taps,stopTapId } = this.state;
-        let currTime=new Date();
-        if(Math.abs(taps[taps.length-1]-currTime.getTime())>1200){
-            console.log(Math.abs((taps[taps.length-1]-currTime.getTime())/1000));
+    runStopTempo = () => {
+        var { taps, stopTapId } = this.state;
+        let currTime = new Date();
+        if (Math.abs(taps[taps.length - 1] - currTime.getTime()) > 1200) {
+            console.log(Math.abs((taps[taps.length - 1] - currTime.getTime()) / 1000));
             clearInterval(stopTapId);
-            this.setState({checkTapTempo: false})
+            this.setState({ checkTapTempo: false })
             this.stopTapTempo()
-            if(this.state.playing){
+            if (this.state.playing) {
                 this.startStop();
-                this.startStop()}
-                else{
+                this.startStop()
+            }
+            else {
                 this.startStop()
             }
         }
@@ -96,32 +97,32 @@ class Metronome extends Component {
         if (numTaps <= 1) {
             console.log("Not enough taps!")
         } else {
-            for (i=numTaps; i >= 0; i--) {
-                if (i>0) {
-                    calculatedTaps[newTapIndex] = taps[i] - taps[i-1];
+            for (i = numTaps; i >= 0; i--) {
+                if (i > 0) {
+                    calculatedTaps[newTapIndex] = taps[i] - taps[i - 1];
                     newTapIndex++;
                 };
             };
             var tapSum = 0;
-            for( var j = 0; j < calculatedTaps.length; j++ ){
-                tapSum += parseInt( calculatedTaps[j], 10 ); //don't forget to add the base
+            for (var j = 0; j < calculatedTaps.length; j++) {
+                tapSum += parseInt(calculatedTaps[j], 10); //don't forget to add the base
             }
 
-            var avgOfTaps = tapSum/calculatedTaps.length;
+            var avgOfTaps = tapSum / calculatedTaps.length;
             bpm = 60000 / avgOfTaps;
-            if(bpm>250){bpm=250; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 250')}
-            if(bpm<50){bpm=50; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 50')}
-            bpm=bpm.toFixed(2);
+            if (bpm > 250) { bpm = 250; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 250') }
+            if (bpm < 50) { bpm = 50; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 50') }
+            bpm = bpm.toFixed(2);
             this.props.onChange(bpm)
             //this.setState({ bpm },()=> this.postBPM(this.state.bpm));
             taps.length = 0;
             calculatedTaps.length = 0;
         }
-        
-    }
-            
 
-    
+    }
+
+
+
 
     startStop = () => {
         if (this.state.playing) {
@@ -143,53 +144,53 @@ class Metronome extends Component {
                 },
                 this.playClick
             );
-            
+
         }
     };
 
-    checkIfLastWheel=(timeLastWheel, interval)=>{
+    checkIfLastWheel = (timeLastWheel, interval) => {
         let time = new Date();
-        console.log(time.getTime()-timeLastWheel)
-        if(time.getTime()-timeLastWheel>1000){
-            
+        console.log(time.getTime() - timeLastWheel)
+        if (time.getTime() - timeLastWheel > 1000) {
+
             this.startStop()
             clearInterval(interval)
         }
     }
 
-    handleWheel=(event)=>{
-        const delta =event.deltaY;
-        
-        if(this.props.bpm>50 && this.props.bpm<250){
+    handleWheel = (event) => {
+        const delta = event.deltaY;
+
+        if (this.props.bpm > 50 && this.props.bpm < 250) {
             if (delta > 0) {
-                this.props.onChange(this.props.bpm-1)
+                this.props.onChange(this.props.bpm - 1)
             } else {
                 if (parseInt(this.props.bpm) > 0) {
-                    this.props.onChange(this.props.bpm+1)
-                    
+                    this.props.onChange(this.props.bpm + 1)
+
                 }
             }
         }
 
-        if(this.props.bpm === 50){
-            if(delta<0){
-                this.props.onChange(this.props.bpm +1)
+        if (this.props.bpm === 50) {
+            if (delta < 0) {
+                this.props.onChange(this.props.bpm + 1)
             }
         }
-        if(this.props.bpm === 250){
-            if(delta>0){
+        if (this.props.bpm === 250) {
+            if (delta > 0) {
                 this.props.onChange(this.props.bpm - 1)
-                
+
             }
-            
+
         }
-        if(this.state.playing===true){
-        this.startStop()
-        let time = new Date();
-        
-        let interval = setInterval(()=> {this.checkIfLastWheel(time.getTime(), interval)},200);
+        if (this.state.playing === true) {
+            this.startStop()
+            let time = new Date();
+
+            let interval = setInterval(() => { this.checkIfLastWheel(time.getTime(), interval) }, 200);
         }
-    }  
+    }
 
     render() {
         const { playing } = this.state;
@@ -197,34 +198,34 @@ class Metronome extends Component {
         return (
 
             <div className="metronome">
-                
+
                 <div className="bpm-slider">
 
                     <div className="titleMetronome">
                         BPM
                     </div>
 
-                    <Slider 
-                        bpm={this.props.bpm} 
+                    <Slider
+                        bpm={this.props.bpm}
                         type={'bpm_type'}
-                        handleBpmChange={this.handleBpmChange} 
+                        handleBpmChange={this.handleBpmChange}
                         handleWheel={this.handleWheel}>
                     </Slider>
 
 
-                </div>               
-                
-                <button 
+                </div>
+
+                <button
                     onClick={this.startStop}>
                     {playing ? 'Stop' : 'Start'}
                 </button>
 
-                <button 
+                <button
                     onClick={this.handleTapTempo}>Tap
                 </button>
-               
+
             </div>
-            
+
         );
     }
 }
