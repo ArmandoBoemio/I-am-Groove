@@ -38,7 +38,7 @@ function App() {
   const [count, setCount] = useState(0)
   // const [timer, setTimer] = useState(-1)
 
-
+  const [subdivision, setSubdivision] = useState(4)
 
   //STATE HOOKS
 
@@ -56,24 +56,43 @@ function App() {
 
   useEffect(() => {
     console.log('count: ' + count)
-
     if(isPlaying){
       if(count!==patternState.rowdimension){
         if(count!==0){
           setTimeout(() => {
-            setCount(prev=>prev+1);
+            setCount(count=>count+1);
             }
-          , (60/(controls.BPM)) * 1000)}   
+          , (60/(controls.BPM*subdivision)) * 1000)}   
       }
       if(count===patternState.rowdimension){
         setTimeout(() => {
           setCount(1);
-          }, (60/(controls.BPM)) * 1000)        
+          }, (60/(controls.BPM*subdivision)) * 1000)        
       }    
     }
     if(!isPlaying){setCount(0)}
   
-  }, [count, controls.BPM, isPlaying, patternState.rowdimension]) 
+  }, [count]) 
+
+  
+  // useEffect(() => {
+  //   if(controls.complexity<=30){
+  //     setSubdivision(2)
+  //   }
+  //   if(30<controls.complexity && controls.complexity<=60){
+  //     setSubdivision(4)
+  //   }
+  //   if(60<controls.complexity && controls.complexity<=100){
+  //     setSubdivision(8)
+  //   }
+  //   setTimeout(() => {
+  //     console.log('subdivision: ' + subdivision)
+  //   }, 100)
+    
+
+  // }, [patternState.isGenerated])
+
+
   
   useEffect(async ()=>{
     await register(await connect());  
@@ -116,9 +135,23 @@ function App() {
                       pattern.Pattern_hh.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number),
                       pattern.Pattern_tom.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number)))
           }) 
+
+          if(controls.complexity<=30){
+            setSubdivision(2)
+          }
+          if(30<controls.complexity && controls.complexity<=60){
+            setSubdivision(4)
+          }
+          if(60<controls.complexity && controls.complexity<=100){
+            setSubdivision(8)
+          }
+          setTimeout(() => {
+            console.log('subdivision: ' + subdivision)
+          }, 100)
       })
     }
   }
+
 
   const playStop = () => {
     setPlay(current => !current)

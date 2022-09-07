@@ -32,6 +32,7 @@ class SoundChannel extends Component {
             this.setState({
                 pattern: Array.from(this.props.pattern).slice(this.props.rowdim * this.props.id, this.props.rowdim * (this.props.id + 1)),
             })
+            // setTimeout(() => {console.log(this.state.pattern)}, 100)     //debug
         }
         if (prevState.isPlaying !== this.props.isPlaying) {
             this.setState({
@@ -93,7 +94,7 @@ class SoundChannel extends Component {
                 <div className="gridContainer">
 
                     {nCells.map((key) =>
-                        <Cell key={key} idCell={key} idChannel={this.props.id + 1}
+                        <Cell key={key} idCell={key+1} idChannel={this.props.id + 1}
                             nCells={this.props.rowdim} activity={this.state.pattern[key]}
                             isPlaying={this.state.isPlaying} count={this.state.count}
                             isDefaultAudio={this.state.isDefaultAudio}>

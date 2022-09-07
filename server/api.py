@@ -57,7 +57,7 @@ def audioProcess():
         os.makedirs(path)
     
     audio_loc = "../client/src/Components/sounds/userSounds/userAudio_%s.wav" % id
-    trimmed_audio, _= librosa.effects.trim(audio, top_db=30)
+    trimmed_audio, _= librosa.effects.trim(audio, top_db=20)
     sf.write(audio_loc, trimmed_audio, sr)
 
     """
