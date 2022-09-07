@@ -23,7 +23,8 @@ class SoundChannel extends Component {
         this.setState({
             pattern: Array.from(this.props.pattern).slice(this.props.rowdim * this.props.id, this.props.rowdim * (this.props.id + 1)),
             isPlaying: this.props.isPlaying,
-            count: this.props.count
+            count: this.props.count,
+            isDefaultAudio: true,
         })
     }
 
@@ -63,6 +64,7 @@ class SoundChannel extends Component {
                 isDefaultAudio: !state.isDefaultAudio
             }));
         }
+        // setTimeout(() => {console.log('default audio: '+ this.state.isDefaultAudio)}, 10)
     }
 
 
@@ -97,7 +99,8 @@ class SoundChannel extends Component {
                         <Cell key={key} idCell={key+1} idChannel={this.props.id + 1}
                             nCells={this.props.rowdim} activity={this.state.pattern[key]}
                             isPlaying={this.state.isPlaying} count={this.state.count}
-                            isDefaultAudio={this.state.isDefaultAudio}>
+                            isDefaultAudio={this.state.isDefaultAudio}
+                            newGeneration={this.props.newGeneration}>
                             {this.props.id}
                         </Cell>
                     )}

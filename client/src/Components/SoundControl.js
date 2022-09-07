@@ -121,7 +121,7 @@ class SoundControl extends Component {
             .then(myBlob => {
                 var objectURL = URL.createObjectURL(myBlob);
                 const audio = new Audio(objectURL);
-                console.log(audio);
+                // console.log(audio);
                 this.recordedAudio = audio;
             })
     }

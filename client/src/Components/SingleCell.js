@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import "./SingleCell.css"
-import defaultSound1 from './sounds/kik1.mp3';
-import defaultSound2 from './sounds/snare2.mp3'
-import defaultSound3 from './sounds/click1.mp3'
-import defaultSound4 from './sounds/perc4.mp3'
+import defaultSound1 from './sounds/defaultSound1_kick.mp3';
+import defaultSound2 from './sounds/defaultSound2_snare.mp3'
+import defaultSound3 from './sounds/defaultSound3_hh.mp3'
+import defaultSound4 from './sounds/defaultSound4_bell.mp3'
 import userSound1 from './sounds/userSounds/userAudio_1.wav'
 import userSound2 from './sounds/userSounds/userAudio_2.wav'
 import userSound3 from './sounds/userSounds/userAudio_3.wav'
@@ -22,7 +22,7 @@ class Cell extends Component{
         idCell: 1,
         nCells: 16,
         // audio: false,
-        isDefaultAudio: false
+        isDefaultAudio: true
         }
 
         this.audio = new Audio([])
@@ -49,7 +49,6 @@ handleOnClick=()=>{
     // this.setState(prevState => ({isCellOn: !prevState.isCellOn})); //, ()=>this.render
     setTimeout(()=> {console.log('You changed the current pattern in ' + this.state.isCellOn)}, 10)
     
-    // this.state.audio.play()
     this.audio.play();
 }
 
@@ -70,7 +69,12 @@ componentDidMount() {
   }
 
 componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevState.isCellOn !== this.props.activity ) {
+    if (prevProps.activity !== this.props.activity) {
+        this.setState({
+            isCellOn: this.props.activity
+        })           
+    }
+    if (this.props.newGeneration !== prevProps.newGeneration) {
         this.setState({
             isCellOn: this.props.activity
         })           
@@ -86,10 +90,12 @@ componentDidUpdate(prevProps, prevState, snapshot) {
             isPlaying: this.props.isPlaying            
         }) 
     }
-    if (prevProps.isDefaultAudio !== this.props.isDefaultAudio) {
+    if (prevState.isDefaultAudio !== this.props.isDefaultAudio) {
+        // console.log('yo')
         this.setState({
-            isDefaultAudio: this.props.isDefaultAudio           
+            isDefaultAudio: this.props.isDefaultAudio
         }) 
+        // setTimeout(()=> {console.log('Default is ' + this.props.isDefaultAudio)}, 10)
         if(this.props.isDefaultAudio){
             this.mountDefaultAudio()
         }
@@ -150,6 +156,7 @@ mountDefaultAudio(){
 }
 
 mountRecordedAudio(){
+    
     if(this.props.idChannel===1){this.audio = new Audio([userSound1])}
     if(this.props.idChannel===2){this.audio = new Audio([userSound2])}
     if(this.props.idChannel===3){this.audio = new Audio([userSound3])}
@@ -165,7 +172,7 @@ render(){
         <button className={this.state.isCellOn ? 'active':'not-active'} 
                 onClick={this.handleOnClick}>   
                 {/* {this.props.idCell} */}
-                {/* {this.state.isCellOn} */}
+                {this.state.isCellOn}
                 {/* <audio src={sound1} ref={this.audioRef}/> */}
                 
         </button>

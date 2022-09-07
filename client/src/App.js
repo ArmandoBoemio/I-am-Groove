@@ -31,7 +31,8 @@ function App() {
 
   const [patternState, setPattern] = useState({
     pattern: new Array(64).fill(0),
-    rowdimension: 16
+    rowdimension: 16,
+    newGeneration: false
   })
 
   const [isPlaying, setPlay] = useState(false)
@@ -129,6 +130,7 @@ function App() {
         response.json().then((pattern)=>{
           
           setPattern({
+            newGeneration: !patternState.newGeneration,
             rowdimension: (pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).length),
             pattern: (pattern.Pattern_kick.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number).concat(
                       pattern.Pattern_snare.replace(/[\])}[{(]/g, '').split(/[ ,]+/).map(Number),
@@ -145,9 +147,8 @@ function App() {
           if(60<controls.complexity && controls.complexity<=100){
             setSubdivision(8)
           }
-          setTimeout(() => {
-            console.log('subdivision: ' + subdivision)
-          }, 100)
+
+        
       })
     }
   }
@@ -259,7 +260,11 @@ function App() {
             <div className='sounds'>
 
               {numberOfChannels.map((key)=>
-              <SoundChannel key={key} id={key} rowdim={patternState.rowdimension} pattern={patternState.pattern} isPlaying={isPlaying} count={count}></SoundChannel>
+              <SoundChannel key={key} id={key} 
+                            rowdim={patternState.rowdimension} pattern={patternState.pattern} 
+                            isPlaying={isPlaying} count={count}
+                            newGeneration={patternState.newGeneration}
+                            ></SoundChannel>
               )}
 
               <div className="Buttons">
