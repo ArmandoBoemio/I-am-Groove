@@ -77,7 +77,7 @@ input[type="range"] {
   .ticks {
 
     height:calc(0.6vmin + 0.3vmax);
-    width:calc(31.3vmax - 17.4vmin);
+    width:calc(27.4vmax - 19.9vmin);
     /* right: 7.5%;  */
     position:absolute;
     margin-left:calc(14.7% - 1.2vmin);

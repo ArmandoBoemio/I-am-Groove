@@ -2,13 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .img {
     animation: App-logo-spin infinite 22s linear;
   }
 }
@@ -24,19 +19,43 @@
   width:250%;
 }
 
-.App-header {
+.img {
+  /* background-image: linear-gradient(rgb(139, 15, 77), rgb(8, 8, 54)); */
+  background-image: url("https://i.pinimg.com/originals/b7/63/10/b7631020e432e19cdd0d9996a1f51bfd.png");
+  min-height: 135vh; 
+  min-width: 100%;
+
+  position:relative;
+  /* display:inline;  */
+  opacity: 30%;
+  /* background-repeat: no-repeat; */
+  /* background-size: contain; */
+  height:70%;
+  width:80%; 
+  transform: scale(0.6);
+  margin-left: calc(135vmax - 65vmin);
+  margin-top:46vmin;
+  /* object-fit:scale-down; */
+}
+
+.header {
   background-image: linear-gradient(rgb(139, 15, 77), rgb(8, 8, 54));
-  min-height: 100vh;
+  /* background-image: url("https://i.pinimg.com/originals/b7/63/10/b7631020e432e19cdd0d9996a1f51bfd.png"); */
+  max-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction:inherit; */
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
+  overflow: hidden;
+  /* object-fit: cover;  */
+  width:100%;
 }
 
 
+
 .mainContainer{
-  width: 65vw;
+  width: calc(60vw - 10vmin);
   height: 90vh;
   
   background-image: url("https://www.seekpng.com/png/full/11-110784_scratch-texture-png-black-and-white.png"), 
@@ -50,7 +69,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  position: relative;
+  position: fixed;
   border-radius: 2vmin;
   border: 1px solid #2e0505;
   -webkit-box-shadow: 0 0 5px 2px rgb(132, 226, 255);

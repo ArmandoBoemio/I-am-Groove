@@ -1,6 +1,7 @@
 import './App.css';
 
 import backgroundVideo from './backgrounds/videoBG.mp4'
+import backgroundImage from './backgrounds/groot1.png'
 
 import Metronome from './Components/Metronome';
 import Measure from './Components/Measure';
@@ -244,16 +245,19 @@ function App() {
     return (
 
       <div className="App">
-        <header className="App-header">
-
+        <header className="header">
+            
           <video autoPlay loop muted id='video'>
               <source src={backgroundVideo} type='video/mp4'/>
           </video>
 
+          <div className="img">
+          </div>
+            
           <div className='mainContainer'>
     
             <div className='titolo'>
-              GROOVE GENERATOR 
+              I AM GROOVE
             </div>
 
             <div className='sliders'>
@@ -281,18 +285,17 @@ function App() {
               <div className="Buttons">
                 <GenerateButton generatePattern={generatePattern}></GenerateButton>
                 <PlayButton playStop={playStop}></PlayButton>
-                {/* <Clock></Clock> */}
               </div>
 
               
             </div>
 
             <footer className="app_footer">
-                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM" target="_blank">Github</a></p>
+                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM" target="_blank" rel="noreferrer">Github</a></p>
                 <p className="lowright">Armando Boemio, Filippo Gualtieri, Gabriele Maucione ©</p>
             </footer>
-
-          </div>
+          
+          </div>  
         </header>
       </div>
     );
