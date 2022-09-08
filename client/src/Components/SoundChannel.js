@@ -79,31 +79,31 @@ class SoundChannel extends Component {
                 <div className="panel">
 
                     <div className="texto">
-                        
-                        {this.props.id +1 == 1 && (
+
+                        {this.props.id + 1 === 1 && (
                             <div>
                                 Sound #{this.props.id + 1} - kick
                             </div>
                         )}
 
-                        {this.props.id +1 == 2 && (
+                        {this.props.id + 1 === 2 && (
                             <div>
                                 Sound #{this.props.id + 1} - snare
                             </div>
                         )}
 
-                        {this.props.id +1 == 3 && (
+                        {this.props.id + 1 === 3 && (
                             <div>
                                 Sound #{this.props.id + 1} - hi hat
                             </div>
                         )}
 
-                        {this.props.id +1 == 4 && (
+                        {this.props.id + 1 === 4 && (
                             <div>
                                 Sound #{this.props.id + 1} - cowbell
                             </div>
                         )}
-                     
+
                     </div>
 
                     <div className="barra">
@@ -120,7 +120,7 @@ class SoundChannel extends Component {
                 <div className="gridContainer">
 
                     {nCells.map((key) =>
-                        <Cell key={key} idCell={key+1} idChannel={this.props.id + 1}
+                        <Cell key={key} idCell={key + 1} idChannel={this.props.id + 1}
                             nCells={this.props.rowdim} activity={this.state.pattern[key]}
                             isPlaying={this.state.isPlaying} count={this.state.count}
                             isDefaultAudio={this.state.isDefaultAudio}
