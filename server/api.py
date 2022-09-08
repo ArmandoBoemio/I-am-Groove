@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 bpm = 120
 measure = 4
-length = 4
+length = 0
 complexity = 50
 
 

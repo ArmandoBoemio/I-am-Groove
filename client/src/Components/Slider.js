@@ -5,8 +5,27 @@ class Slider extends Component{
     constructor(props){
         super(props);
 
-        this.state={}
+        this.state={
+        }
     }
+
+// componentDidUpdate(prevProps){
+//     if(this.props.len!==prevProps.len){
+//         if(this.props.len===0){
+//             <div className="bubLen">
+//                     {this.props.len} measures
+//                 </div>
+
+//         }
+//         if(this.props.len!==0){
+//             <div className="bubLen">
+//                     {this.props.len} measures
+//                 </div>
+//         }   
+//     }   
+// }
+
+
 
 render(){
 
@@ -47,15 +66,33 @@ render(){
                 <>
                 
                 <div className="bubLen">
-                    {this.props.len} measures
+                    {/* {this.props.len} measures */}
+                    
+                    {this.props.len == 0 && (
+                        <div>
+                            Automatic Pattern Modulation
+                        </div>
+                    )}
+                    {this.props.len == 1 && (
+                        <div>
+                            modulate every measure
+                        </div>
+                    )}
+                    {this.props.len > 1 && (
+                        <div>
+                            modulate every {this.props.len} measures
+                        </div>
+                    )}
+
                 </div>
+
 
                 
                     <input className="inputLength"
                         type="range" 
-                        min="2" 
-                        max="8"
-                        step="2"
+                        min="0" 
+                        max="4"
+                        step="1"
                         /*marks={lenMarks}*/
                         value={this.props.len}
                         onChange={this.props.handleLenChange} 
@@ -65,10 +102,11 @@ render(){
                     />
 
                 <div className="ticks">
+                    <span className="tick">off</span>
+                    <span className="tick">1</span>
                     <span className="tick">2</span>
+                    <span className="tick">3</span>
                     <span className="tick">4</span>
-                    <span className="tick">6</span>
-                    <span className="tick">8</span>
                 </div>      
 
                 

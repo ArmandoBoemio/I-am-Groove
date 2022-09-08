@@ -79,7 +79,31 @@ class SoundChannel extends Component {
                 <div className="panel">
 
                     <div className="texto">
-                        Sound #{this.props.id + 1}
+                        
+                        {this.props.id +1 == 1 && (
+                            <div>
+                                Sound #{this.props.id + 1} - kick
+                            </div>
+                        )}
+
+                        {this.props.id +1 == 2 && (
+                            <div>
+                                Sound #{this.props.id + 1} - snare
+                            </div>
+                        )}
+
+                        {this.props.id +1 == 3 && (
+                            <div>
+                                Sound #{this.props.id + 1} - hi hat
+                            </div>
+                        )}
+
+                        {this.props.id +1 == 4 && (
+                            <div>
+                                Sound #{this.props.id + 1} - cowbell
+                            </div>
+                        )}
+                     
                     </div>
 
                     <div className="barra">

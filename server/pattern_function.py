@@ -104,6 +104,7 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
     elif Complexity <= 100:
         quanto_mul = 8
     row_measure_dim = Measure * quanto_mul
+    
     # KICK - SOUND1
     kick_measure_pattern = np.zeros((row_measure_dim))
     kick_measure_pattern = kick_measure_pattern.astype(int)

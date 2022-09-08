@@ -58,13 +58,14 @@
 .bubLen{
   padding:0.1vmin;
   
-  margin-bottom: -1.9vmin;
+  margin-bottom: -1.6vmin;
 
   
-  margin-left:70%;
-
+  /* margin-left:60%; */
+  text-align: right;
+  margin-right:6%;
   font-family: casualFont;
-  font-size: calc(1.1vmin + 0.4vmax);
+  font-size: calc(1vmin + 0.4vmax);
   color:#d6d09d;
   text-shadow: 0 0 5vmin rgba(24, 1, 37, 0.918),
               0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.842);

@@ -172,7 +172,7 @@ render(){
         <button className={this.state.isCellOn ? 'active':'not-active'} 
                 onClick={this.handleOnClick}>   
                 {/* {this.props.idCell} */}
-                {this.state.isCellOn}
+                {/* {this.state.isCellOn} */}
                 {/* <audio src={sound1} ref={this.audioRef}/> */}
                 
         </button>

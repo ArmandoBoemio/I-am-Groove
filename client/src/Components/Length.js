@@ -22,14 +22,14 @@ class Length extends Component{
     handleWheel=(event)=>{
         const delta =event.deltaY*-1;
         
-        if (delta>0 && this.props.len<8){
-            this.props.onChange(this.props.len + 2)
+        if (delta>0 && this.props.len<4){
+            this.props.onChange(this.props.len + 1)
         }
-        if(delta<0 && this.props.len>2){
-            this.props.onChange(this.props.len - 2)
+        if(delta<0 && this.props.len>0){
+            this.props.onChange(this.props.len - 1)
         }
-        if(this.props.len>8){
-            this.props.onChange(8)
+        if(this.props.len>4){
+            this.props.onChange(4)
         }
         
         console.log('Length: ' + this.props.len)
@@ -46,7 +46,7 @@ class Length extends Component{
             <div className="lengthContainer">
 
                 <div className="titleLength">
-                    Length
+                    APM
                 </div>
 
                 <Slider 

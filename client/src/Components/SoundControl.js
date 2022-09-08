@@ -1,7 +1,10 @@
 import { Component } from "react";
-import click from './sounds/click1.mp3';
 import { MediaRecorder } from 'extendable-media-recorder';
 import './SoundControl.css';
+import defaultSound1 from './sounds/defaultSound1_kick.mp3';
+import defaultSound2 from './sounds/defaultSound2_snare.mp3'
+import defaultSound3 from './sounds/defaultSound3_hh.mp3'
+import defaultSound4 from './sounds/defaultSound4_bell.mp3'
 
 class SoundControl extends Component {
     constructor(props) {
@@ -16,16 +19,17 @@ class SoundControl extends Component {
         };
         this.mediaRecorder = []
         this.recordedAudio = new Audio([])
-        this.defaultAudio = new Audio([click])
+        this.defaultAudio = new Audio([])
         this.audio = this.defaultAudio
     }
 
 
-    // componentDidMount(){
-    //     this.setState({
-    //         isDefaultAudio: this.props.isDefaultAudio
-    //     })
-    // }
+    componentDidMount(){
+        // this.setState({
+        //     isDefaultAudio: this.props.isDefaultAudio
+        // })
+        this.mountDefaultAudio()
+    }
     // componentDidUpdate(prevProps, prevState) {
     //     if (prevState.isDefaultAudio !== this.props.isDefaultAudio) {
     //         this.setState({
@@ -127,6 +131,12 @@ class SoundControl extends Component {
     }
 
 
+    mountDefaultAudio(){
+        if(this.props.id+1===1){this.defaultAudio = new Audio([defaultSound1])}
+        if(this.props.id+1===2){this.defaultAudio = new Audio([defaultSound2])}
+        if(this.props.id+1===3){this.defaultAudio = new Audio([defaultSound3])}
+        if(this.props.id+1===4){this.defaultAudio = new Audio([defaultSound4])}
+    }
 
 
     render() {

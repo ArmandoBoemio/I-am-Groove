@@ -25,7 +25,7 @@ function App() {
     beatsPerMeasure: 4,
     numberOfChannels:4,   //occhio qua che il nome cambia
     BPM: 120,
-    length: 4,
+    length: 0,
     complexity: 50
   })
 
@@ -37,6 +37,7 @@ function App() {
 
   const [isPlaying, setPlay] = useState(false)
   const [count, setCount] = useState(0)
+  const [lengthCount, setLengthCount] = useState(-1)
   // const [timer, setTimer] = useState(-1)
 
   const [subdivision, setSubdivision] = useState(4)
@@ -66,12 +67,22 @@ function App() {
           , (60/(controls.BPM*subdivision)) * 1000)}   
       }
       if(count===patternState.rowdimension){
+        if(controls.length == 0){
+          setLengthCount(-1)
+        }
+        if(lengthCount === controls.length-1 && controls.length !== 0 ){
+          generatePattern();
+          setLengthCount(-1);
+        }
         setTimeout(() => {
           setCount(1);
+          setLengthCount(lengthCount=>lengthCount+1)
           }, (60/(controls.BPM*subdivision)) * 1000)        
       }    
     }
-    if(!isPlaying){setCount(0)}
+    if(!isPlaying){
+      setCount(0)
+      setLengthCount(0)}
   
   }, [count]) 
 
@@ -277,7 +288,7 @@ function App() {
             </div>
 
             <footer className="app_footer">
-                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM">Github</a></p>
+                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM" target="_blank">Github</a></p>
                 <p className="lowright">Armando Boemio, Filippo Gualtieri, Gabriele Maucione ©</p>
             </footer>
 
