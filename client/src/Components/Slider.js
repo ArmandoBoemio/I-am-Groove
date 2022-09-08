@@ -68,12 +68,12 @@ render(){
                 <div className="bubLen">
                     {/* {this.props.len} measures */}
                     
-                    {this.props.len === 0 && (
+                    {this.props.len == 0 && (
                         <div>
                             Automatic Pattern Modulation
                         </div>
                     )}
-                    {this.props.len === 1 && (
+                    {this.props.len == 1 && (
                         <div>
                             modulate every measure
                         </div>
