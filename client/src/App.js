@@ -16,6 +16,7 @@ import { connect } from 'extendable-media-recorder-wav-encoder';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+import ReactTooltip from "react-tooltip";
 
 function App() {
 
@@ -251,14 +252,35 @@ function App() {
               <source src={backgroundVideo} type='video/mp4'/>
           </video>
 
-          <div className="img">
+          <div className={!isPlaying ? 'img1':'img1_shake'}>
+          </div>  
+
+          <div className={!isPlaying ? 'img2':'img2_shake'}>
           </div>
-            
+
           <div className='mainContainer'>
-    
-            <div className='titolo'>
-              I AM GROOVE
-            </div>
+      
+            <div className='topper'>
+
+              <div className='titolo'>
+                I AM GROOVE
+              </div>
+              
+            
+              <button data-tip data-for="toolTip" className='info'>
+                ?
+              </button> 
+              <ReactTooltip id="toolTip" type="light" place='right'
+                            backgroundColor='#e8da75' effect="solid" 
+                            textColor='#4b0739' border="true"
+                            >
+                  Record your own sounds and generate your personal groove! 
+                  
+              </ReactTooltip>
+
+            </div>     
+            
+            
 
             <div className='sliders'>
               
@@ -286,7 +308,6 @@ function App() {
                 <GenerateButton generatePattern={generatePattern}></GenerateButton>
                 <PlayButton playStop={playStop}></PlayButton>
               </div>
-
               
             </div>
 
