@@ -84,9 +84,9 @@ class Metronome extends Component {
                 this.startStop();
                 this.startStop()
             }
-            else {
-                this.startStop()
-            }
+            // else {
+            //     this.startStop()  These lines make so that the metronome starts when tap tempo is pushed
+            // }
         }
     }
     //This will stop tap tempo and calculate BPM
