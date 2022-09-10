@@ -10,6 +10,7 @@ import SoundChannel from './Components/SoundChannel';
 import GenerateButton from './Components/GenerateButton';
 import Complexity from './Components/Complexity'
 import PlayButton from './Components/PlayButton';
+import Tooltip from './Components/Tooltip';
 
 import { register } from 'extendable-media-recorder';
 import { connect } from 'extendable-media-recorder-wav-encoder';
@@ -258,6 +259,7 @@ function App() {
           <div className={!isPlaying ? 'img2':'img2_shake'}>
           </div>
 
+
           <div className='mainContainer'>
       
             <div className='topper'>
@@ -267,16 +269,25 @@ function App() {
               </div>
               
             
-              <button data-tip data-for="toolTip" className='info'>
-                ?
-              </button> 
-              <ReactTooltip id="toolTip" type="light" place='right'
+              
+              
+              {/* <ReactTooltip id="toolTip" type="light" place='right'
                             backgroundColor='#e8da75' effect="solid" 
                             textColor='#4b0739' border="true"
                             >
                   Record your own sounds and generate your personal groove! 
                   
-              </ReactTooltip>
+              </ReactTooltip> */}
+
+              <Tooltip>
+                {/* <span className="example-emoji" role="img" aria-label="cowboy emoji">
+                  
+                </span> */}
+                
+                {/* <button data-tip data-for="toolTip" className='info'>
+                ?
+                </button>  */}
+              </Tooltip>
 
             </div>     
             

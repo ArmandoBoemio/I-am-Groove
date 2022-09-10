@@ -28,14 +28,14 @@
 .img1 {
   background-image: url("./backgrounds/groot22.png");
   min-height: calc(150vmin + 40vmax); 
-  min-width: 80%;
+  min-width: 160%;
   position:absolute;
   opacity: 24%;
   background-repeat: no-repeat;
   height:30%;
   width:30%; 
   transform: scale(0.35);
-  margin-right:calc(68vmin + 37vmax);
+  margin-right:calc(40vmin + 20vmax);
   margin-top:-8vmin;
   overflow: hidden;
 }
@@ -53,12 +53,12 @@
   margin-right:calc(68vmin + 37vmax);
   margin-top:-8vmin;
   overflow: hidden;
-  animation: shake_img1 0.5s;
+  animation: shake_img1 0.9s;
   animation-iteration-count: infinite;
 }
 
 .img1:hover{
-  animation: shake_img1 0.5s;
+  animation: shake_img1_slow 0.6s;
   animation-iteration-count: infinite;
 }
 
@@ -76,19 +76,27 @@
   100% { transform: scale(0.35) translate(2px, -2px) rotate(-2deg); }
 }
 
+@keyframes shake_img1_slow {
+  0% { transform: scale(0.35) translate(2px, 2px) rotate(0deg); }
+  20% { transform: scale(0.35) translate(0px, 0px)  rotate(0deg); }
+  40% { transform: scale(0.35)translate(2px, 2px) rotate(0deg); }
+  60% { transform: scale(0.35)translate(-2px, -3px) rotate(0deg); }
+  80% { transform: scale(0.35)translate(-1px, 1px)  rotate(0deg); }
+  100% { transform: scale(0.35) translate(3px, 3px) rotate(0deg); }
+}
 
 .img2 {
   background-image: url("https://i.pinimg.com/originals/b7/63/10/b7631020e432e19cdd0d9996a1f51bfd.png");
   min-height: 135vh; 
   min-width: 100%;
   position:relative;
-  opacity: 30%;
+  opacity: 20%;
   background-repeat: no-repeat;
   height:70%;
   width:80%; 
-  transform: scale(0.54);
+  transform: scale(0.54) rotate(15deg);
   margin-left: calc(136.5vmax - 71vmin);
-  margin-top:46vmin;
+  margin-top:49vmin;
 }
 
 .img2_shake {
@@ -96,37 +104,44 @@
   min-height: 135vh; 
   min-width: 100%;
   position:relative;
-  opacity: 30%;
+  opacity: 20%;
   background-repeat: no-repeat;
   height:70%;
   width:80%; 
   transform: scale(0.54);
   margin-left: calc(136.5vmax - 71vmin);
-  margin-top:46vmin;
-  animation: shake_img2 0.5s;
+  margin-top:49vmin;
+  animation: shake_img2 0.9s;
   animation-iteration-count: infinite;
 }
 
 .img2:hover{
-  animation: shake_img2 0.5s;
+  animation: shake_img2_slow 0.6s;
   animation-iteration-count: infinite;
 }
 
 @keyframes shake_img2 {
-  0% { transform: scale(0.54) translate(1px, 1px) rotate(0deg); }
-  10% { transform: scale(0.54) translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: scale(0.54) translate(-3px, 0px) rotate(1deg); }
-  30% { transform: scale(0.54) translate(3px, 2px) rotate(0deg); }
-  40% { transform: scale(0.54)translate(1px, -1px) rotate(1deg); }
-  50% { transform: scale(0.54)translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: scale(0.54)translate(-3px, 1px) rotate(0deg); }
-  70% { transform: scale(0.54)translate(3px, 1px) rotate(-1deg); }
-  80% { transform: scale(0.54)translate(-1px, -1px) rotate(1deg); }
-  90% { transform: scale(0.54)translate(1px, 2px) rotate(0deg); }
-  100% { transform: scale(0.54) translate(1px, -2px) rotate(-1deg); }
+  0% { transform: scale(0.54) translate(1px, 1px) rotate(15deg); }
+  10% { transform: scale(0.54) translate(-1px, -2px) rotate(14deg); }
+  20% { transform: scale(0.54) translate(-3px, 0px) rotate(16deg); }
+  30% { transform: scale(0.54) translate(3px, 2px) rotate(15deg); }
+  40% { transform: scale(0.54)translate(1px, -1px) rotate(16deg); }
+  50% { transform: scale(0.54)translate(-1px, 2px) rotate(14deg); }
+  60% { transform: scale(0.54)translate(-3px, 1px) rotate(15deg); }
+  70% { transform: scale(0.54)translate(3px, 1px) rotate(14deg); }
+  80% { transform: scale(0.54)translate(-1px, -1px) rotate(16deg); }
+  90% { transform: scale(0.54)translate(1px, 2px) rotate(15deg); }
+  100% { transform: scale(0.54) translate(1px, -2px) rotate(14deg); }
 }
 
-
+@keyframes shake_img2_slow {
+  0% { transform: scale(0.54) translate(1px, 1px)   rotate(15deg);}
+  20% { transform: scale(0.54) translate(0px, 0px)  rotate(15deg);}
+  40% { transform: scale(0.54)translate(3px, 3px)   rotate(15deg);}
+  60% { transform: scale(0.54)translate(-2px, -1px) rotate(15deg);}
+  80% { transform: scale(0.54)translate(-1px, 1px)  rotate(15deg);}
+  100% { transform: scale(0.54) translate(2px, 3px) rotate(15deg);}
+}
 
 .header {
   background-image: linear-gradient(rgb(139, 15, 77), rgb(8, 8, 54));
@@ -187,21 +202,21 @@
 .info{
   background-color: white;
   position: fixed ;
-  margin-left:49vw;
-  margin-top:-7vh;
+  /* margin-left:calc(59.5vw - 16vmin);
+  margin-top:calc(-8vh + 0.3%); */
 
   border-radius: 40%;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  color: #eceba7;
+  color: #fff1ca;
   /* background-image: linear-gradient(#6f013827, #660646eb); */
 
-  background: #701a5493;
+  background: #edc789a4;
  
   border: 0.2vmin ridge #ecd37e;
-  border-radius: 1vmin;
+  border-radius: 50%;
 
   -webkit-box-shadow: 0 0 5px 2px rgb(0, 5, 7);
   -moz-box-shadow: 0 0 5px 2px rgb(0, 0, 0);
@@ -213,17 +228,17 @@
               inset 0 0 5px       rgba(224, 218, 158, 0.562);
 
   font-family: casualFont;
-  width:calc(2vmin + 2vmax);
-  height:3vmin;
+  width:calc(2vmin + 1vmax);
+  height:calc(2vmin + 1vmax);
   
 }
 
 .info:hover {
   /* position: relative; */
-  margin-left:49.2vw;
-  margin-top:-6.8vh;
-  background: #3e0727ce;
-  color: #9d9a79;
+  margin-left:calc(59.5vw - 16vmin);
+  margin-top:calc(-7.88vh + 0.3%);
+  background: #c9a366a4;
+  color: #f0d59a;
 }
 
 .infoText{
