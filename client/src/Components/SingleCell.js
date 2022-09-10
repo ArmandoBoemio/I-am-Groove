@@ -21,23 +21,10 @@ class Cell extends Component{
         idChannel: 1, 
         idCell: 1,
         nCells: 16,
-        // audio: false,
         isDefaultAudio: true
         }
 
         this.audio = new Audio([])
-
-        // this.defaultAudio1 = new Audio([defaultSound1])
-        // this.defaultAudio2 = new Audio([defaultSound2])
-        // this.defaultAudio3 = new Audio([defaultSound3])
-        // this.defaultAudio4 = new Audio([defaultSound4])
-        
-        // this.userAudio1 = new Audio([userSound1])
-        // this.userAudio2 = new Audio([userSound2])
-        // this.userAudio3 = new Audio([userSound3])
-        // this.userAudio4 = new Audio([userSound4])
-
-        // this.audioRef = React.createRef();
     }
 
     
@@ -46,7 +33,6 @@ class Cell extends Component{
 handleOnClick=()=>{
     if(this.state.isCellOn===1){this.setState({isCellOn: 0})}
     if(this.state.isCellOn===0){this.setState({isCellOn: 1})}
-    // this.setState(prevState => ({isCellOn: !prevState.isCellOn})); //, ()=>this.render
     setTimeout(()=> {console.log('You changed the current pattern in ' + this.state.isCellOn)}, 10)
     
     this.audio.play();
@@ -63,9 +49,6 @@ componentDidMount() {
         isDefaultAudio: this.props.isDefaultAudio
     }) 
     this.mountDefaultAudio()
-    
-    //console.log('suono numero ' + this.props.idChannel)
-    // console.log(this.state.nCells + ' cells on chanel ' + this.props.idChannel)
   }
 
 componentDidUpdate(prevProps, prevState, snapshot) {
@@ -83,7 +66,6 @@ componentDidUpdate(prevProps, prevState, snapshot) {
         this.setState({
             nCells: this.props.nCells           
         })   
-        // console.log('!') //this was for debug: it seems it performs twice but for now it's not important
     }
     if (prevProps.isPlaying !== this.props.isPlaying) {
         this.setState({
@@ -91,11 +73,9 @@ componentDidUpdate(prevProps, prevState, snapshot) {
         }) 
     }
     if (prevState.isDefaultAudio !== this.props.isDefaultAudio) {
-        // console.log('yo')
         this.setState({
             isDefaultAudio: this.props.isDefaultAudio
         }) 
-        // setTimeout(()=> {console.log('Default is ' + this.props.isDefaultAudio)}, 10)
         if(this.props.isDefaultAudio){
             this.mountDefaultAudio()
         }
@@ -108,7 +88,6 @@ componentDidUpdate(prevProps, prevState, snapshot) {
             count: this.props.count 
         })
         this.counting()
-        // console.log(this.props.count)
     }
   }
 
@@ -121,32 +100,8 @@ counting(){
 readCell(){
     if(this.state.isCellOn && this.state.isPlaying){
         this.audio.play()
-        // console.log('ye')
     }
 }
-
-// mountDefaultAudio(){
-//     if(this.props.idChannel===1){
-//         this.setState({
-//             audio: this.audio1
-//         })
-//     }
-//     if(this.props.idChannel===2){
-//         this.setState({
-//             audio: this.audio2
-//         })
-//     }
-//     if(this.props.idChannel===3){
-//         this.setState({
-//             audio: this.audio3
-//         })
-//     }
-//     if(this.props.idChannel===4){
-//         this.setState({
-//             audio: this.audio4
-//         })
-//     }
-// }
 
 mountDefaultAudio(){
     if(this.props.idChannel===1){this.audio = new Audio([defaultSound1])}
@@ -156,7 +111,6 @@ mountDefaultAudio(){
 }
 
 mountRecordedAudio(){
-    
     if(this.props.idChannel===1){this.audio = new Audio([userSound1])}
     if(this.props.idChannel===2){this.audio = new Audio([userSound2])}
     if(this.props.idChannel===3){this.audio = new Audio([userSound3])}
@@ -171,10 +125,6 @@ render(){
         
         <button className={this.state.isCellOn ? 'active':'not-active'} 
                 onClick={this.handleOnClick}>   
-                {/* {this.props.idCell} */}
-                {/* {this.state.isCellOn} */}
-                {/* <audio src={sound1} ref={this.audioRef}/> */}
-                
         </button>
         
 

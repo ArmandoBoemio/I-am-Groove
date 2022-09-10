@@ -33,7 +33,6 @@ class SoundChannel extends Component {
             this.setState({
                 pattern: Array.from(this.props.pattern).slice(this.props.rowdim * this.props.id, this.props.rowdim * (this.props.id + 1)),
             })
-            // setTimeout(() => {console.log(this.state.pattern)}, 100)     //debug
         }
         if (prevState.isPlaying !== this.props.isPlaying) {
             this.setState({
@@ -47,10 +46,8 @@ class SoundChannel extends Component {
         }
     }
 
-    //function for soundcontrol, child component 
     swapSource = (record) => {
         if (record) {
-            console.log('Recording ended, forcing isDefaultAudio to false')
             this.setState(state => ({
                 isDefaultAudio: false
             }));
@@ -64,7 +61,6 @@ class SoundChannel extends Component {
                 isDefaultAudio: !state.isDefaultAudio
             }));
         }
-        // setTimeout(() => {console.log('default audio: '+ this.state.isDefaultAudio)}, 10)
     }
 
 

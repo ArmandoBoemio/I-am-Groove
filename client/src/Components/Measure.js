@@ -24,7 +24,6 @@ class Measure extends Component{
 
                 <Dropdown afterStateSet={this.props.onChange}></Dropdown>
             
-
             </div>
             </>
         );

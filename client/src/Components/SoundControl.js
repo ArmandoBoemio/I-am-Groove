@@ -14,7 +14,6 @@ class SoundControl extends Component {
             id: this.props.id,
             isRecording: false,
 
-            // isDefaultAudio: false,
             isAvailable: false,
         };
         this.mediaRecorder = []
@@ -25,18 +24,9 @@ class SoundControl extends Component {
 
 
     componentDidMount(){
-        // this.setState({
-        //     isDefaultAudio: this.props.isDefaultAudio
-        // })
         this.mountDefaultAudio()
     }
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.isDefaultAudio !== this.props.isDefaultAudio) {
-    //         this.setState({
-    //             isDefaultAudio: this.props.isDefaultAudio
-    //         })
-    //     }
-    // }
+    
 
     startPlayback = () => {
         if (this.props.isDefaultAudio) {
@@ -84,7 +74,6 @@ class SoundControl extends Component {
                     this.postAudioBlob(this.state.id, audioBlob)
                     const audioUrl = URL.createObjectURL(audioBlob);
                     const audio = new Audio(audioUrl);
-                    console.log(audio)
                     this.setState({
                         isAvailable: true
                     });
@@ -92,25 +81,7 @@ class SoundControl extends Component {
                 });
             });
     };
-
-    // downloadFile(file) {
-    //     // Create a link and set the URL using `createObjectURL`
-    //     const link = document.createElement("a");
-    //     link.style.display = "none";
-    //     link.href = URL.createObjectURL(file);
-    //     link.download = file.name;
-
-    //     // It needs to be added to the DOM so it can be clicked
-    //     document.body.appendChild(link);
-    //     link.click();
-
-    //     // To make this work on Firefox we need to wait
-    //     // a little while before removing it.
-    //     setTimeout(() => {
-    //       URL.revokeObjectURL(link.href);
-    //       link.parentNode.removeChild(link);
-    //     }, 0);
-    //   }
+    
 
     postAudioBlob = async (id, audioBlob) => {
 
@@ -125,7 +96,6 @@ class SoundControl extends Component {
             .then(myBlob => {
                 var objectURL = URL.createObjectURL(myBlob);
                 const audio = new Audio(objectURL);
-                // console.log(audio);
                 this.recordedAudio = audio;
             })
     }

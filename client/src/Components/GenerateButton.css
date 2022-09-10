@@ -8,7 +8,6 @@
     
     width: 50%;
     height:15%;
-    /* background-color: white; */
     border-radius: 3vmin;
 
     display:flex;
@@ -30,13 +29,8 @@
     color: #d6d09d;
 
     width: 50%;
-    
     min-width:20vmin;
-
-    
-
     padding:0.7vmin;
-
     box-shadow: inset 0 5px 10px 2px rgba(199, 233, 253, 0.055);
     box-shadow: 
     inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.432),

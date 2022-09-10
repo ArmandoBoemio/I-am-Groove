@@ -26,9 +26,7 @@ class PlayButton extends Component{
                 {                   
                     patternPlaying: true
                 },
-                
             );
-            
         }
     };
     
@@ -41,7 +39,6 @@ class PlayButton extends Component{
 
                 <button className="Play"
                         onClick={() => {this.startStop(); this.props.playStop();}}>
-                        {/* onClick={this.props.playStop}>  */}
                         {this.state.patternPlaying ? 'Stop' : 'Play'}
                        
 

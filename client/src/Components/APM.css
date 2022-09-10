@@ -1,4 +1,4 @@
-.lengthContainer{
+.APMContainer{
   background-color:#d1d3c818;
   border-radius: 2vmin;
       
@@ -17,15 +17,11 @@
   margin-top:-1.5vmin;
   margin-left:-0.5vmin;
   
-  /* overflow: hidden; */
-
   box-shadow: 
   0 0 10px 1vmin rgba(69, 65, 129, 0.055),
   0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
   inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
   inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
-
-
 }
 
 @font-face {
@@ -38,7 +34,7 @@
   src: url(../fonts/BabyDoll.ttf);
 }
 
-.titleLength{
+.titleAPM{
   font-family: titlePanelFont;
   font-size: calc(0.5vmin + 0.6vmax);
   letter-spacing: 0.2vmin;
@@ -55,13 +51,11 @@
   
 }
 
-.bubLen{
+.bubAPM{
   padding:0.1vmin;
   
   margin-bottom: -1.6vmin;
 
-  
-  /* margin-left:60%; */
   text-align: right;
   margin-right:6%;
   font-family: casualFont;

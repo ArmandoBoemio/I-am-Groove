@@ -7,18 +7,13 @@
     
     
     height: 3vmin;
-    /*width:23.3vmin;   */ 
     width:calc(5vmin + 9vmax); 
     padding: 0.4vmin;
-
     align-items: center;
-    
     display: flex;
     flex-direction: row;
     background-color: #3f1c5048;
-
     border-radius: 1vmin;
-
     box-shadow: inset 0 -0.5vmin 1vmin 0.1vmin rgba(0, 0, 0, 0.219);
     
   }
@@ -31,17 +26,12 @@
     width:8vmin;
     width:calc(2vmin + 3vmax);
     height: 3vmin;
-   
     background: #bd157775;
-    
     border: 0.2vmin ridge #1b0031;
     border-radius: 1vmin;
-    
     color: #d6d09d;
     font-size: 1.1vmin;
-
     margin: 0.1vmin;
-
     box-shadow: 
     inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
     inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
@@ -59,23 +49,16 @@
   }
 
   .recording {
-
     text-align: center;
-    
     width:8vmin;
     width:calc(2vmin + 3vmax);
     height: 3vmin;
-   
     background: #701a5493;
- 
     border: 0.2vmin ridge #1b0031;
-    border-radius: 1vmin;
-    
+    border-radius: 1vmin;   
     color: #d6d09d;
-
     font-size: 1.1vmin;
     font-family: casualFont;
-
     margin: 0.1vmin;
 
     box-shadow: 
@@ -94,25 +77,18 @@
 }
 
   .load {
-
-    text-align: center;
-    
+    text-align: center;   
     width:8vmin;
     width:calc(2vmin + 3vmax);
-    height: 3vmin;
-   
+    height: 3vmin;   
     background: #520f5881;
- 
     border: 0.2vmin ridge #1b0031;
-    border-radius: 1vmin;
-    
+    border-radius: 1vmin;  
     color: #d6d09d;
-
     font-size: 1.1vmin;
     font-family: casualFont;
-
     margin: 0.1vmin;
-
+    
     box-shadow: 
     inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
     inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),

@@ -17,7 +17,6 @@ class GenerateButton extends Component{
 
     render(){
         
-
         return (
             <div className="background">
 

@@ -67,7 +67,7 @@ class Metronome extends Component {
 
         if (this.state.checkTapTempo === false) {
             this.setState({ checkTapTempo: true })
-            this.setState({ stopTapId: setInterval(this.runStopTempo, 500) })
+            this.setState({ stopTapId: setInterval(this.runStopTempo, 200) })
         }
 
     }
@@ -84,11 +84,13 @@ class Metronome extends Component {
                 this.startStop();
                 this.startStop()
             }
-            else {
-                this.startStop()
-            }
+            // uncomment to start metronome after tap tempo setting
+            // else {
+            //    this.startStop()
+            // }
         }
     }
+
     //This will stop tap tempo and calculate BPM
     stopTapTempo = () => {
         var { taps, i, calculatedTaps, bpm } = this.state;
@@ -110,11 +112,10 @@ class Metronome extends Component {
 
             var avgOfTaps = tapSum / calculatedTaps.length;
             bpm = 60000 / avgOfTaps;
-            if (bpm > 250) { bpm = 250; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 250') }
-            if (bpm < 50) { bpm = 50; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 50') }
+            if (bpm > 180) { bpm = 180; alert('Too fast with that finger maaan...\nThe maximum value for BPM is 180') }
+            if (bpm < 20) { bpm = 20; alert('Too slow with that finger maaan...\nThe minimum value for BPM is 20') }
             bpm = bpm.toFixed(2);
             this.props.onChange(bpm)
-            //this.setState({ bpm },()=> this.postBPM(this.state.bpm));
             taps.length = 0;
             calculatedTaps.length = 0;
         }
@@ -161,7 +162,7 @@ class Metronome extends Component {
     handleWheel = (event) => {
         const delta = event.deltaY;
 
-        if (this.props.bpm > 50 && this.props.bpm < 250) {
+        if (this.props.bpm > 20 && this.props.bpm < 180) {
             if (delta > 0) {
                 this.props.onChange(this.props.bpm - 1)
             } else {
@@ -172,12 +173,12 @@ class Metronome extends Component {
             }
         }
 
-        if (this.props.bpm === 50) {
+        if (this.props.bpm === 20) {
             if (delta < 0) {
                 this.props.onChange(this.props.bpm + 1)
             }
         }
-        if (this.props.bpm === 250) {
+        if (this.props.bpm === 180) {
             if (delta > 0) {
                 this.props.onChange(this.props.bpm - 1)
 
@@ -211,7 +212,6 @@ class Metronome extends Component {
                         handleBpmChange={this.handleBpmChange}
                         handleWheel={this.handleWheel}>
                     </Slider>
-
 
                 </div>
 

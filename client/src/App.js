@@ -1,11 +1,10 @@
 import './App.css';
 
 import backgroundVideo from './backgrounds/videoBG.mp4'
-import backgroundImage from './backgrounds/groot1.png'
 
 import Metronome from './Components/Metronome';
 import Measure from './Components/Measure';
-import Length from './Components/Length';
+import APM from './Components/APM';
 import SoundChannel from './Components/SoundChannel';
 import GenerateButton from './Components/GenerateButton';
 import Complexity from './Components/Complexity'
@@ -17,7 +16,6 @@ import { connect } from 'extendable-media-recorder-wav-encoder';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-import ReactTooltip from "react-tooltip";
 
 function App() {
 
@@ -26,9 +24,9 @@ function App() {
 
   const [controls, setControls]=useState({
     beatsPerMeasure: 4,
-    numberOfChannels:4,   //occhio qua che il nome cambia
+    numberOfChannels:4,  
     BPM: 120,
-    length: 0,
+    APM: 0,
     complexity: 50
   })
 
@@ -40,8 +38,7 @@ function App() {
 
   const [isPlaying, setPlay] = useState(false)
   const [count, setCount] = useState(0)
-  const [lengthCount, setLengthCount] = useState(-1)
-  // const [timer, setTimer] = useState(-1)
+  const [APMCount, setAPMCount] = useState(-1)
 
   const [subdivision, setSubdivision] = useState(4)
 
@@ -51,16 +48,12 @@ function App() {
     postState(controls)
   },[controls])
 
-  useEffect(()=>{
-    console.log('Current pattern: \n' + patternState.pattern);
-  }, [patternState.pattern])
+  useEffect(() => {
+    if (isPlaying){console.log('~~Groovin~~')}
+    if (!isPlaying){console.log('Who the **** stopped the music?!')}
+}, [isPlaying] )
 
   useEffect(() => {
-    console.log('Pattern is playing: ' + isPlaying)
-  }, [isPlaying] )
-
-  useEffect(() => {
-    console.log('count: ' + count)
     if(isPlaying){
       if(count!==patternState.rowdimension){
         if(count!==0){
@@ -70,53 +63,30 @@ function App() {
           , (60/(controls.BPM*subdivision)) * 1000)}   
       }
       if(count===patternState.rowdimension){
-        if(controls.length == 0){
-          setLengthCount(-1)
+        if(controls.APM == 0){
+          setAPMCount(-1)
         }
-        if(lengthCount === controls.length-1 && controls.length !== 0 ){
+        if(APMCount === controls.APM-1 && controls.APM !== 0 ){
           generatePattern();
-          setLengthCount(-1);
+          setAPMCount(-1);
         }
         setTimeout(() => {
           setCount(1);
-          setLengthCount(lengthCount=>lengthCount+1)
+          setAPMCount(APMCount=>APMCount+1)
           }, (60/(controls.BPM*subdivision)) * 1000)        
       }    
     }
     if(!isPlaying){
       setCount(0)
-      setLengthCount(0)}
+      setAPMCount(0)}
   
   }, [count]) 
 
   
-  // useEffect(() => {
-  //   if(controls.complexity<=30){
-  //     setSubdivision(2)
-  //   }
-  //   if(30<controls.complexity && controls.complexity<=60){
-  //     setSubdivision(4)
-  //   }
-  //   if(60<controls.complexity && controls.complexity<=100){
-  //     setSubdivision(8)
-  //   }
-  //   setTimeout(() => {
-  //     console.log('subdivision: ' + subdivision)
-  //   }, 100)
-    
 
-  // }, [patternState.isGenerated])
-
-
-  
   useEffect(async ()=>{
     await register(await connect());  
   },[])
-
-  // useEffect(() => () => {
-  //   clearTimeout(timer);
-  // }, [])
-
 
 
   //FUNCTIONS
@@ -130,7 +100,7 @@ function App() {
       body: JSON.stringify(objct)
     });
     if(response.ok){
-      console.log("State sent!");
+      console.log("Adapting the groove!");
     }
   }
   
@@ -138,7 +108,7 @@ function App() {
     const response = await fetch("/pattern", {
       method: "POST",
       
-      body: generate //JSON.stringify(objct)
+      body: generate
     });
     if(response.ok){
         response.json().then((pattern)=>{
@@ -173,24 +143,15 @@ function App() {
     if(!isPlaying){startCounting(controls.BPM)}
     if(isPlaying){stopCounting()}
   }
-                                                      //todo: counter together with metronome click and instant change with bpm
-  // const startCounting = (current_bpm) => {
-  //   // var current_bpm = controls.BPM
-  //   setTimer(setInterval(() => {
-  //     setCount(prev => prev+1);
-  //   }, (60/current_bpm) * 1000))
-  // }
+  
 
   const startCounting = (current_bpm) => {
-    // var current_bpm = controls.BPM
     setTimeout(() => {
       setCount(1);
     }, (60/current_bpm) * 1000)
   }
 
   const stopCounting = () => {
-    // clearInterval(timer)
-    // setTimer(-1)
     setCount(0)
   }
   
@@ -198,7 +159,7 @@ function App() {
   const onMeasureChange = (value) =>{
     const cont={
       beatsPerMeasure: value,
-      length: controls.length,
+      APM: controls.APM,
       complexity: controls.complexity,
       BPM: controls.BPM,
       numberOfChannels: controls.numberOfChannels
@@ -206,10 +167,10 @@ function App() {
     setControls(cont);
   }
   
-  const onLengthChange = (value) =>{
+  const onAPMChange = (value) =>{
     const cont={
       beatsPerMeasure: controls.beatsPerMeasure,
-      length: value,
+      APM: value,
       complexity: controls.complexity,
       BPM: controls.BPM,
       numberOfChannels: controls.numberOfChannels
@@ -220,7 +181,7 @@ function App() {
   const onComplexityChange = (value) =>{
     const cont={
       beatsPerMeasure: controls.beatsPerMeasure,
-      length: controls.length,
+      APM: controls.APM,
       complexity: value,
       BPM: controls.BPM,
       numberOfChannels: controls.numberOfChannels
@@ -231,7 +192,7 @@ function App() {
   const onBPMChange=(value)=>{
     const cont={
       beatsPerMeasure: controls.beatsPerMeasure,
-      length: controls.length,
+      APM: controls.APM,
       complexity: controls.complexity,
       BPM: value,
       numberOfChannels: controls.numberOfChannels
@@ -243,7 +204,6 @@ function App() {
   // VIEW
 
   const numberOfChannels = Array.from(Array(controls.numberOfChannels).keys());
-    
     return (
 
       <div className="App">
@@ -268,25 +228,8 @@ function App() {
                 I AM GROOVE
               </div>
               
-            
-              
-              
-              {/* <ReactTooltip id="toolTip" type="light" place='right'
-                            backgroundColor='#e8da75' effect="solid" 
-                            textColor='#4b0739' border="true"
-                            >
-                  Record your own sounds and generate your personal groove! 
-                  
-              </ReactTooltip> */}
-
               <Tooltip>
-                {/* <span className="example-emoji" role="img" aria-label="cowboy emoji">
-                  
-                </span> */}
                 
-                {/* <button data-tip data-for="toolTip" className='info'>
-                ?
-                </button>  */}
               </Tooltip>
 
             </div>     
@@ -299,7 +242,7 @@ function App() {
               <Measure onChange={onMeasureChange}></Measure>
               
               <div className='rightside'>
-                <Length onChange={onLengthChange} len={controls.length} ></Length>
+                <APM onChange={onAPMChange} apm={controls.APM} ></APM>
                 <Complexity onChange={onComplexityChange} complexity={controls.complexity}></Complexity>
               </div>
                 

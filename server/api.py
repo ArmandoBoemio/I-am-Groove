@@ -5,7 +5,6 @@ import tempfile
 import os
 from urllib.request import urlopen
 import soundfile as sf
-import shutil
 from pattern_function import (
     generate_measurePattern,
     HMM_generate_measurePattern,
@@ -17,7 +16,7 @@ app = Flask(__name__)
 
 bpm = 120
 measure = 4
-length = 0
+APM = 0
 complexity = 50
 
 
@@ -27,14 +26,14 @@ def State():
     bpm = request.json["BPM"]
     global measure
     measure = request.json["beatsPerMeasure"]
-    global length
-    length = request.json["length"]
+    global APM
+    APM = request.json["APM"]
     global complexity
     complexity = request.json["complexity"]
     # Need to save and continuously update these files and making them available always everywhere
     print("bpm =", bpm)
     print("measure =", measure)
-    print("length =", length)
+    print("APM =", APM)
     print("complexity =", complexity)
 
     return "200"
@@ -60,15 +59,6 @@ def audioProcess():
     audio_loc = "../client/src/Components/sounds/userSounds/userAudio_%s.wav" % id
     trimmed_audio, _ = librosa.effects.trim(audio, top_db=20)
     sf.write(audio_loc, trimmed_audio, sr)
-
-    """
-    #TODO: delete audio after sending
-    @app.after_request
-    def clear_temp_files(response):
-        audio_loc = "tmp/audio.wav" #% id
-        os.remove(audio_loc)
-        return response
-    """
 
     print("Received Audio from: ", id)
     print("Audio trimmed!")

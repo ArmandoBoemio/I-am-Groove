@@ -9,24 +9,6 @@ class Slider extends Component{
         }
     }
 
-// componentDidUpdate(prevProps){
-//     if(this.props.len!==prevProps.len){
-//         if(this.props.len===0){
-//             <div className="bubLen">
-//                     {this.props.len} measures
-//                 </div>
-
-//         }
-//         if(this.props.len!==0){
-//             <div className="bubLen">
-//                     {this.props.len} measures
-//                 </div>
-//         }   
-//     }   
-// }
-
-
-
 render(){
 
     return(
@@ -43,7 +25,7 @@ render(){
                 <input className="inputBpm"
                     type="range" 
                     min="50" 
-                    max="250"
+                    max="180"
                     value={this.props.bpm}
                     onChange={this.props.handleBpmChange} 
                     onWheel={this.props.handleWheel}   
@@ -60,27 +42,26 @@ render(){
 
             {/*TYPE LENGTH SLIDER*/}
 
-            {this.props.type === "length_type" && 
+            {this.props.type === "apm_type" && 
 
                 (
                 <>
                 
-                <div className="bubLen">
-                    {/* {this.props.len} measures */}
+                <div className="bubAPM">
                     
-                    {this.props.len == 0 && (
+                    {this.props.apm == 0 && (
                         <div>
                             Automatic Pattern Modulation
                         </div>
                     )}
-                    {this.props.len == 1 && (
+                    {this.props.apm == 1 && (
                         <div>
                             modulate every measure
                         </div>
                     )}
-                    {this.props.len > 1 && (
+                    {this.props.apm > 1 && (
                         <div>
-                            modulate every {this.props.len} measures
+                            modulate every {this.props.apm} measures
                         </div>
                     )}
 
@@ -88,14 +69,13 @@ render(){
 
 
                 
-                    <input className="inputLength"
+                    <input className="inputAPM"
                         type="range" 
                         min="0" 
                         max="4"
                         step="1"
-                        /*marks={lenMarks}*/
-                        value={this.props.len}
-                        onChange={this.props.handleLenChange} 
+                        value={this.props.apm}
+                        onChange={this.props.handleapmChange} 
                         onWheel={this.props.handleWheel}  
                         
                         
@@ -135,16 +115,11 @@ render(){
                     onWheel={this.props.handleComplexWheel}
                     
                 />
-        
-                
-                
                 </> 
                 )
             }
 
 
-            
-             
         </div>     
         
     );

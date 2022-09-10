@@ -20,10 +20,10 @@ class Dropdown extends Component{
        setTimeout(()=>{
         if(active){
             window.addEventListener('click', this.toggleDropdown)
-         }else{
+        } else{
             window.removeEventListener('click', this.toggleDropdown)
-    }
-},0)
+        }
+        },0)
        
    }
 

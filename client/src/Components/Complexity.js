@@ -57,20 +57,12 @@ class Complexity extends Component{
                     Complexity
                 </div>
 
-
                 <Slider
                     complex={complexity} 
                     type={'complexity_type'}
                     handleComplexChange={this.handleComplexChange} 
                     handleComplexWheel={this.handleComplexWheel}>
-                
                 </Slider>
-                
-
-                
-                
-                 
-
             </div>
             </>
         );

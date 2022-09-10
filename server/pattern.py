@@ -6,7 +6,7 @@ BPM = 120
 Measure2 = 4#/4
 Maesure = api.get_measure
 Channels = 4
-Length = 2
+APM = 0
 Complexity = 1
 
 
