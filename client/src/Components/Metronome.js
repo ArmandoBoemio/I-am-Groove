@@ -84,10 +84,6 @@ class Metronome extends Component {
                 this.startStop();
                 this.startStop()
             }
-            // uncomment to start metronome after tap tempo setting
-            // else {
-            //    this.startStop()
-            // }
         }
     }
 
