@@ -1,21 +1,14 @@
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
 @font-face {
     font-family: titlePanelFont;
     src: url(../fonts/Personal.ttf);
 }
 
-.measureContainer {
-    background-color:#d1d3c818;
-    border-radius: 2vmin;
-        
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
 
+.measureContainer {
     height: 75%;
     width: 12%;
     min-width:15%;
@@ -27,11 +20,18 @@
     margin-left: 0.5vmin;
     margin-right: 0.5vmin;
 
-    box-shadow: 
-    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
-    0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
+    background-color:#d1d3c818;
+
+    border-radius: 2vmin;
+        
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+                0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
+                inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+                inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
 }
 
 .titleMeasure{
@@ -39,8 +39,9 @@
     font-size: calc(0.5vmin + 0.6vmax);
     color:#d6d09d;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
-                0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
+                 0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
     letter-spacing: 0.2vmin;
+    
     padding:0.5vmin;
     padding-bottom:3vmin;
   }
@@ -48,11 +49,12 @@
 .dropbtn {
     background-color: #6012a0;
     color: rgb(134, 23, 23);
+    
     padding: 16px;
+    
     font-family: casualFont;
     font-size: 16px;
     border: none;
-    cursor: pointer;
 }
   
 .dropdown-content {

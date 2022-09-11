@@ -1,5 +1,7 @@
 import { Component } from "react";
 import './Dropdown.css'
+
+
 class Dropdown extends Component{
 
    constructor(props){
@@ -14,67 +16,68 @@ class Dropdown extends Component{
    }
 
 
-   componentDidUpdate(){
+    componentDidUpdate(){
        const {active}=this.state;
 
        setTimeout(()=>{
-        if(active){
+        if (active) {
             window.addEventListener('click', this.toggleDropdown)
-        } else{
+        } else {
             window.removeEventListener('click', this.toggleDropdown)
         }
-        },0)
+        }, 0)
        
-   }
-
-
-   toggleDropdown = () => {
-   this.setState({active: !this.state.active})
-   }
-
-
-   checktoggleDropdown = () => {
-    if(!this.state.active){this.toggleDropdown()}
     }
 
 
-   setSelectedElement = (option) =>{
+    toggleDropdown = () => {
+        this.setState({active: !this.state.active})
+    }
+
+
+    checktoggleDropdown = () => {
+        if (!this.state.active) {this.toggleDropdown()}
+    }
+
+
+    setSelectedElement = (option) =>{
        this.setState({selectedOpt: option}, ()=>this.props.afterStateSet(option));
-   }
+    }
 
-   render(){
-        let {active, options}=this.state;
+    render(){
+        let {active, options} = this.state;
 
-            return( <>
-                <div className="dropdownToggleContainer">
-                    <button className="activateDropdown" 
-                    onClick={this.checktoggleDropdown}>
-                        {this.state.selectedOpt + "/4"}
-                    </button>
-                </div>
+            return( 
 
-                {active && (
-                    <div className="dropdownOptionsContainer">
-                    
-                    {options.map((option)=>(
-                    <button  className="optionButton" 
-                        type="button"
-                        key={option} 
-                        onClick={()=>this.setSelectedElement(option)} >
-                        {option + "/4"} 
-                    </button>
-                    ))}
+                <>
+                    <div className="dropdownToggleContainer">
 
+                        <button className="activateDropdown" 
+                                onClick={this.checktoggleDropdown}>
+                            {this.state.selectedOpt + "/4"}
+                        </button>
+                        
                     </div>
-                )}
-            </>);
+
+                    {active && (
+                        <div className="dropdownOptionsContainer">
+                        
+                        {options.map((option)=>(
+                        <button className="optionButton" 
+                                type="button"
+                                key={option} 
+                                onClick={()=>this.setSelectedElement(option)} >
+                                {option + "/4"} 
+                        </button>
+                        ))}
+
+                        </div>
+                    )}
+
+                </>);
         }
 
-
-
    }
-
-
 
 
 export default Dropdown

@@ -19,25 +19,25 @@ class APM extends Component{
     }
 
     
-    handleWheel=(event)=>{
-        const delta =event.deltaY*-1;
+    handleWheel = (event) => {
+        const delta = event.deltaY*-1;
         
-        if (delta>0 && this.props.apm<2){
+        if (delta > 0 && this.props.apm < 2){
             this.props.onChange(this.props.apm + 1)
         }
-        if (delta>0 && this.props.apm>=2){
+        if (delta > 0 && this.props.apm >= 2){
             this.props.onChange(this.props.apm + 2)
         }
-        if(delta<0 && this.props.apm<=2){
+        if (delta < 0 && this.props.apm <= 2){
             this.props.onChange(this.props.apm - 1)
         }
-        if(delta<0 && this.props.apm>2){
+        if (delta < 0 && this.props.apm > 2){
             this.props.onChange(this.props.apm - 2)
         }
-        if(delta>0 && this.props.apm===4){
+        if (delta > 0 && this.props.apm === 4){
             this.props.onChange(4)
         }
-        if(delta<0 && this.props.apm===0){
+        if (delta < 0 && this.props.apm === 0){
             this.props.onChange(0)
         }
     } 
@@ -45,8 +45,6 @@ class APM extends Component{
     
     render(){
         const {apm} = this.props;
-
-
        
         return(
             <>

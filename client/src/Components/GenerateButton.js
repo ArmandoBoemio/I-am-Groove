@@ -14,21 +14,21 @@ class GenerateButton extends Component{
   }
 
     
-
-    render(){
+  render(){
+      
+      return (
         
-        return (
-            <div className="background">
+          <div className="background">
 
-                <button className="Generate"
-                        onClick={this.props.generatePattern}>  
-                    generate
-                </button>
-                    
-            </div>
-            
-        );
-    }
+              <button className="Generate"
+                      onClick={this.props.generatePattern}>  
+                  generate
+              </button>
+                  
+          </div>
+          
+      );
+  }
 
 }
 

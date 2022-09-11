@@ -4,6 +4,7 @@ import click1 from './sounds/click1.mp3';
 import click2 from './sounds/click2.mp3';
 import Slider from './Slider';
 
+
 class Metronome extends Component {
     constructor(props) {
         super(props);
@@ -32,10 +33,10 @@ class Metronome extends Component {
             this.setState({
                 count: 0,
             }, () => this.props.onChange(bpm));
+
         } else {
             this.props.onChange(bpm)
         }
-
     }
 
     playClick = () => {
@@ -63,7 +64,6 @@ class Metronome extends Component {
             let time = new Date();
             taps.push(time.getTime());
         }
-
 
         if (this.state.checkTapTempo === false) {
             this.setState({ checkTapTempo: true })
@@ -115,11 +115,7 @@ class Metronome extends Component {
             taps.length = 0;
             calculatedTaps.length = 0;
         }
-
     }
-
-
-
 
     startStop = () => {
         if (this.state.playing) {
@@ -177,9 +173,7 @@ class Metronome extends Component {
         if (this.props.bpm === 180) {
             if (delta > 0) {
                 this.props.onChange(this.props.bpm - 1)
-
             }
-
         }
         if (this.state.playing === true) {
             this.startStop()
@@ -225,5 +219,6 @@ class Metronome extends Component {
         );
     }
 }
+
 
 export default Metronome;

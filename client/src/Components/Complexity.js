@@ -3,9 +3,6 @@ import './Complexity.css';
 import Slider from './Slider'
 
 
-
-
-
 class Complexity extends Component{
     
     constructor(props) {
@@ -20,29 +17,28 @@ class Complexity extends Component{
         this.props.onChange(complex)       
     }
 
-    handleComplexWheel=(event)=>{
-        const delta =event.deltaY;
-        if(this.props.complexity>1 && this.props.complexity<100){
+    handleComplexWheel = (event) => {
+        const delta = event.deltaY;
+        if (this.props.complexity > 1 && this.props.complexity < 100) {
             if (delta > 0) {
-                this.props.onChange(this.props.complexity -1)
+                this.props.onChange(this.props.complexity - 1)
             } else {
                 if (parseInt(this.props.complexity) > 0) {
-                    this.props.onChange(this.props.complexity +1)
+                    this.props.onChange(this.props.complexity + 1)
                 }
             }
         }
 
-        if(this.props.complexity === 1){
-            if(delta<0){
-                this.props.onChange(this.props.complexity +1)
+        if (this.props.complexity === 1){
+            if (delta < 0) {
+                this.props.onChange(this.props.complexity + 1)
             }
         }
-        if(this.props.complexity === 100){
-            if(delta>0){
-                this.props.onChange(this.props.complexity -1)
+        if (this.props.complexity === 100){
+            if (delta > 0){
+                this.props.onChange(this.props.complexity - 1)
             }
         }
-
     }
     
     render(){
@@ -50,7 +46,7 @@ class Complexity extends Component{
         const {complexity} = this.props;
                
         return(
-            <>
+
             <div className="complexityContainer">
 
                 <div className="titleComplexity">
@@ -64,7 +60,7 @@ class Complexity extends Component{
                     handleComplexWheel={this.handleComplexWheel}>
                 </Slider>
             </div>
-            </>
+            
         );
 
     }

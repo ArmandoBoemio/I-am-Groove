@@ -28,7 +28,7 @@ class SoundChannel extends Component {
         })
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps, prevState) {
         if (prevProps.pattern !== this.props.pattern) {
             this.setState({
                 pattern: Array.from(this.props.pattern).slice(this.props.rowdim * this.props.id, this.props.rowdim * (this.props.id + 1)),
@@ -65,6 +65,7 @@ class SoundChannel extends Component {
 
 
     render() {
+
         let nCells = this.props.rowdim
         nCells = Array.from(Array(nCells).keys());
 
@@ -117,17 +118,15 @@ class SoundChannel extends Component {
 
                     {nCells.map((key) =>
                         <Cell key={key} idCell={key+1} idChannel={this.props.id + 1}
-                            nCells={this.props.rowdim} activity={this.state.pattern[key]}
-                            isPlaying={this.state.isPlaying} count={this.state.count}
-                            isDefaultAudio={this.state.isDefaultAudio}
-                            newGeneration={this.props.newGeneration}>
-                            {this.props.id}
+                              nCells={this.props.rowdim} activity={this.state.pattern[key]}
+                              isPlaying={this.state.isPlaying} count={this.state.count}
+                              isDefaultAudio={this.state.isDefaultAudio}
+                              newGeneration={this.props.newGeneration}>
+                              {this.props.id}
                         </Cell>
                     )}
 
-
                 </div>
-
 
             </div>
 

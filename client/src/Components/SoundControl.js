@@ -6,7 +6,9 @@ import defaultSound2 from './sounds/defaultSound2_snare.mp3'
 import defaultSound3 from './sounds/defaultSound3_hh.mp3'
 import defaultSound4 from './sounds/defaultSound4_bell.mp3'
 
+
 class SoundControl extends Component {
+
     constructor(props) {
         super(props);
 
@@ -16,6 +18,7 @@ class SoundControl extends Component {
 
             isAvailable: false,
         };
+
         this.mediaRecorder = []
         this.recordedAudio = new Audio([])
         this.defaultAudio = new Audio([])
@@ -27,7 +30,6 @@ class SoundControl extends Component {
         this.mountDefaultAudio()
     }
     
-
     startPlayback = () => {
         if (this.props.isDefaultAudio) {
             console.log('Listening to the default audio');
@@ -41,7 +43,6 @@ class SoundControl extends Component {
         }
     };
 
-
     stopRecording = () => {
         this.setState({
             isRecording: false
@@ -50,7 +51,6 @@ class SoundControl extends Component {
         this.mediaRecorder.stop();
         this.props.swapSource(true);
     };
-
 
     startRecording = async () => {
         this.setState({
@@ -100,20 +100,21 @@ class SoundControl extends Component {
             })
     }
 
-
     mountDefaultAudio(){
-        if(this.props.id+1===1){this.defaultAudio = new Audio([defaultSound1])}
-        if(this.props.id+1===2){this.defaultAudio = new Audio([defaultSound2])}
-        if(this.props.id+1===3){this.defaultAudio = new Audio([defaultSound3])}
-        if(this.props.id+1===4){this.defaultAudio = new Audio([defaultSound4])}
+        if (this.props.id+1 === 1) {this.defaultAudio = new Audio([defaultSound1])}
+        if (this.props.id+1 === 2) {this.defaultAudio = new Audio([defaultSound2])}
+        if (this.props.id+1 === 3) {this.defaultAudio = new Audio([defaultSound3])}
+        if (this.props.id+1 === 4) {this.defaultAudio = new Audio([defaultSound4])}
     }
 
 
     render() {
+
         const { isRecording } = this.state;
         const { isDefaultAudio } = this.props
 
         return (
+
             <div className="soundcontrol">
 
                 <button className="playing" onClick={this.startPlayback}>
@@ -129,7 +130,6 @@ class SoundControl extends Component {
                     onClick={() => this.props.swapSource(false)}>
                     {isDefaultAudio ? 'Default' : 'User'}
                 </button>
-
 
             </div>
         );

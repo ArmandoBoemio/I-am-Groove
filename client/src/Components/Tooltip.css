@@ -1,3 +1,8 @@
+@font-face {
+  font-family: titleFont;
+  src: url(../fonts/Personal.ttf);
+}
+
 :root {
   --tooltip-text-color: rgb(78, 10, 95);
   --tooltip-background-color: rgb(228, 181, 99);
@@ -5,32 +10,26 @@
   --tooltip-arrow-size: 6px;
 }
 
-@font-face {
-  font-family: titleFont;
-  src: url(../fonts/Personal.ttf);
+.Tooltip-Wrapper {
+  display: inline-block;
+  position: absolute;
+  background: transparent;
+  color:transparent;
+  left:calc(49vw);
 }
 
-
-.Tooltip-Wrapper {
-    display: inline-block;
-    position: absolute;
-    background: transparent;
-    color:transparent;
-    left:calc(49vw);
-  }
-
 .Tooltip-Tip {
+  width:calc(17.5vw + 3vmin);
+  
   position: fixed;
   right:1vw;
   top: 20%;
-
-  width:calc(17.5vw + 3vmin);
-
-  transform: translateX(0) translateY(-15vh);
   
+  transform: translateX(0) translateY(-15vh);
+
   border-radius: 1vmin;
   border: #ffe4af solid 0.2vmin;
-  
+
   padding: 6px;
 
   color: var(--tooltip-text-color);
@@ -38,16 +37,16 @@
 
   font-size: calc(0.7vw + 0.5vmin);
   font-family: titleFont;
-  
 }
 
-/* CSS border triangles */
+  /* CSS border triangles */
 .Tooltip-Tip::before {
-  content: " ";
-  left: 50%;
-  border: solid transparent;
   height: 0;
   width: 0;
+  
+  content: " ";
+  border: solid transparent;
+  
   position: absolute;
   pointer-events: none;
   border-width: var(--tooltip-arrow-size);
@@ -55,55 +54,54 @@
 
   left: calc(var(--tooltip-arrow-size) * -1);
   top: 10%;
+
   transform: translateX(0) translateY(-50%);
   border-right-color: var(--tooltip-background-color);
 }
 
 
 .infoButton{
-    background-color: white;
-    position: fixed ;
-    right:calc(5.2vmin + 20.5vw);
-    margin-top:calc(-6.4vh + 0.25%);
+  width:calc(2vmin + 1vmax);
+  height:calc(2vmin + 1vmax);
 
-    border-radius: 40%;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  position: fixed ;
+  right:calc(5.2vmin + 20.5vw);
+  margin-top:calc(-6.4vh + 0.25%);
 
-    color: #fff1ca;
+  border: 0.2vmin ridge #ecd37e;
+  border-radius: 50%;
 
-    background: #edc789a4;
+  align-items: center;
+  justify-content: center;
 
-    border: 0.2vmin ridge #ecd37e;
-    border-radius: 50%;
+  text-align: center;
+  color: #fff1ca;
 
-    -webkit-box-shadow: 0 0 5px 2px rgb(0, 5, 7);
-    -moz-box-shadow: 0 0 5px 2px rgb(0, 0, 0);
-    box-shadow: 0 0 0 0px     rgba(0, 0, 0, 0.351),
-                0 0 10vmin 1px  rgba(94, 56, 1, 0.662),
-                inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.836),
-                inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
-                inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.268),
-                inset 0 0 5px       rgba(224, 218, 158, 0.562);
+  background: #edc789a4;
 
-    font-family: casualFont;
-    font-size: calc(2vmin + 0.5%);
-    width:calc(2vmin + 1vmax);
-    height:calc(2vmin + 1vmax);
+  -webkit-box-shadow: 0 0 5px 2px rgb(0, 5, 7);
+  -moz-box-shadow: 0 0 5px 2px rgb(0, 0, 0);
+  box-shadow: 0 0 0 0px     rgba(0, 0, 0, 0.351),
+              0 0 10vmin 1px  rgba(94, 56, 1, 0.662),
+              inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.836),
+              inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+              inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.268),
+              inset 0 0 5px       rgba(224, 218, 158, 0.562);
 
-  }
+  font-family: casualFont;
+  font-size: calc(2vmin + 0.5%);
+}
 
-  .infoButton:hover {
-    margin-top:calc(-6.2vh + 0.25%);
-    background: #c9a366a4;
-    color: #f0d59a;
-  }
+.infoButton:hover {
+  margin-top:calc(-6.2vh + 0.25%);
+  background: #c9a366a4;
+  color: #f0d59a;
+}
 
-  .Tooltip-Tip h{
-    color:#94025a
-  }
+.Tooltip-Tip text{
+  color:#a80755
+}
 
-  .Tooltip-Tip span{
-    color: #64024f;
-  }
+.Tooltip-Tip span{
+  color: #64024f;
+}
