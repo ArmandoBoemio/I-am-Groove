@@ -33,10 +33,7 @@ class Cell extends Component{
     handleOnClick=()=>{
         if (this.state.isCellOn === 1 ) {this.setState({isCellOn: 0})}
         if (this.state.isCellOn === 0 ) {this.setState({isCellOn: 1})}
-        setTimeout(() => {
-            console.log('You changed the current pattern in ' + this.state.isCellOn)
-        }, 10)
-        
+
         this.audio.play();
     }
 
@@ -53,7 +50,7 @@ class Cell extends Component{
         this.mountDefaultAudio()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(prevProps, prevState) {
 
         if (prevProps.activity !== this.props.activity) {
             this.setState({

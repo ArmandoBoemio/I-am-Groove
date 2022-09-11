@@ -48,7 +48,7 @@ class Slider extends Component{
                             <div className="bubAPM">
                                 
                                 {this.props.apm == 0 && (
-                                    <div>
+                                    <div classname="name0">
                                         Automatic Pattern Modulation
                                     </div>
                                 )}

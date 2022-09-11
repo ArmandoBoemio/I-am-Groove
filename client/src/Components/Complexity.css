@@ -9,15 +9,14 @@
 }
 
 .complexityContainer{
-    height: 37%;
-  width: 100%;
-
-  padding:1vmin;
-  padding-bottom: 2vmin;
+  height: 42%;
+  width: 99%;
   
-  margin-top:1.3vmin;
-  margin-bottom:-2vmin;
-  margin-left:-0.5vmin;
+  padding:1vmin;
+  padding-top: 0.5vmin;
+
+  margin-top:1vmin;
+  margin-left:1vmin;
   
   background-color:#d1d3c818;
 
@@ -27,7 +26,6 @@
   flex-direction: column;
   align-items: right; 
   justify-content: center;
-
   box-shadow: 0 0 10px 1vmin rgba(69, 65, 129, 0.055),
               0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
               inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),

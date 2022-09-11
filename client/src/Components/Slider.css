@@ -43,7 +43,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   
 
 .inputBpm{
-  width: calc(6vmin + 6vmax);
+  width: calc(7vw + 2vmax);
   height:calc(0.6vmin + 0.4vmax);
 }
   
@@ -52,11 +52,11 @@ input[type="range"]::-webkit-slider-thumb:active {
   width: 70%;
 
   margin-left:calc(27% - 1.4vw);
-  margin-bottom:2.8vmin;
+  margin-bottom:3.8vmin;
 }
 
 .inputAPM{
-  height:calc(0.6vmin + 0.3vmax);
+  height:calc(0.5vmin + 0.3vmax);
   width: 70%;
 
   margin-left:calc(27% - 2vmax);
@@ -64,7 +64,7 @@ input[type="range"]::-webkit-slider-thumb:active {
 } 
 
 .ticks{
-  height:calc(0.6vmin + 0.3vmax);
+  height:calc(0.4vmin + 0.3vmax);
   width:calc(27.4vmax - 19.9vmin);
 
   position:absolute;
@@ -74,7 +74,7 @@ input[type="range"]::-webkit-slider-thumb:active {
   display: flex;
   justify-content: space-between;
 
-  font-size: calc(1.2vmin + 0.4vmax);
+  font-size: calc(1.1vmin + 0.4vmax);
   font-family: casualFont;
   color:#d6d09db2;  
 }
