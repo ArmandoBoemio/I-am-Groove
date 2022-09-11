@@ -7,7 +7,6 @@ from urllib.request import urlopen
 import soundfile as sf
 from pattern_function import (
     generate_measurePattern,
-    HMM_generate_measurePattern,
     mix_generate_measurePattern,
 )
 
@@ -69,7 +68,6 @@ def audioProcess():
 def generate_pattern():
 
     # measure_pattern = generate_measurePattern(measure, complexity)
-    # measure_pattern = HMM_generate_measurePattern(measure, complexity)
     measure_pattern = mix_generate_measurePattern(measure, complexity)
 
     print("Generated pattern: \n", measure_pattern)
