@@ -266,7 +266,7 @@ function App() {
             </div>
 
             <footer className="app_footer">
-                <p className="lowleft">Source code on <a className="link" href="https://github.com/armandoboemio98/ACTAM" target="_blank" rel="noreferrer">Github</a></p>
+                <p className="lowleft">Source code on <a className="link" href="https://github.com/ArmandoBoemio/I-Am-Groove" target="_blank" rel="noreferrer">Github</a></p>
                 <p className="lowright">Armando Boemio, Filippo Gualtieri, Gabriele Maucione ©</p>
             </footer>
           

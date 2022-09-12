@@ -10,7 +10,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/armandoboemio98/i-am-groove">
+  <a href="https://github.com/armandoboemio/i-am-groove">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -18,14 +18,14 @@
 
   <p align="center">
     Drum machine with custom recorded sounds and automated pattern generation    <br />
-    <a href="https://github.com/armandoboemio98/i-am-groove"><strong> Code »</strong></a>
+    <a href="https://github.com/armandoboemio/i-am-groove"><strong> Code »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/armandoboemio98/i-am-groove">View Demo</a>
+    <a href="https://github.com/armandoboemio/i-am-groove">View Demo</a>
     ·
-    <a href="https://github.com/armandoboemio98/i-am-groove/issues">Report Bug</a>
+    <a href="https://github.com/armandoboemio/i-am-groove/issues">Report Bug</a>
     ·
-    <a href="https://github.com/armandoboemio98/i-am-groove/issues">Request Feature</a>
+    <a href="https://github.com/armandoboemio/i-am-groove/issues">Request Feature</a>
   </p>
 </div>
 
@@ -101,7 +101,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/armandoboemio98/i-am-groove.git
+   git clone https://github.com/armandoboemio/i-am-groove.git
    ```
 3. Install NPM packages
    ```sh
@@ -145,7 +145,7 @@ Filippo Gualtieri - filippo.gualtieri@mail.polimi.it
 Gabriele Maucione - gabriele.maucione@mail.polimi.it
 
 
-* Project Link: [https://github.com/armandoboemio98/i-am-groove](https://github.com/armandoboemio98/i-am-groove)
+* Project Link: [https://github.com/armandoboemio/i-am-groove](https://github.com/armandoboemio/i-am-groove)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
