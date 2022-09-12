@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/armandoboemio/i-am-groove">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="90" height="90">
   </a>
 
 <h3 align="center">I AM GROOVE</h3>
@@ -50,6 +50,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#pattern-generation">Pattern Generation</a></li>
     <li><a href="#contacts">Contacts</a></li>
   </ol>
 </details>
@@ -59,11 +60,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-I AM GROOVE is an automated drum machine that allows you to record your own drum hits using your microphone. You can either choose to build the drum pattern or have it automatically generated using different levels of complexity. Add more unpredictability to your pattern using our APM (Automatic Pattern Modulation) and tweaks the parameters on the fly to surprise your listeners. 
 
-Remember, you are groove! 
+**I Am Groove** is an automated drum machine that allows you to record your own drum hits using your microphone. You can either choose to build the drum pattern or have it automatically generated using different levels of complexity. Add more unpredictability to your pattern using our APM (Automatic Pattern Modulation) and tweak the parameters on the fly to surprise your listeners. 
+
+[![Main-screen]](https://github.com/ArmandoBoemio/I-am-Groove)
+
+Remember, **YOU are groove**! 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -81,20 +84,19 @@ Remember, you are groove!
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Follow the steps below to download, setup and run the app locally.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+Before running, you will need the following:
+* Node.js
   ```sh
-  npm install npm@latest -g
+   https://nodejs.org/en/download/
   ```
 
-* python 3.something
+* python 3.x (3.7 or **above** recommended)
     ```sh
-    pip install 
+    https://www.python.org/downloads/
     ```
 
 ### Installation
@@ -105,11 +107,26 @@ This is an example of how to list things you need to use the software and how to
    ```
 3. Install NPM packages
    ```sh
+   cd client
    npm install
    ```
 4. Install python libraries
-   ```py
-   pip install requirements.txt
+   ```sh
+   cd server
+   pip install -r requirements.txt
+   ```
+
+### Startup
+
+1. Run Flask
+   ```sh
+   cd server
+   flask run
+   ```
+2. Run NPM
+   ```sh
+   cd client
+   npm start
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -117,11 +134,50 @@ This is an example of how to list things you need to use the software and how to
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Let's get groovy
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The user can tweak the parameters to get different rhytmic grooves and patterns.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### BPM
+
+<img src="images/bpm.png" alt="BPM">
+
+It is possible to choose the BPM of the drum machine using the slider or the tap tempo button. Take it _groovy_ at **50 bpm** or go _crazy fast_ up to **180 bpm** . Press the button **Start** to play the metronome at the chosen BPM.
+
+
+### Measure
+
+<img src="images/measure.png" alt="measure">
+
+Click on the button to open the dropdown and decide among different available measures. Both even and odd time signatures are included, from **2/4** to **7/4**.
+
+
+### APM
+
+<img src="images/apm.png" alt="apm">
+
+APM stands for **Automatic Pattern Modulation**. Move across the slider to select if and when a new pattern is generated. The modulation can happean at each new measure or up to after 4 measures.
+
+
+### Complexity
+
+<img src="images/complexity.png" alt="complexity">
+
+Move across the slider to obtain simple patterns (low complexity) or very intricated patterns (high complexity). This parameter determines the number of metric subdivisions in a single measure, from **1/4** notes to **1/32** notes and the unpredictability of the pattern.
+
+
+### Instrument Panel
+
+<img src="images/instrument.png" alt="instrument">
+
+Each row corresponds to a different drum hit (Kick - Snare - Hi Hat - Cowbell). The app starts already with four stock sounds. Record your own sounds using the **Record** button. Click **User/Default** to swap between the recorded sound and the stock drum hit. Press **Play** to hear what you recorded or the stock drum hit. 
+
+### Grid
+
+<img src="images/grid.png" alt="grid">
+
+I am drum machine! Click on **Generate** to create a new drum pattern, modify it by switching on/off the cells and _start groovin'_ with the **Play** button.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -132,6 +188,11 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 qui mettiamo qualche cosa del codice, tipo qualche schema diagramma cose
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- PATTERN GENERATION -->
+## Pattern Generation
+
+pattern aaaaaaaaaaaaaaaaaaaaa
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -166,3 +227,4 @@ Gabriele Maucione - gabriele.maucione@mail.polimi.it
 [React-url]: https://reactjs.org/
 [Flask.com]: https://img.shields.io/badge/Flask-grey?style=for-the-badge&logo=flask&logoColor=white
 [Flask-url]: https://flask.palletsprojects.com/en/2.2.x/
+[Main-screen]: images/mainscreen.png
