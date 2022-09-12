@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/armandoboemio/i-am-groove">
-    <img src="images/logo.png" alt="Logo" width="90" height="90">
+    <img src="images/dancing_baby_groot.gif" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">I AM GROOVE</h3>
@@ -46,9 +46,18 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#startup">Startup</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#lets-get-groovy">Let's Get Groovy</a></li>
+    <ul>
+        <li><a href="#bpm">BPM</a></li>
+        <li><a href="#measure">Measure</a></li>
+        <li><a href="#apm">APM</a></li>
+        <li><a href="#complexity">Complexity</a></li>
+        <li><a href="#instrument-panel">Instrument Panel</a></li>
+        <li><a href="#grid">Grid</a></li>        
+      </ul>
     <li><a href="#implementation">Implementation</a></li>
     <li><a href="#pattern-generation">Pattern Generation</a></li>
     <li><a href="#contacts">Contacts</a></li>
@@ -134,7 +143,7 @@ Before running, you will need the following:
 
 
 <!-- USAGE EXAMPLES -->
-## Let's get groovy
+## Let's Get Groovy
 
 The user can tweak the parameters to get different rhytmic grooves and patterns.
 
@@ -163,7 +172,7 @@ APM stands for **Automatic Pattern Modulation**. Move across the slider to selec
 
 <img src="images/complexity.png" alt="complexity">
 
-Move across the slider to obtain simple patterns (low complexity) or very intricated patterns (high complexity). This parameter determines the number of metric subdivisions in a single measure, from **1/4** notes to **1/32** notes and the unpredictability of the pattern.
+Move across the slider to obtain simple patterns (low complexity) or very intricated patterns (high complexity). This parameter determines the unpredictability of the pattern and the number of metric subdivisions in a single measure, from **1/4** notes to **1/32** notes.
 
 
 ### Instrument Panel
