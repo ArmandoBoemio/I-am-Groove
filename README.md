@@ -14,7 +14,7 @@
     <img src="images/dancing_baby_groot.gif" alt="Logo" width="100" height="100">
   </a>
 
-<h3 align="center">I AM GROOVE</h3>
+<h3 align="center">I Am Groove</h3>
 
   <p align="center">
     Drum machine with custom recorded sounds and automated pattern generation    <br />
