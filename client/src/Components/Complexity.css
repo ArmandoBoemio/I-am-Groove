@@ -1,44 +1,36 @@
-.complexityContainer{
-    background-color:#d1d3c818;
-    border-radius: 2vmin;
-        
-    display:flex;
-    flex-direction: column;
-
-    align-items: right;
-    
-    justify-content: center;
-
-   
-    height: 37%;
-    width: 100%;
-
-    padding:1vmin;
-    padding-bottom: 2vmin;
-    
-
-    margin-top:1.3vmin;
-    margin-bottom:-2vmin;
-    margin-left:-0.5vmin;
-
-    box-shadow: 
-    0 0 10px 1vmin rgba(69, 65, 129, 0.055),
-    0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
-
-
+@font-face {
+  font-family: titlePanelFont;
+  src: url(../fonts/Personal.ttf);
 }
 
 @font-face {
-    font-family: titlePanelFont;
-    src: url(../fonts/Personal.ttf);
-  }
+  font-family: casualFont;
+  src: url(../fonts/BabyDoll.ttf);
+}
 
-  @font-face {
-    font-family: casualFont;
-    src: url(../fonts/BabyDoll.ttf);
-  }
+.complexityContainer{
+  height: 42%;
+  width: 99%;
+  
+  padding:1vmin;
+  padding-top: 0.5vmin;
+
+  margin-top:1vmin;
+  margin-left:1vmin;
+  
+  background-color:#d1d3c818;
+
+  border-radius: 2vmin;
+      
+  display:flex;
+  flex-direction: column;
+  align-items: right; 
+  justify-content: center;
+  box-shadow: 0 0 10px 1vmin rgba(69, 65, 129, 0.055),
+              0 0.1vmin 0.1vmin 0.1vmin rgba(42, 7, 53, 0.377),
+              inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.116),
+              inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295);
+}
 
 
 .titleComplexity{
@@ -48,29 +40,23 @@
   color:#d6d09d;
 
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.568),
-              0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
-  
-  
+               0 0.1vmin 0.1vmin rgba(31, 3, 44, 0.918);
+   
   padding-right:calc(38vmax - 22vmin);
 
   margin-top:3.5vmin;
   margin-bottom: -1vmax;
+}
 
-  
-  }
-
-  .bubComplex{
-  
-  padding:0.1vmin;
-  
+.bubComplex{
+  padding:0.1vmin;  
   margin-bottom: -1.9vmin;
-
-  
   margin-left:70%;
 
   font-family: casualFont;
   font-size: calc(1.5vmin + 0.5vmax);
   color:#d6d09d;
+
   text-shadow: -0.1vmin 0 0.5vmin rgba(24, 1, 37, 0.541),
-              0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.952);
-  }
+                0 0.1vmin 0.1vmin rgba(51, 8, 71, 0.952);
+}

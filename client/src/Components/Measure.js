@@ -2,6 +2,7 @@ import { Component } from "react";
 import './Measure.css';
 import Dropdown from "./Dropdown";
 
+
 class Measure extends Component{
     constructor(props) {
         super(props);
@@ -16,15 +17,15 @@ class Measure extends Component{
     render(){
         return(
             <>
-            <div className="measureContainer">
+                <div className="measureContainer">
 
-                <div className="titleMeasure">
-                    Measure
+                    <div className="titleMeasure">
+                        Measure
+                    </div>
+
+                    <Dropdown afterStateSet={this.props.onChange}></Dropdown>
+                
                 </div>
-
-                <Dropdown afterStateSet={this.props.onChange}></Dropdown>
-            
-            </div>
             </>
         );
 

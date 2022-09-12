@@ -30,9 +30,9 @@ const Tooltip = () => {
       {active && (
         <div className={`Tooltip-Tip`}>
           <h1 className="title">You are groove!</h1>
-          <span><h>Record your own sounds</h> directly from your microphone and generate your super personal drum pattern!</span><br /><br />
-          <span>Choose the <h>time signature</h>, the <h>bpm</h>, the <h>complexity</h>, introduce some element of surprise 
-              with the <h>Automatic Pattern Modulation</h> and you're ready to go!  </span><br /><br />
+          <span><text>Record your own sounds</text> directly from your microphone and generate your super personal drum pattern!</span><br /><br />
+          <span>Choose the <text>time signature</text>, the <text>bpm</text>, the <text>complexity</text>, introduce some element of surprise 
+              with the <text>Automatic Pattern Modulation</text> and you're ready to go!  </span><br /><br />
           <span>Enjoy your groove!</span>
           
         </div>

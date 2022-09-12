@@ -4,71 +4,43 @@
 }
 
 .soundcontrol {
-    
-    
-    height: 3vmin;
-    width:calc(5vmin + 9vmax); 
-    padding: 0.4vmin;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    background-color: #3f1c5048;
-    border-radius: 1vmin;
-    box-shadow: inset 0 -0.5vmin 1vmin 0.1vmin rgba(0, 0, 0, 0.219);
-    
-  }
+  height: 3vmin;
+  width:calc(5vmin + 9vmax); 
+
+  padding: 0.4vmin;
+  border-radius: 1vmin;
+
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  background-color: #3f1c5048;
+  box-shadow: inset 0 -0.5vmin 1vmin 0.1vmin rgba(0, 0, 0, 0.219);    
+}
  
 
-  .playing {
+.playing {
+  width:calc(2vmin + 3vmax);
+  height: 3vmin;
+  
+  margin: 0.1vmin;
+ 
+  background: #bd157775;
+  border: 0.2vmin ridge #1b0031;
+  border-radius: 1vmin;
 
-    text-align: center;
-    font-family: casualFont;
-    width:8vmin;
-    width:calc(2vmin + 3vmax);
-    height: 3vmin;
-    background: #bd157775;
-    border: 0.2vmin ridge #1b0031;
-    border-radius: 1vmin;
-    color: #d6d09d;
-    font-size: 1.1vmin;
-    margin: 0.1vmin;
-    box-shadow: 
-    inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
-    inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
+  text-align: center;
+  font-family: casualFont;
+  color: #d6d09d;
+  font-size: 1.1vmin;
+  
+  box-shadow: inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
+              inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
+              inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
+              inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
+}
 
-  }
-
-  .playing:active {
-      position: relative;
-      top: 0.05vw;
-      left:0.01vh;
-      background: #47012ace;
-      color: #9d9a79;
-  }
-
-  .recording {
-    text-align: center;
-    width:8vmin;
-    width:calc(2vmin + 3vmax);
-    height: 3vmin;
-    background: #701a5493;
-    border: 0.2vmin ridge #1b0031;
-    border-radius: 1vmin;   
-    color: #d6d09d;
-    font-size: 1.1vmin;
-    font-family: casualFont;
-    margin: 0.1vmin;
-
-    box-shadow: 
-    inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
-    inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
-  }
-
-  .recording:active {
+.playing:active {
     position: relative;
     top: 0.05vw;
     left:0.01vh;
@@ -76,41 +48,61 @@
     color: #9d9a79;
 }
 
-  .load {
-    text-align: center;   
-    width:8vmin;
-    width:calc(2vmin + 3vmax);
-    height: 3vmin;   
-    background: #520f5881;
-    border: 0.2vmin ridge #1b0031;
-    border-radius: 1vmin;  
-    color: #d6d09d;
-    font-size: 1.1vmin;
-    font-family: casualFont;
-    margin: 0.1vmin;
-    
-    box-shadow: 
-    inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
-    inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
-    inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
-    inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
-    
-  }
+.recording {
+  width:calc(2vmin + 3vmax);
+  height: 3vmin;
 
-  .load:active {
-    position: relative;
-    top: 0.05vw;
-    left:0.01vh;
-    background: #47012ace;
-    color: #9d9a79;
+  margin: 0.1vmin;
+
+  background: #701a5493;
+  border: 0.2vmin ridge #1b0031;
+  border-radius: 1vmin;   
+
+  text-align: center;
+  color: #d6d09d;
+  font-size: 1.1vmin;
+  font-family: casualFont;
+
+  box-shadow: inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
+              inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
+              inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
+              inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
 }
 
+.recording:active {
+  position: relative;
+  top: 0.05vw;
+  left:0.01vh;
+  background: #47012ace;
+  color: #9d9a79;
+}
 
-  .precountNumber{
-    height: 1000px;
-    width: 1000px;
-    text-align: center;
-    opacity: 50%;
-    font-size: 90vmin;
-    font-family: casualFont;
-  }
+.load {
+  width:calc(2vmin + 3vmax);
+  height: 3vmin;   
+
+  margin: 0.1vmin;
+
+  background: #520f5881;
+  border: 0.2vmin ridge #1b0031;
+  border-radius: 1vmin;  
+
+  text-align: center;   
+  color: #d6d09d;
+  font-size: 1.1vmin;
+  font-family: casualFont;
+
+  box-shadow: inset 0 -0.1vmin 0.1vmin 0.1vmin rgba(39, 9, 48, 0.699),
+              inset 0 0.5vmin 1vmin 0.2vmin rgba(253, 231, 199, 0.041),
+              inset 0 -10px 1vmin 0.01px rgba(46, 23, 53, 0.295),
+              inset 0 0 0.5vmin       rgba(224, 218, 158, 0.493);
+}
+
+.load:active {
+  position: relative;
+  top: 0.05vw;
+  left:0.01vh;
+  background: #47012ace;
+  color: #9d9a79;
+}
+

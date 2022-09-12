@@ -10,127 +10,123 @@ import userSound3 from './sounds/userSounds/userAudio_3.wav'
 import userSound4 from './sounds/userSounds/userAudio_4.wav'
 
 
-
 class Cell extends Component{
+
     constructor(props){
+
         super(props);
         this.state={
-        isCellOn: 0,
-        isPlaying: false, 
-        count: 0,
-        idChannel: 1, 
-        idCell: 1,
-        nCells: 16,
-        isDefaultAudio: true
+            isCellOn: 0,
+            isPlaying: false, 
+            count: 0,
+            idChannel: 1, 
+            idCell: 1,
+            nCells: 16,
+            isDefaultAudio: true
         }
 
         this.audio = new Audio([])
     }
 
-    
 
 
-handleOnClick=()=>{
-    if(this.state.isCellOn===1){this.setState({isCellOn: 0})}
-    if(this.state.isCellOn===0){this.setState({isCellOn: 1})}
-    setTimeout(()=> {console.log('You changed the current pattern in ' + this.state.isCellOn)}, 10)
-    
-    this.audio.play();
-}
+    handleOnClick=()=>{
+        if (this.state.isCellOn === 1 ) {this.setState({isCellOn: 0})}
+        if (this.state.isCellOn === 0 ) {this.setState({isCellOn: 1})}
 
-componentDidMount() {
-    this.setState({
-        isCellOn: this.props.activity,
-        isPlaying: this.props.isPlaying,
-        count: this.props.count,
-        idCell: this.props.idCell,
-        idChannel: this.props.idChannel,
-        nCells: this.props.nCells,
-        isDefaultAudio: this.props.isDefaultAudio
-    }) 
-    this.mountDefaultAudio()
-  }
+        this.audio.play();
+    }
 
-componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.activity !== this.props.activity) {
+    componentDidMount() {
         this.setState({
-            isCellOn: this.props.activity
-        })           
-    }
-    if (this.props.newGeneration !== prevProps.newGeneration) {
-        this.setState({
-            isCellOn: this.props.activity
-        })           
-    }
-    if (prevProps.nCells !== this.props.nCells) {
-        this.setState({
-            nCells: this.props.nCells           
-        })   
-    }
-    if (prevProps.isPlaying !== this.props.isPlaying) {
-        this.setState({
-            isPlaying: this.props.isPlaying            
-        }) 
-    }
-    if (prevState.isDefaultAudio !== this.props.isDefaultAudio) {
-        this.setState({
+            isCellOn: this.props.activity,
+            isPlaying: this.props.isPlaying,
+            count: this.props.count,
+            idCell: this.props.idCell,
+            idChannel: this.props.idChannel,
+            nCells: this.props.nCells,
             isDefaultAudio: this.props.isDefaultAudio
         }) 
-        if(this.props.isDefaultAudio){
-            this.mountDefaultAudio()
+        this.mountDefaultAudio()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevProps.activity !== this.props.activity) {
+            this.setState({
+                isCellOn: this.props.activity
+            })           
         }
-        if(!this.props.isDefaultAudio){
-            this.mountRecordedAudio()
+        if (this.props.newGeneration !== prevProps.newGeneration) {
+            this.setState({
+                isCellOn: this.props.activity
+            })           
+        }
+        if (prevProps.nCells !== this.props.nCells) {
+            this.setState({
+                nCells: this.props.nCells           
+            })   
+        }
+        if (prevProps.isPlaying !== this.props.isPlaying) {
+            this.setState({
+                isPlaying: this.props.isPlaying            
+            }) 
+        }
+        if (prevState.isDefaultAudio !== this.props.isDefaultAudio) {
+            this.setState({
+                isDefaultAudio: this.props.isDefaultAudio
+            }) 
+            if (this.props.isDefaultAudio) {this.mountDefaultAudio()}
+            if (!this.props.isDefaultAudio) {this.mountRecordedAudio()}
+        }
+        if (prevProps.count !== this.props.count){
+            this.setState({
+                count: this.props.count 
+            })
+            this.counting()
         }
     }
-    if (prevProps.count !== this.props.count){
-        this.setState({
-            count: this.props.count 
-        })
-        this.counting()
+
+    counting(){
+        if (this.props.count === this.state.idCell && this.props.count!==0) {
+            this.readCell()
+        }
     }
-  }
 
-counting(){
-    if(this.props.count === this.state.idCell && this.props.count!==0){
-        this.readCell()
+    readCell(){
+        if (this.state.isCellOn && this.state.isPlaying) {
+            this.audio.play()
+        }
     }
-}
 
-readCell(){
-    if(this.state.isCellOn && this.state.isPlaying){
-        this.audio.play()
+    mountDefaultAudio(){
+        if (this.props.idChannel === 1) {this.audio = new Audio([defaultSound1])}
+        if (this.props.idChannel === 2) {this.audio = new Audio([defaultSound2])}
+        if (this.props.idChannel === 3) {this.audio = new Audio([defaultSound3])}
+        if (this.props.idChannel === 4) {this.audio = new Audio([defaultSound4])}
     }
-}
 
-mountDefaultAudio(){
-    if(this.props.idChannel===1){this.audio = new Audio([defaultSound1])}
-    if(this.props.idChannel===2){this.audio = new Audio([defaultSound2])}
-    if(this.props.idChannel===3){this.audio = new Audio([defaultSound3])}
-    if(this.props.idChannel===4){this.audio = new Audio([defaultSound4])}
-}
-
-mountRecordedAudio(){
-    if(this.props.idChannel===1){this.audio = new Audio([userSound1])}
-    if(this.props.idChannel===2){this.audio = new Audio([userSound2])}
-    if(this.props.idChannel===3){this.audio = new Audio([userSound3])}
-    if(this.props.idChannel===4){this.audio = new Audio([userSound4])}
-}
+    mountRecordedAudio(){
+        if (this.props.idChannel === 1) {this.audio = new Audio([userSound1])}
+        if (this.props.idChannel === 2) {this.audio = new Audio([userSound2])}
+        if (this.props.idChannel === 3) {this.audio = new Audio([userSound3])}
+        if (this.props.idChannel === 4) {this.audio = new Audio([userSound4])}
+    }
 
 
 
-render(){
-    
-    return(
+    render(){
         
-        <button className={this.state.isCellOn ? 'active':'not-active'} 
-                onClick={this.handleOnClick}>   
-        </button>
-        
+        return(
+            
+            <button className={this.state.isCellOn ? 'active':'not-active'} 
+                    onClick={this.handleOnClick}>   
+            </button>
 
-    );
+        );
+    }
+
 }
 
-}
 
 export default Cell

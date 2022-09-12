@@ -2,6 +2,7 @@
 from random import sample
 import numpy as np
 from typing import List
+import random
 
 
 def generate_measurePattern(Measure_input, Complexity_input):
@@ -68,55 +69,72 @@ def generate_measurePattern(Measure_input, Complexity_input):
     return measure_pattern
 
 
-def HMM_generate_measurePattern(Measure_input, Complexity_input):
-    Measure = int(Measure_input)
-    Complexity = int(Complexity_input)
-
-    if Complexity <= 30:
-        quanto_mul = 2
-    elif 30 < Complexity <= 60:
-        quanto_mul = 4
-    elif Complexity <= 100:
-        quanto_mul = 8
-    row_measure_dim = Measure * quanto_mul
-    transitionMatrix = get_transition_matrix(Complexity, "kick_clap")
-    kick_clap = MarkovModel(start_p=[0, 1, 0], transitionMatrix=transitionMatrix)
-    transitionMatrix = get_transition_matrix(Complexity, "hh_bell")
-    hh_bell = MarkovModel(
-        start_p=[1 / 3, 1 / 3, 1 / 3], transitionMatrix=transitionMatrix
-    )
-
-    kick_clap_pattern = kick_clap.sample_n(row_measure_dim)
-    hh_bell_pattern = hh_bell.sample_n(row_measure_dim)
-
-    final_pattern = sample2pattern(kick_clap_pattern, hh_bell_pattern)
-    return final_pattern
-
-
 def mix_generate_measurePattern(Measure_input, Complexity_input):
     Measure = int(Measure_input)
     Complexity = int(Complexity_input)
 
     if Complexity <= 30:
         quanto_mul = 2
+        row_measure_dim = Measure * quanto_mul
+        result = getPattern(
+            row_measure_dim=row_measure_dim,
+            quanto_mul=quanto_mul,
+            Measure=Measure,
+            Complexity=Complexity,
+            p_force=1,
+        )
     elif 30 < Complexity <= 60:
         quanto_mul = 4
+        row_measure_dim = Measure * quanto_mul
+        result = getPattern(
+            row_measure_dim=row_measure_dim,
+            quanto_mul=quanto_mul,
+            Measure=Measure,
+            Complexity=Complexity,
+            p_force=0.7,
+        )
     elif Complexity <= 100:
         quanto_mul = 8
-    row_measure_dim = Measure * quanto_mul
-    
+        row_measure_dim = Measure * quanto_mul
+        result = getPattern(
+            row_measure_dim=row_measure_dim,
+            quanto_mul=quanto_mul,
+            Measure=Measure,
+            Complexity=Complexity,
+            p_force=0.6,
+        )
+
+    return result
+
+
+def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p_force=1):
     # KICK - SOUND1
     kick_measure_pattern = np.zeros((row_measure_dim))
     kick_measure_pattern = kick_measure_pattern.astype(int)
     kick_measure_pattern[quanto_mul :: int(Measure / 2)] = np.random.randint(
         2, size=len(kick_measure_pattern[quanto_mul :: int(Measure / 2)])
     )
-    kick_measure_pattern[:: 2 * quanto_mul] = 1
+
+    i = 0
+    while 2 * quanto_mul * i < len(kick_measure_pattern):
+        k = 2 * quanto_mul * i
+        if np.random.uniform(0, 1) < p_force:
+            kick_measure_pattern[k] = 1
+        i += 1
 
     # SNARE - SOUND2
     snare_measure_pattern = np.zeros((row_measure_dim))
     snare_measure_pattern = snare_measure_pattern.astype(int)
     snare_measure_pattern[quanto_mul :: 2 * quanto_mul] += 1
+    i = 0
+
+    while i < len(snare_measure_pattern):
+        if np.random.uniform(0, 1) < 1 - p_force:
+            snare_measure_pattern[i] = 1
+            index = i + random.randrange(-1, 2, 2)
+            if index < len(snare_measure_pattern):
+                snare_measure_pattern[index] = 0
+        i += 1
 
     # SOUNDS 3 AND 4
     transitionMatrix = get_transition_matrix(Complexity, "hh_bell")
@@ -126,8 +144,8 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
     hh_bell_pattern = hh_bell.sample_n(row_measure_dim)
     hh = [np.where(el == 1, 1, 0) for el in hh_bell_pattern]
     bell = [np.where(el == 2, 1, 0) for el in hh_bell_pattern]
-
-    return np.vstack([kick_measure_pattern, snare_measure_pattern, hh, bell])
+    result = np.vstack([kick_measure_pattern, snare_measure_pattern, hh, bell])
+    return result
 
 
 # 	------------------------------------------------
@@ -233,11 +251,3 @@ class MarkovModel:
             return 1
         else:
             return 2
-
-
-# if __name__ == "__main__":
-#     mm = MarkovModel(start_p=[0.05, 0.90, 0.05], transitionMatrix=None)
-#     print(mm.sample_n(10))
-
-
-# %%
