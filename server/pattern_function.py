@@ -19,7 +19,6 @@ def generate_measurePattern(Measure_input, Complexity_input):
     elif Complexity <= 100:
         quanto_mul = 8
 
-        # sarebbe in quanto suddividere il quarter (1/4) per avere il quanto del beat
     row_measure_dim = Measure * quanto_mul
 
     # ---------------------------------------#
@@ -81,7 +80,8 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
             quanto_mul=quanto_mul,
             Measure=Measure,
             Complexity=Complexity,
-            p_force=1,
+            p=Complexity/110,
+            p_force=1-Complexity/300,
         )
     elif 30 < Complexity <= 60:
         quanto_mul = 4
@@ -91,7 +91,8 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
             quanto_mul=quanto_mul,
             Measure=Measure,
             Complexity=Complexity,
-            p_force=0.7,
+            p=Complexity/150,
+            p_force=1-Complexity/400,
         )
     elif Complexity <= 100:
         quanto_mul = 8
@@ -101,42 +102,69 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
             quanto_mul=quanto_mul,
             Measure=Measure,
             Complexity=Complexity,
-            p_force=0.6,
+            p=Complexity/220,
+            p_force=1-Complexity/470
         )
 
     return result
 
 
-def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p_force=1):
+def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p=1, p_force=1):
+    
     # KICK - SOUND1
     kick_measure_pattern = np.zeros((row_measure_dim))
     kick_measure_pattern = kick_measure_pattern.astype(int)
-    kick_measure_pattern[quanto_mul :: int(Measure / 2)] = np.random.randint(
-        2, size=len(kick_measure_pattern[quanto_mul :: int(Measure / 2)])
-    )
 
-    i = 0
-    while 2 * quanto_mul * i < len(kick_measure_pattern):
-        k = 2 * quanto_mul * i
-        if np.random.uniform(0, 1) < p_force:
-            kick_measure_pattern[k] = 1
-        i += 1
+    case_kick = np.random.uniform(0,1)
+    if p<= 0.35:    #if case_kick < 1-p: 
+        kick_measure_pattern[0]= 1
+        kick_measure_pattern[quanto_mul :: int(Measure /2)] = np.random.choice(
+            [0,1], p=[1-p,p], size = len(kick_measure_pattern[quanto_mul :: int(Measure / 2)]) )
+        
+    if p >0.35:                    #if case_kick > 1-p:
+        kick_measure_pattern[quanto_mul +1:: int(Measure /2)] = np.random.choice(
+            [0,1], p=[1-p,p], size = len(kick_measure_pattern[quanto_mul+1 :: int(Measure / 2)]) )
+
+        kick_measure_pattern[0]= np.random.choice([0,1], p=[1-(p_force/2),p_force/2])
+       
+        i = 1
+        while i < len(kick_measure_pattern):
+
+            if kick_measure_pattern[i-1]==1 & kick_measure_pattern[i-2]==1:     #no more than two consecutive 1
+                kick_measure_pattern[i] = 0 
+
+            k = 2 * quanto_mul * i                      #kick in levare
+            if k < len(kick_measure_pattern):
+                if np.random.uniform(0, 1) < p_force:
+                    kick_measure_pattern[k] = 1 
+            i += 1
+
 
     # SNARE - SOUND2
     snare_measure_pattern = np.zeros((row_measure_dim))
     snare_measure_pattern = snare_measure_pattern.astype(int)
     snare_measure_pattern[quanto_mul :: 2 * quanto_mul] += 1
-    i = 0
+    
+    i = quanto_mul
+    p_snare = np.random.uniform(0,1)
+    
+    while i < len(snare_measure_pattern): 
+        if i%quanto_mul==0:
+            
+            if p_snare < p/2:
+                if np.random.uniform(0, 1) < (1 - p_force)/1.5:  
+                    snare_measure_pattern[i-int(quanto_mul/2)]=1
+            if p_snare> p/2:
+                if np.random.uniform(0, 1) < (1 - p_force)/2:  
+                    snare_measure_pattern[i+int(quanto_mul/2)]=1
+                if np.random.uniform(0, 1) < (1 - p_force)/2:  
+                    snare_measure_pattern[i+int(quanto_mul/2)+1]=1
+                if np.random.uniform(0, 1) < (1 - p_force)/2.5:  
+                    snare_measure_pattern[i+int(quanto_mul/2)+2]=1
+   
+        i += quanto_mul
 
-    while i < len(snare_measure_pattern):
-        if np.random.uniform(0, 1) < 1 - p_force:
-            snare_measure_pattern[i] = 1
-            index = i + random.randrange(-1, 2, 2)
-            if index < len(snare_measure_pattern):
-                snare_measure_pattern[index] = 0
-        i += 1
-
-    # SOUNDS 3 AND 4
+    # HH + BELL - SOUNDS 3 AND 4
     transitionMatrix = get_transition_matrix(Complexity, "hh_bell")
     hh_bell = MarkovModel(
         start_p=[1 / 3, 1 / 3, 1 / 3], transitionMatrix=transitionMatrix
