@@ -65,7 +65,7 @@
 </details>
 
 
-
+***
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -89,7 +89,7 @@ Remember, **YOU are groove**!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
+***
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -117,7 +117,7 @@ Before running, you will need the following:
 3. Install NPM packages
    ```sh
    cd client
-   npm install
+   npm i
    ```
 4. Install python libraries
    ```sh
@@ -141,7 +141,7 @@ Before running, you will need the following:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
+***
 <!-- USAGE EXAMPLES -->
 ## Let's Get Groovy
 
@@ -190,21 +190,59 @@ I am drum machine! Click on **Generate** to create a new drum pattern, modify it
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+***
 <!-- IMPLEMENTATION -->
 ## Implementation
 
-qui mettiamo qualche cosa del codice, tipo qualche schema diagramma cose
+The app has been realized using a *front-end + back-end* approach.
+
+### Front-end
+The front-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client">client</a> is realized using the React framework. The client is composed by a main and different modules. Each sub-window function is defined as a component. 
+
+
+<ul>
+<li>
+The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/app.js">app component</a> handles most of the GUI elements and state parameters updates. Here the <code>POST</code> method to send the state to the back-end and the trigger for new pattern generations are defined. From here the state is passed to child components as props. Finally, the play-pause functions are also handled within this component.
+</li>
+<li>
+The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">sound channel component</a> handles everything that happens into a single instrument row. It has two main sub-modules:
+</li>
+<ul>
+<li>
+<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SoundControl</a> handles the functions for the record, play/pause and default/user buttons. Each channel is defined by an ID and so are the audio associated to each of them. In particular, the audio is recorded using the <code>mediaRecorder</code> library and each time a new *audioBlob* is generated, it is sent to the back-end for further processing. Moreover, once the audio is received from the back-end, the channel is automatically set as 'User'. The play function allows to hear either the default or the user sound, depending on which one is selected.
+</li>
+<li>
+<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SingleCell</a> handles the behaviour of the row of drum hits. It determines how many cells should appear on the rows and which of those should be active according to the pattern that is received. It also allows the customization of the given pattern by switching on and off the cells that are clicked.
+</li>
+</ul>
+</ul>
+
+### Back-end
+The back-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server">server</a> is written in python using the micro-framework Flask. Here all the heavy-weight computation is done. In particular, the pattern generation and sound processing are done in this phase. The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server/api.py">API</a> setups the routes to receive and send (<code>GET</code> and <code>POST</code> methods) the commands from the front-end. 
+<ul>
+<li>
+The state parameters (<code>bpm, measure, APM, complexity</code>) are received at each update and are used for the generation of the pattern. The whole state is continuously saved and updated to make it available everywhere and always.
+</li>
+<li>
+Each audio recording is received as an *audioBlob*, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recordings always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
+</li>
+<li>
+The pattern is generated using a custom <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server/pattern_function.py">pattern generation function</a> and sent back to the front-end as a sequence of boolean strings, whose length and values depend on measure and complexity. The generation mechanism is further explained in the <a href="#pattern-generation">dedicated section</a>.
+</li>
+</ul>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+***
 <!-- PATTERN GENERATION -->
 ## Pattern Generation
 
-pattern aaaaaaaaaaaaaaaaaaaaa
+The pattern generation is a very complicated system of levers and mirrors.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
+***
 <!-- CONTACTS -->
 ## Contacts
 
