@@ -256,8 +256,15 @@ Different approaches are used for different instruments.
 <li> Kick and snare are the most important instruments for the groove's intellegibility. Their positions, as a matter of fact, are the ones that define the beat. Therefore, their generation rules are stricter with respect to the other two instruments. The kick has however slightly more variability. Nonetheless, increasing complexity can still lead to unpredictable patterns. </li>
 
 <li> Hi hat and bell have more variability even at low complexity values. Their generation rules rely on a Markov Chain approach.
- 
- *to be continued
+By analizing the most common music genres, variable cymbals patterns can be found, from simple to very complex ones. This natural variability is something important that we need to take into account. At the same time modelling musical aspects like rhythms require a certain degree of consciousness of the context. Markov Chains were in focus with these requirements since they provide a controllable degree of variability, but they can also be aware of the generated pattern provided that the order is high enough.
+
+Our implementation consists in a first order 3 state Markov Chain:
+- Silence
+- Instrument1
+- instrument2
+
+The chain is initialized according to a uniform probability, then all the possible transition probabilities are computed to form the *transition probability matrix*.
+Transition probability matrices are chosen for low complexity values, events are more likely to be simple and repetitive while, for high complexities, matrices are chosen to be more sparse so that the randomicity of the output raises.
 
 </li>
 </ul>
