@@ -169,7 +169,7 @@ Click on the button to open the dropdown and decide among different available me
 
 <img src="images/apm.png" alt="apm">
 
-APM stands for **Automatic Pattern Modulation**. Move across the slider to select if and when a new pattern is generated. The modulation can happean at each new measure or up to after 4 measures.
+APM stands for **Automatic Pattern Modulation**. Move across the slider to select if and when a new pattern is generated. The modulation can happen at each new measure or up to after 4 measures.
 
 
 ### Complexity
