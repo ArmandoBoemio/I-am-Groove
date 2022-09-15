@@ -57,8 +57,12 @@
         <li><a href="#complexity">Complexity</a></li>
         <li><a href="#instrument-panel">Instrument Panel</a></li>
         <li><a href="#grid">Grid</a></li>        
-      </ul>
+    </ul>
     <li><a href="#implementation">Implementation</a></li>
+    <ul>
+        <li><a href="#front-end">Front-end</a></li>
+        <li><a href="#back-end">Back-end</a></li>
+    </ul>
     <li><a href="#pattern-generation">Pattern Generation</a></li>
     <li><a href="#contacts">Contacts</a></li>
   </ol>
@@ -209,7 +213,7 @@ The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/sr
 </li>
 <ul>
 <li>
-<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SoundControl</a> handles the functions for the record, play/pause and default/user buttons. Each channel is defined by an ID and so are the audio associated to each of them. In particular, the audio is recorded using the <code>mediaRecorder</code> library and each time a new *audioBlob* is generated, it is sent to the back-end for further processing. Moreover, once the audio is received from the back-end, the channel is automatically set as 'User'. The play function allows to hear either the default or the user sound, depending on which one is selected.
+<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SoundControl</a> handles the functions for the record, play/pause and default/user buttons. Each channel is defined by an ID and so are the audio associated to each of them. In particular, the audio is recorded using the <code>mediaRecorder</code> library and each time a new audioBlob is generated, it is sent to the back-end for further processing. Moreover, once the audio is received from the back-end, the channel is automatically set as 'User'. The play function allows to hear either the default or the user sound, depending on which one is selected.
 </li>
 <li>
 <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SingleCell</a> handles the behaviour of the row of drum hits. It determines how many cells should appear on the rows and which of those should be active according to the pattern that is received. It also allows the customization of the given pattern by switching on and off the cells that are clicked.
@@ -221,10 +225,10 @@ The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/sr
 The back-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server">server</a> is written in python using the micro-framework Flask. Here all the heavy-weight computation is done. In particular, the pattern generation and sound processing are done in this phase. The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server/api.py">API</a> setups the routes to receive and send (<code>GET</code> and <code>POST</code> methods) the commands from the front-end. 
 <ul>
 <li>
-The state parameters (<code>bpm, measure, APM, complexity</code>) are received at each update and are used for the generation of the pattern. The whole state is continuously saved and updated to make it available everywhere and always.
+The state parameters (<code>bpm</code>, <code>measure</code>, <code>APM</code>, <code>complexity</code>) are received at each update and are used for the generation of the pattern. The whole state is continuously saved and updated to make it available everywhere and always.
 </li>
 <li>
-Each audio recording is received as an *audioBlob*, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recordings always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
+Each audio recording is received as an audio Blob, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recordings always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
 </li>
 <li>
 The pattern is generated using a custom <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server/pattern_function.py">pattern generation function</a> and sent back to the front-end as a sequence of boolean strings, whose length and values depend on measure and complexity. The generation mechanism is further explained in the <a href="#pattern-generation">dedicated section</a>.
@@ -263,12 +267,14 @@ Gabriele Maucione - gabriele.maucione@mail.polimi.it
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[contributors-shield]: https://img.shields.io/github/contributors/armandoboemio/i-am-groove.svg?style=for-the-badge
+[contributors-url]: https://github.com/armandoboemio/i-am-groove/graphs/contributors
+
+[forks-shield]: https://img.shields.io/github/forks/armandoboemio/i-am-groove.svg?style=for-the-badge
+[forks-url]: https://github.com/armandoboemio/i-am-groove/network/members
+
+[stars-shield]: https://img.shields.io/github/stars/armandoboemio/i-am-groove.svg?style=for-the-badge
+[stars-url]: https://github.com/armandoboemio/i-am-groove/stargazers
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
