@@ -206,17 +206,17 @@ The front-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Rele
 
 <ul>
 <li>
-The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/app.js">app component</a> handles most of the GUI elements and state parameters updates. Here the <code>POST</code> method to send the state to the back-end and the trigger for new pattern generations are defined. From here the state is passed to child components as props. Finally, the play-pause functions are also handled within this component.
+The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/app.js">app component</a> handles most of the GUI elements and state parameters updates. Here the <code>POST</code> method to send the state to the back-end and the trigger for new pattern generations are defined. From here the state is passed to child components as props. Finally, the play-pause functions are also handled within this component.
 </li>
 <li>
-The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">sound channel component</a> handles everything that happens into a single instrument row. It has two main sub-modules:
+The <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/components/SoundChannel.js">sound channel component</a> handles everything that happens into a single instrument row. It has two main sub-modules:
 </li>
 <ul>
 <li>
-<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SoundControl</a> handles the functions for the record, play/pause and default/user buttons. Each channel is defined by an ID and so are the audio associated to each of them. In particular, the audio is recorded using the <code>mediaRecorder</code> library and each time a new audioBlob is generated, it is sent to the back-end for further processing. Moreover, once the audio is received from the back-end, the channel is automatically set as 'User'. The play function allows to hear either the default or the user sound, depending on which one is selected.
+<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/components/SoundControl.js">SoundControl</a> handles the functions for the record, play/pause and default/user buttons. Each channel is defined by an ID and so are the audio associated to each of them. In particular, the audio is recorded using the <code>mediaRecorder</code> library and each time a new audioBlob is generated, it is sent to the back-end for further processing. Moreover, once the audio is received from the back-end, the channel is automatically set as 'User'. The play function allows to hear either the default or the user sound, depending on which one is selected.
 </li>
 <li>
-<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/SoundControl.js">SingleCell</a> handles the behaviour of the row of drum hits. It determines how many cells should appear on the rows and which of those should be active according to the pattern that is received. It also allows the customization of the given pattern by switching on and off the cells that are clicked.
+<a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client/src/components/SingleCell.js">SingleCell</a> handles the behaviour of the drum hits in the grid. Every cell is characterized by a channel id and a position id. Together they define the position of the cell in the grid. A counter iterates over all the positions. When it matches the id of an active cell, the associated sound is reproduced by the cell itself. It is finally possible to customize the given pattern, as the cell is switched active/inactive when clicked.
 </li>
 </ul>
 </ul>
@@ -228,7 +228,7 @@ The back-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Relea
 The state parameters (<code>bpm</code>, <code>measure</code>, <code>APM</code>, <code>complexity</code>) are received at each update and are used for the generation of the pattern. The whole state is continuously saved and updated to make it available everywhere and always.
 </li>
 <li>
-Each audio recording is received as an audio Blob, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recordings always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
+Each audio recording is received as an audio Blob, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recording always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
 </li>
 <li>
 The pattern is generated using a custom <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server/pattern_function.py">pattern generation function</a> and sent back to the front-end as a sequence of boolean strings, whose length and values depend on measure and complexity. The generation mechanism is further explained in the <a href="#pattern-generation">dedicated section</a>.
