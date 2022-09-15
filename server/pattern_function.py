@@ -133,7 +133,7 @@ def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p=1, p_force=1)
             if kick_measure_pattern[i-1]==1 & kick_measure_pattern[i-2]==1:     #no more than two consecutive 1
                 kick_measure_pattern[i] = 0 
 
-            k = 2 * quanto_mul * i                      #kick in levare
+            k = 2 * quanto_mul * i                      #kick in battere
             if k < len(kick_measure_pattern):
                 if np.random.uniform(0, 1) < p_force:
                     kick_measure_pattern[k] = 1 

@@ -176,7 +176,9 @@ APM stands for **Automatic Pattern Modulation**. Move across the slider to selec
 
 <img src="images/complexity.png" alt="complexity">
 
-Move across the slider to obtain simple patterns (low complexity) or very intricated patterns (high complexity). This parameter determines the unpredictability of the pattern and the number of metric subdivisions in a single measure, from **1/4** notes to **1/32** notes.
+Move across the slider to obtain simple patterns (low complexity) or very intricated patterns (high complexity). This parameter determines the unpredictability of the pattern and the number of metric subdivisions in a single measure, from **1/8** notes to **1/32** notes.
+
+**WARNING!!!** Extreme levels of complexity may lead to dizziness, headaches, ear bleeding. Better pair it with slow bpm.
 
 
 ### Instrument Panel
@@ -199,6 +201,7 @@ I am drum machine! Click on **Generate** to create a new drum pattern, modify it
 ## Implementation
 
 The app has been realized using a *front-end + back-end* approach.
+
 
 ### Front-end
 The front-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/client">client</a> is realized using the React framework. The client is composed by a main and different modules. Each sub-window function is defined as a component. 
@@ -228,7 +231,7 @@ The back-end or <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Relea
 The state parameters (<code>bpm</code>, <code>measure</code>, <code>APM</code>, <code>complexity</code>) are received at each update and are used for the generation of the pattern. The whole state is continuously saved and updated to make it available everywhere and always.
 </li>
 <li>
-Each audio recording is received as an audio Blob, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recording always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
+Each audio recording is received as an audio Blob, converted into a .wav file, trimmed using the <code>librosa.trim</code> function and stored for further use. This step is fundamental for a correct behaviour as a drum hit, since the recordings always exhibit even few milliseconds of silence at the start and at the end of it. In this way the attack of the drum hit is preserved.
 </li>
 <li>
 The pattern is generated using a custom <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/server/pattern_function.py">pattern generation function</a> and sent back to the front-end as a sequence of boolean strings, whose length and values depend on measure and complexity. The generation mechanism is further explained in the <a href="#pattern-generation">dedicated section</a>.
@@ -242,6 +245,23 @@ The pattern is generated using a custom <a href="https://github.com/ArmandoBoemi
 ## Pattern Generation
 
 The pattern generation is a very complicated system of levers and mirrors.
+
+The pattern is thought to be paired with the declared four instruments. It consists of a two-dimensional array, where each row is associated with a drum hit. A sequence is thus generated according to specific rules that usually apply to its associated instrument. Its length depends on the time signature and on the complexity value. In particular, the complexity defines the metric quantum (tatum). The lower its value, the smaller the subdivision of the tactus.  
+
+All the rules are probability based. 
+The complexity value defines the likelihood to have a drum hit in a given position. Low complexity generally implies simple patterns, as drum hits will be limited in number and will not occur in irregular positions. On the other hand, high complexity implies a greater number of active cells and a higher probability of having them offset with respect to the beat.
+Different approaches are used for different instruments.
+
+<ul>
+<li> Kick and snare are the most important instruments for the groove's intellegibility. Their positions, as a matter of fact, are the ones that define the beat. Therefore, their generation rules are stricter with respect to the other two instruments. The kick has however slightly more variability. Nonetheless, increasing complexity can still lead to unpredictable patterns. </li>
+
+<li> Hi hat and bell have more variability even at low complexity values. Their generation rules rely on a Markov Chain approach.
+ 
+ *to be continued
+
+</li>
+</ul>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
