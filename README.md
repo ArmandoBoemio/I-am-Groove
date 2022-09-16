@@ -264,7 +264,7 @@ Our implementation consists in a first order 3 state Markov Chain:
 - instrument2
 
 The chain is initialized according to a uniform probability, then all the possible transition probabilities are computed to form the *transition probability matrix*.
-Transition probability matrices are chosen for low complexity values, events are more likely to be simple and repetitive while, for high complexities, matrices are chosen to be more sparse so that the randomicity of the output raises.
+Transition probability matrices are chosen for low complexity values so that events are more likely to be simple and repetitive while, for high complexities, matrices are chosen to be more sparse so that the randomicity of the output raises.
 
 </li>
 </ul>
