@@ -244,8 +244,6 @@ The pattern is generated using a custom <a href="https://github.com/ArmandoBoemi
 <!-- PATTERN GENERATION -->
 ## Pattern Generation
 
-The pattern generation is a very complicated system of levers and mirrors.
-
 The pattern is thought to be paired with the declared four instruments. It consists of a two-dimensional array, where each row is associated with a drum hit. A sequence is thus generated according to specific rules that usually apply to its associated instrument. Its length depends on the time signature and on the complexity value. In particular, the complexity defines the metric quantum (tatum). The lower its value, the smaller the subdivision of the tactus.  
 
 All the rules are probability based. 
