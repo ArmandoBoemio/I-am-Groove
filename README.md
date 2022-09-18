@@ -21,9 +21,9 @@
     <a href="https://github.com/armandoboemio/i-am-groove"><strong> Code »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/armandoboemio/i-am-groove">View Demo</a>
+    <a href="https://youtu.be/tkvJg7PSHn4">View Demo</a>
     ·
-    <a href="https://github.com/armandoboemio/i-am-groove/issues">Report Bug</a>
+    <a href="https://github.com/ArmandoBoemio/I-am-Groove/blob/Release/I_Am_Groove_Presentation.pptx">Presentation</a>
     ·
     <a href="https://github.com/armandoboemio/i-am-groove/issues">Request Feature</a>
   </p>
