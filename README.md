@@ -55,8 +55,8 @@
         <li><a href="#measure">Measure</a></li>
         <li><a href="#apm">APM</a></li>
         <li><a href="#complexity">Complexity</a></li>
-        <li><a href="#instrument-panel">Instrument Panel</a></li>
-        <li><a href="#grid">Grid</a></li>        
+        <li><a href="#sound-control">Sound Control</a></li>
+        <li><a href="#performance-panel">Performance Panel</a></li>        
     </ul>
     <li><a href="#implementation">Implementation</a></li>
     <ul>
@@ -181,13 +181,13 @@ Move across the slider to obtain simple patterns (low complexity) or very intric
 **WARNING!!!** Extreme levels of complexity may lead to dizziness, headaches, ear bleeding. Better pair it with slow bpm.
 
 
-### Instrument Panel
+### Sound Control
 
 <img src="images/instrument.png" alt="instrument">
 
 Each row corresponds to a different drum hit (Kick - Snare - Hi Hat - Cowbell). The app starts already with four stock sounds. Record your own sounds using the **Record** button. Click **User/Default** to swap between the recorded sound and the stock drum hit. Press **Play** to hear what you recorded or the stock drum hit. 
 
-### Grid
+### Performance Panel
 
 <img src="images/grid.png" alt="grid">
 
