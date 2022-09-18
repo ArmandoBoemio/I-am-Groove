@@ -55,8 +55,8 @@
         <li><a href="#measure">Measure</a></li>
         <li><a href="#apm">APM</a></li>
         <li><a href="#complexity">Complexity</a></li>
-        <li><a href="#instrument-panel">Instrument Panel</a></li>
-        <li><a href="#grid">Grid</a></li>        
+        <li><a href="#sound-control">Sound Control</a></li>
+        <li><a href="#performance-panel">Performance Panel</a></li>        
     </ul>
     <li><a href="#implementation">Implementation</a></li>
     <ul>
@@ -181,13 +181,13 @@ Move across the slider to obtain simple patterns (low complexity) or very intric
 **WARNING!!!** Extreme levels of complexity may lead to dizziness, headaches, ear bleeding. Better pair it with slow bpm.
 
 
-### Instrument Panel
+### Sound Control
 
 <img src="images/instrument.png" alt="instrument">
 
 Each row corresponds to a different drum hit (Kick - Snare - Hi Hat - Cowbell). The app starts already with four stock sounds. Record your own sounds using the **Record** button. Click **User/Default** to swap between the recorded sound and the stock drum hit. Press **Play** to hear what you recorded or the stock drum hit. 
 
-### Grid
+### Performance Panel
 
 <img src="images/grid.png" alt="grid">
 
@@ -244,8 +244,6 @@ The pattern is generated using a custom <a href="https://github.com/ArmandoBoemi
 <!-- PATTERN GENERATION -->
 ## Pattern Generation
 
-The pattern generation is a very complicated system of levers and mirrors.
-
 The pattern is thought to be paired with the declared four instruments. It consists of a two-dimensional array, where each row is associated with a drum hit. A sequence is thus generated according to specific rules that usually apply to its associated instrument. Its length depends on the time signature and on the complexity value. In particular, the complexity defines the metric quantum (tatum). The lower its value, the smaller the subdivision of the tactus.  
 
 All the rules are probability based. 
@@ -256,8 +254,15 @@ Different approaches are used for different instruments.
 <li> Kick and snare are the most important instruments for the groove's intellegibility. Their positions, as a matter of fact, are the ones that define the beat. Therefore, their generation rules are stricter with respect to the other two instruments. The kick has however slightly more variability. Nonetheless, increasing complexity can still lead to unpredictable patterns. </li>
 
 <li> Hi hat and bell have more variability even at low complexity values. Their generation rules rely on a Markov Chain approach.
- 
- *to be continued
+By analizing the most common music genres, variable cymbals patterns can be found, from simple to very complex ones. This natural variability is something important that we need to take into account. At the same time modelling musical aspects like rhythms require a certain degree of consciousness of the context. Markov Chains were in focus with these requirements since they provide a controllable degree of variability, but they can also be aware of the generated pattern provided that the order is high enough.
+
+Our implementation consists in a first order 3 state Markov Chain:
+- Silence
+- Instrument1
+- instrument2
+
+The chain is initialized according to a uniform probability, then all the possible transition probabilities are computed to form the *transition probability matrix*.
+Transition probability matrices are chosen for low complexity values so that events are more likely to be simple and repetitive while, for high complexities, matrices are chosen to be more sparse so that the randomicity of the output raises.
 
 </li>
 </ul>
