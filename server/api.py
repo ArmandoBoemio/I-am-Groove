@@ -68,7 +68,7 @@ def audioProcess():
 def generate_pattern():
 
     # measure_pattern = generate_measurePattern(measure, complexity)
-    measure_pattern = mix_generate_measurePattern(measure, complexity)
+    measure_pattern = mix_generate_measurePattern(measure, complexity, APM)
 
     print("Generated pattern: \n", measure_pattern)
 

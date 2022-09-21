@@ -1,5 +1,6 @@
 #%%
 from random import sample
+from re import A
 import numpy as np
 from typing import List
 import random
@@ -68,9 +69,11 @@ def generate_measurePattern(Measure_input, Complexity_input):
     return measure_pattern
 
 
-def mix_generate_measurePattern(Measure_input, Complexity_input):
+def mix_generate_measurePattern(Measure_input, Complexity_input, APM_input):
+   
     Measure = int(Measure_input)
     Complexity = int(Complexity_input)
+    APM = int(APM_input)
 
     if Complexity <= 30:
         quanto_mul = 2
@@ -80,6 +83,7 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
             quanto_mul=quanto_mul,
             Measure=Measure,
             Complexity=Complexity,
+            APM = APM,
             p=Complexity/110,
             p_force=1-Complexity/300,
         )
@@ -91,6 +95,7 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
             quanto_mul=quanto_mul,
             Measure=Measure,
             Complexity=Complexity,
+            APM = APM,
             p=Complexity/150,
             p_force=1-Complexity/400,
         )
@@ -102,6 +107,7 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
             quanto_mul=quanto_mul,
             Measure=Measure,
             Complexity=Complexity,
+            APM = APM,
             p=Complexity/220,
             p_force=1-Complexity/470
         )
@@ -109,19 +115,18 @@ def mix_generate_measurePattern(Measure_input, Complexity_input):
     return result
 
 
-def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p=1, p_force=1):
+def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, APM, p=1, p_force=1):
     
     # KICK - SOUND1
     kick_measure_pattern = np.zeros((row_measure_dim))
     kick_measure_pattern = kick_measure_pattern.astype(int)
 
-    case_kick = np.random.uniform(0,1)
     if p<= 0.35:    #if case_kick < 1-p: 
         kick_measure_pattern[0]= 1
         kick_measure_pattern[quanto_mul :: int(Measure /2)] = np.random.choice(
             [0,1], p=[1-p,p], size = len(kick_measure_pattern[quanto_mul :: int(Measure / 2)]) )
         
-    if p >0.35:                    #if case_kick > 1-p:
+    elif p >0.35:                    #if case_kick > 1-p:
         kick_measure_pattern[quanto_mul +1:: int(Measure /2)] = np.random.choice(
             [0,1], p=[1-p,p], size = len(kick_measure_pattern[quanto_mul+1 :: int(Measure / 2)]) )
 
@@ -143,11 +148,24 @@ def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p=1, p_force=1)
     # SNARE - SOUND2
     snare_measure_pattern = np.zeros((row_measure_dim))
     snare_measure_pattern = snare_measure_pattern.astype(int)
-    snare_measure_pattern[quanto_mul :: 2 * quanto_mul] += 1
-    
     i = quanto_mul
     p_snare = np.random.uniform(0,1)
-    
+
+    if APM%2 == 0:
+        if Complexity < 50:  
+            snare_measure_pattern[quanto_mul :: 2 * quanto_mul] += 1
+        elif Complexity >= 50:
+            if p_snare < 0.5: 
+                snare_measure_pattern[quanto_mul :: 2 * quanto_mul] += 1
+            elif p_snare >= 0.5:
+                snare_measure_pattern[quanto_mul+1 :: 2 * quanto_mul] += 1
+
+    elif APM%2 != 0:
+        if Complexity<70:
+            snare_measure_pattern[quanto_mul :: 2 * quanto_mul] += 1
+        elif Complexity >= 70:
+            snare_measure_pattern[quanto_mul+1 :: 2 * quanto_mul] += 1
+
     while i < len(snare_measure_pattern): 
         if i%quanto_mul==0:
             
@@ -160,7 +178,8 @@ def getPattern(row_measure_dim, quanto_mul, Measure, Complexity, p=1, p_force=1)
                 if np.random.uniform(0, 1) < (1 - p_force)/2:  
                     snare_measure_pattern[i+int(quanto_mul/2)+1]=1
                 if np.random.uniform(0, 1) < (1 - p_force)/2.5:  
-                    snare_measure_pattern[i+int(quanto_mul/2)+2]=1
+                    if(i+int(quanto_mul/2)+2)<row_measure_dim:
+                        snare_measure_pattern[i+int(quanto_mul/2)+2]=1
    
         i += quanto_mul
 
