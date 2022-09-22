@@ -3,12 +3,9 @@ from flask import Flask, request, send_file
 import librosa
 import tempfile
 import os
-from urllib.request import urlopen
 import soundfile as sf
-from pattern_function import (
-    generate_measurePattern,
-    mix_generate_measurePattern,
-)
+from pattern_function import mix_generate_measurePattern
+
 
 
 app = Flask(__name__)
